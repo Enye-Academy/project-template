@@ -1,46 +1,55 @@
 {
-  "name": "project-template",
-  "version": "1.0.0",
-  "description": "Template for starting a project",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0",
-    "lint": "eslint pages"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/enyeInc/project-template.git"
-  },
-  "author": "Uche Nnadi",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/enyeInc/project-template/issues"
-  },
-  "homepage": "https://github.com/enyeInc/project-template#readme",
-  "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "chai": "^4.2.0",
-    "enzyme": "^3.9.0",
-    "eslint": "^5.8.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-react": "^7.11.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "jest": "^24.7.1",
-    "mocha": "^6.1.2",
-    "sinon": "^7.3.1"
-  },
-  "dependencies": {
-    "dotenv": "^7.0.0",
-    "express": "^4.16.4",
-    "next": "^8.0.4",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "redux": "^4.0.1",
-    "redux-saga": "^1.0.2"
-  }
+	"name": "HelpMe",
+	"version": "1.0.0",
+	"description": "An App That connects depressed people to each other for comfort",
+	"main": "index.js",
+	"scripts": {
+    "build:css": "postcss src/styles/index.css -o src/index.css",
+    "watch:css": "postcss src/styles/index.css -o src/index.css -w",
+		"lint": "eslint pages",
+		"dev": "npm run build:css && next",
+		"build": "npm run build:css && next build",
+		"start": "npm run build:css && next start"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/team-helpme/helpme.git"
+	},
+	"author": "Uche Nnadi, Justice Otuya, Marshall Akpan, Daniel Damilare",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/team-helpme/helpme/issues"
+	},
+	"homepage": "https://github.com/team-helpme/helpme#readme",
+	"devDependencies": {
+		"autoprefixer": "^9.5.1",
+		"babel-eslint": "^10.0.1",
+		"chai": "^4.2.0",
+		"enzyme": "^3.9.0",
+		"eslint": "^5.8.0",
+		"eslint-config-airbnb": "^17.1.0",
+		"eslint-config-standard": "^12.0.0",
+		"eslint-plugin-import": "^2.14.0",
+		"eslint-plugin-jsx-a11y": "^6.2.1",
+		"eslint-plugin-node": "^7.0.1",
+		"eslint-plugin-promise": "^4.0.1",
+		"eslint-plugin-react": "^7.11.1",
+		"eslint-plugin-standard": "^4.0.0",
+		"jest": "^24.7.1",
+		"mocha": "^6.1.2",
+		"postcss-cli": "^6.1.2",
+		"sinon": "^7.3.1",
+		"tailwindcss": "^0.7.4"
+	},
+	"dependencies": {
+		"@zeit/next-css": "^1.0.1",
+		"antd": "^3.16.3",
+		"dotenv": "^7.0.0",
+		"express": "^4.16.4",
+		"next": "^8.0.4",
+		"react": "^16.8.6",
+		"react-dom": "^16.8.6",
+		"redux": "^4.0.1",
+		"redux-saga": "^1.0.2"
+	}
 }
