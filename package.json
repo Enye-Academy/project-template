@@ -4,12 +4,10 @@
 	"description": "An App That connects depressed people to each other for comfort",
 	"main": "index.js",
 	"scripts": {
-    "build:css": "postcss src/styles/index.css -o src/index.css",
-    "watch:css": "postcss src/styles/index.css -o src/index.css -w",
 		"lint": "eslint pages",
-		"dev": "npm run build:css && next",
-		"build": "npm run build:css && next build",
-		"start": "npm run build:css && next start"
+		"dev": "next",
+		"build": "next build",
+		"start": "next start"
 	},
 	"repository": {
 		"type": "git",
@@ -22,7 +20,6 @@
 	},
 	"homepage": "https://github.com/team-helpme/helpme#readme",
 	"devDependencies": {
-		"autoprefixer": "^9.5.1",
 		"babel-eslint": "^10.0.1",
 		"chai": "^4.2.0",
 		"enzyme": "^3.9.0",
@@ -37,9 +34,7 @@
 		"eslint-plugin-standard": "^4.0.0",
 		"jest": "^24.7.1",
 		"mocha": "^6.1.2",
-		"postcss-cli": "^6.1.2",
-		"sinon": "^7.3.1",
-		"tailwindcss": "^0.7.4"
+		"sinon": "^7.3.1"
 	},
 	"dependencies": {
 		"@zeit/next-css": "^1.0.1",
