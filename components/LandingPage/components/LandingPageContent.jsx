@@ -51,13 +51,13 @@ export default function LandingPageContent(props) {
     return (
         <section className={className}>
             <div className="LandingPage_content__text">
-    <Title level={level}>{title}</Title>
+                <Title level={level}>{title}</Title>
                 <Paragraph>{paragraphText}</Paragraph>
 
                 {/* displays button in a section */}
                 {buttonIsPresent ? (
                     <Button className="LandingPage_button" type="primary">
-    <Link href={buttonLink}>
+                        <Link href={buttonLink}>
                             <a>{buttonText}</a>
                         </Link>
                     </Button>

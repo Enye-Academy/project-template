@@ -1,4 +1,3 @@
-import React from 'react';
-import { Head } from './components/index';
+import Head from './components/index';
 
-export { Head };
+export default Head;

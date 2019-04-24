@@ -1,4 +1,3 @@
-import React from 'react';
-import LandingPage from './components/index.js';
+import LandingPage from './components/index';
 
 export default LandingPage;
