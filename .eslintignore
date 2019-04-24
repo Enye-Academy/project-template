@@ -10,5 +10,9 @@
 /tmp/**
 next.config.js
 
+*.css
+*.png
+*.html
+
 
 # Add any other files or folders that you want eslint to ignore
