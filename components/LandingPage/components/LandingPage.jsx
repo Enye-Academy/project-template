@@ -9,7 +9,7 @@ import LandingPageContent from './LandingPageContent';
 const { Header, Content, Sider, Footer } = Layout;
 
 /**
- * Function for displaying the landing landing page
+ * Function for displaying the landing page
  *
  * @function
  * @return {Object} The landing page
