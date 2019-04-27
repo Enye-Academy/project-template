@@ -1,58 +1,60 @@
 {
-	"name": "HelpMe",
-	"version": "1.0.0",
-	"description": "An App That connects depressed people to each other for comfort",
-	"main": "index.js",
-	"scripts": {
-		"test": "jest",
-		"lint": "eslint . --fix",
-		"dev": "next",
-		"build": "next build",
-		"start": "next start"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/team-helpme/helpme.git"
-	},
-	"author": "Uche Nnadi, Justice Otuya, Marshall Akpan, Daniel Damilare",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/team-helpme/helpme/issues"
-	},
-	"homepage": "https://github.com/team-helpme/helpme#readme",
-	"devDependencies": {
-		"babel-eslint": "^10.0.1",
-		"chai": "^4.2.0",
-		"eslint": "^5.8.0",
-		"eslint-config-airbnb": "^17.1.0",
-		"eslint-config-standard": "^12.0.0",
-		"eslint-plugin-import": "^2.14.0",
-		"eslint-plugin-jsx-a11y": "^6.2.1",
-		"eslint-plugin-node": "^7.0.1",
-		"eslint-plugin-promise": "^4.0.1",
-		"eslint-plugin-react": "^7.11.1",
-		"eslint-plugin-standard": "^4.0.0",
-		"jest": "^24.7.1",
-		"mocha": "^6.1.2",
-		"sinon": "^7.3.1"
-	},
-	"dependencies": {
-		"@babel/core": "^7.4.3",
-		"@zeit/next-css": "^1.0.1",
-		"antd": "^3.16.3",
-		"auth0-js": "^9.10.2",
-		"babel-jest": "^24.7.1",
-		"dotenv": "^7.0.0",
-		"enzyme": "^3.9.0",
-		"enzyme-adapter-react-16": "^1.12.1",
-		"express": "^4.16.4",
-		"next": "^8.0.4",
-		"prop-types": "^15.7.2",
-		"react": "^16.8.6",
-		"react-addons-test-utils": "^15.6.2",
-		"react-dom": "^16.8.6",
-		"react-test-renderer": "^16.8.6",
-		"redux": "^4.0.1",
-		"redux-saga": "^1.0.2"
-	}
+  "name": "HelpMe",
+  "version": "1.0.0",
+  "description": "An App That connects depressed people to each other for comfort",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint . --fix",
+    "dev": "node server/index.js",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/team-helpme/helpme.git"
+  },
+  "author": "Uche Nnadi, Justice Otuya, Marshall Akpan, Daniel Damilare",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/team-helpme/helpme/issues"
+  },
+  "homepage": "https://github.com/team-helpme/helpme#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "chai": "^4.2.0",
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "jest": "^24.7.1",
+    "mocha": "^6.1.2",
+    "sinon": "^7.3.1"
+  },
+  "dependencies": {
+    "@babel/core": "^7.4.3",
+    "@zeit/next-css": "^1.0.1",
+    "antd": "^3.16.3",
+    "auth0-js": "^9.10.2",
+    "babel-jest": "^24.7.1",
+    "body-parser": "^1.19.0",
+    "dotenv": "^7.0.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.4",
+    "next": "^8.0.4",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^16.8.6",
+    "react-test-renderer": "^16.8.6",
+    "redux": "^4.0.1",
+    "redux-saga": "^1.0.2"
+  }
 }
