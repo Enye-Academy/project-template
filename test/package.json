@@ -1,0 +1,4 @@
+{
+  "main": "connection.js",
+  "test": "mocha"
+}
