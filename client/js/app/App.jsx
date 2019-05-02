@@ -10,7 +10,7 @@ const App = () => (
         exact
         path="/"
         name="landing"
-        // component={(Home)}
+        component={(Home)}
       />
     </Switch>
   </Router>
