@@ -1,6 +1,7 @@
 const express = require('express');
 const next = require('next');
 const bodyParser = require('body-parser');
+const users = require('../routes/api/users');
 
 const PORT = process.env.PORT || 3000;
 const dev = process.env.NODE_DEV !== 'production';
@@ -16,6 +17,9 @@ nextApp.prepare().then(() => {
     const app = express();
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
+
+    // Routes Middleware
+    app.use('/api/users', users);
 
     app.get(
         '*',
