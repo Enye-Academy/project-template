@@ -1,5 +1,6 @@
 const assert = require('assert');
 const User = require('../models/User');
+
 // Describe tests
 describe('Saving records', () => {
     // Create tests

@@ -14,6 +14,7 @@ const db = require('../config/keys').mongoURI;
 nextApp.prepare().then(() => {
     // express code here
     const app = express();
+    // bodyParser Middleware
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
 
