@@ -1,87 +1,66 @@
-import Report from '../models/report'
+const db = require("./promise").ReportDb;
 
 
-// Create and Save a new report
-exports.create = (req, res) => {
-    // Validate request
-    if(!req.body.name || !req.body.number || !req.body.audio || !req.body.coords) {
-        return res.status(400).send({
-            message: "name or number or audio or coords content can not be empty"
-        });
-    }
-
-    // Create a report
-    const report = new Report({
-        name: req.body.name, 
-        number: req.body.number,
-        audio: req.body.audio,
-        coords: req.body.coords,
-        image: req.body.image
-    });
-
-    // Save report in the database
-    report.save()
-    .then(data => {
-        res.send(data);
-    }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while creating the report."
-        });
-    });
-};
-
-// Retrieve and return the report list from the database.
-exports.findAll = (req, res) => {
-    Report.find()
-    .then(reports => {
-        res.send(reports);
-    }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while retrieving report list."
-        });
-    });
-};
-
-// Find a single report with a reportId
-exports.findOne = (req, res) => {
-    Report.findById(req.params.reportId)
-    .then(report => {
-        if(!report) {
-            return res.status(404).send({
-                message: "Report not found with id " + req.params.reportId
-            });            
+const Reports = {
+    async create(req, res) {
+        const queryText = req.body;
+        try {
+          const createdReport = await db.create(queryText);
+          return res.status(201).send({
+            message: 'Report successfully created',
+            data: createdReport,
+          });
+        } catch (error) {
+          return res.status(400).send(error);
         }
-        res.send(report);
-    }).catch(err => {
-        if(err.kind === 'ObjectId') {
-            return res.status(404).send({
-                message: "Report not found with id " + req.params.reportId
-            });                
-        }
-        return res.status(500).send({
-            message: "Error retrieving report with id " + req.params.reportId
-        });
-    });
-};
-
-// Delete a report with the specified reportId in the request
-exports.delete = (req, res) => {
-    Report.findByIdAndRemove(req.params.reportId)
-    .then(report => {
-        if(!report) {
-            return res.status(404).send({
-                message: "Report not found with id " + req.params.reportId
+    },
+	async getAll(req, res) {
+        const queryText = {};
+        try {
+            const foundReports = await db.find(queryText);
+            return res.status(200).send({
+                message: 'Reports retrieved successfully',
+                data: foundReports,
             });
+        } catch (error) {
+            return res.status(400).send(error);
         }
-        res.send({message: "Report deleted successfully!"});
-    }).catch(err => {
-        if(err.kind === 'ObjectId' || err.name === 'NotFound') {
-            return res.status(404).send({
-                message: "Report not found with id " + req.params.reportId
-            });                
+	},
+	async getOne(req, res) {
+		const queryText = {
+			_id: req.params.ReportId,
+        };
+        try{
+            const foundReport = await db.findOne(queryText);
+            if (!foundReport) return res.status(404).send({ message: 'Report not found' });
+            return res.status(200).send({
+              message: 'Report retrieved successfully',
+              data: foundReport,
+            });
+          }
+        catch(err){
+            return res.status(400).send(error);
         }
-        return res.status(500).send({
-            message: "Could not delete report with id " + req.params.reportId
-        });
-    });
+    },
+    
+    async deleteReport(req, res){
+        const queryText = {
+            _id: req.params.ReportId
+        };
+        try {
+            const deletedReport = await db.findOneAndDelete(queryText);
+            if (!deletedReport) return res.status(404).send({ message: 'Report not found' });
+            return res.status(200).send({
+              message: 'Report successfully deleted',
+              data: deletedReport,
+            });
+          } catch (error) {
+            return res.status(400).send(error);
+          }
+    },
+
+	
 };
+
+
+module.exports = Reports;

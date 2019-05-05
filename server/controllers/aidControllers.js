@@ -1,124 +1,97 @@
-import Aid from '../models/aid'
+const db = require("./promise").AidDb;
 import validateAidQueryText from '../validation/aid'
 
-// Create and Save a new aid
-exports.create = (req, res) => {
-    const { errors, isValid } = validateAidQueryText(req.body);
 
-    // Check Validation
-	if (!isValid) {
-		return res.status(400).json(errors);
-	}
+const Aids = {
+    async create(req, res) {
+        console.log(req.body);
+        const { errors, isValid } = validateAidQueryText(req.body);
 
-    // Create a aid
-    const aid = new Aid({
-        aidTitle: req.body.aidTitle, 
-        aidIntro: req.body.aidIntro,
-        aidDescription: req.body.aidDescription,
-        imageLink: req.body.imageLink,
-        videoLink: req.body.videoLink
-    });
-
-    // Save aid in the database
-    aid.save()
-    .then(data => {
-        res.send(data);
-    }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while creating the aid."
-        });
-    });
-};
-
-// Retrieve and return the aid list from the database.
-exports.findAll = (req, res) => {
-    Aid.find()
-    .then(aids => {
-        res.send(aids);
-    }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while retrieving aid list."
-        });
-    });
-};
-
-// Find a single aid with a aidId
-exports.findOne = (req, res) => {
-    Aid.findById(req.params.aidId)
-    .then(aid => {
-        if(!aid) {
-            return res.status(404).send({
-                message: "Aid not found with id " + req.params.aidId
-            });            
+		// Check Validation
+		if (!isValid) {
+			return res.status(400).json(errors);
+		}
+        const queryText = req.body;
+        try {
+          const createdAid = await db.create(queryText);
+          return res.status(201).send({
+            message: 'Aid successfully created',
+            data: createdAid,
+          });
+        } catch (error) {
+          return res.status(400).send(error);
         }
-        res.send(aid);
-    }).catch(err => {
-        if(err.kind === 'ObjectId') {
-            return res.status(404).send({
-                message: "Aid not found with id " + req.params.aidId
-            });                
-        }
-        return res.status(500).send({
-            message: "Error retrieving aid with id " + req.params.aidId
-        });
-    });
-};
-
-// Update a aid identified by the aidId in the request
-exports.update = (req, res) => {
-    // Validate Request
-    const { errors, isValid } = validateAidQueryText(req.body);
-
-    // Check Validation
-	if (!isValid) {
-		return res.status(400).json(errors);
-	}
-
-    // Find aid and update it with the request body
-    Aid.findByIdAndUpdate(req.params.aidId, {
-        aidTitle: req.body.aidTitle, 
-        aidIntro: req.body.aidIntro,
-        aidDescription: req.body.aidDescription,
-        imageLink: req.body.imageLink,
-        videoLink: req.body.videoLink
-    }, {new: true})
-    .then(aid => {
-        if(!aid) {
-            return res.status(404).send({
-                message: "Aid not found with id " + req.params.aidId
+    },
+	async getAll(req, res) {
+        const queryText = {};
+        try {
+            const foundAids = await db.find(queryText);
+            return res.status(200).send({
+                message: 'Aidss retrieved successfully',
+                data: foundAids,
             });
+        } catch (error) {
+            return res.status(400).send(error);
         }
-        res.send(aid);
-    }).catch(err => {
-        if(err.kind === 'ObjectId') {
-            return res.status(404).send({
-                message: "Aid not found with id " + req.params.aidId
-            });                
+	},
+	async getOne(req, res) {
+		const queryText = {
+			_id: req.params.aidId,
+        };
+        try{
+            const foundAid = await db.findOne(queryText);
+            if (!foundAid) return res.status(404).send({ message: 'Aid not found' });
+            return res.status(200).send({
+              message: 'Aid retrieved successfully',
+              data: foundAid,
+            });
+          }
+        catch(err){
+            return res.status(400).send(error);
         }
-        return res.status(500).send({
-            message: "Error updating aid with id " + req.params.aidId
-        });
-    });
+	},
+	
+    async updateAid(req, res){
+        const queryText = {
+            _id: req.params.aidId
+        };
+
+        const { errors, isValid } = validateAidQueryText(req.body);
+
+		// Check Validation
+		if (!isValid) {
+			return res.status(400).json(errors);
+        }
+        
+        const updateData = req.body;
+        try {
+            const updatedAid = await db.findOneAndUpdate(queryText, updateData);
+            if (!updatedAid) return res.status(404).send({ message: 'Aid not found' });
+            return res.status(200).send({
+                message: 'Aid updated successfully',
+                data: updatedAid,
+            });
+        } catch (error) {
+            return res.status(400).send(error);
+        }
+    },
+    async deleteAid(req, res){
+        const queryText = {
+            _id: req.params.aidId
+        };
+        try {
+            const deletedAid = await db.findOneAndDelete(queryText);
+            if (!deletedAid) return res.status(404).send({ message: 'Aid not found' });
+            return res.status(200).send({
+              message: 'Aid successfully deleted',
+              data: deletedAid,
+            });
+          } catch (error) {
+            return res.status(400).send(error);
+          }
+    },
+
+	
 };
 
-// Delete a aid with the specified aidId in the request
-exports.delete = (req, res) => {
-    Aid.findByIdAndRemove(req.params.aidId)
-    .then(aid => {
-        if(!aid) {
-            return res.status(404).send({
-                message: "Aid not found with id " + req.params.aidId
-            });
-        }
-        res.send({message: "Aid deleted successfully!"});
-    }).catch(err => {
-        if(err.kind === 'ObjectId' || err.name === 'NotFound') {
-            return res.status(404).send({
-                message: "Aid not found with id " + req.params.aidId
-            });                
-        }
-        return res.status(500).send({
-            message: "Could not delete aid with id " + req.params.aidId
-        });
-    });
-};
+module.exports = Aids;

@@ -9,28 +9,27 @@ const router = express.Router();
 router.post('/aid', aidController.create);
 
 // Retrieve all Aids
-router.get('/aids', aidController.findAll);
+router.get('/aids', aidController.getAll);
 
 // Retrieve a single Aid with aidId
-router.get('/aids/:aidId', aidController.findOne);
+router.get('/aids/:aidId', aidController.getOne);
 
 // Update a Aid with aidId
-router.put('/aids/:aidId', aidController.update);
+router.put('/aids/:aidId', aidController.updateAid);
 
 // Delete a Aid with aidId
-router.delete('/aids/:aidId', aidController.delete);
+router.delete('/aids/:aidId', aidController.deleteAid);
 
 // report route
 // Create a new Report
 router.post('/report', reportController.create);
 
 // Retrieve all reports
-router.get('/reports', reportController.findAll);
+router.get('/reports', reportController.getAll);
 
 // Retrieve a single Report with reportId
-router.get('/reports/:reportId', reportController.findOne);
+router.get('/reports/:reportId', reportController.getOne);
 
 // Delete a Report with reportId
-router.delete('/reports/:reportId', reportController.delete);
-
+router.delete('/reports/:reportId', reportController.deleteReport);
 export default router;
