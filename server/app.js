@@ -28,12 +28,12 @@ let compiler;
 
 // Setup a default catch-all route that sends back a welcome message in JSON format.
 if (process.env.NODE_ENV === 'production') {
-  mongoose.connect(configDB.url_production);
+  mongoose.connect(configDB.url_production, { useNewUrlParser: true });
 } else if (process.env.NODE_ENV === 'test') {
-  mongoose.connect(configDB.url_test);
+  mongoose.connect(configDB.url_test, { useNewUrlParser: true });
   compiler = webpack(devConfig);
 } else {
-  mongoose.connect(configDB.url);
+  mongoose.connect(configDB.url, { useNewUrlParser: true });
   compiler = webpack(devConfig);
 }
 // Log requests to the console.
