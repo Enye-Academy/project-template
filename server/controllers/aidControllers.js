@@ -9,44 +9,61 @@ const Aids = {
 
 		// Check Validation
 		if (!isValid) {
-			return res.status(BAD_REQUEST).json(errors);
+			return res.status(BAD_REQUEST).send({
+                status : "fail",
+                data : { "title" : errors }
+            });
 		}
         const queryText = req.body;
         try {
-          const createdAid = await db.create(queryText);
+          const aid = await db.create(queryText);
           return res.status(CREATED).send({
-            message: 'Aid successfully created',
-            data: createdAid,
+            status: 'success',
+            data: { aid, message: 'Aid successfully created' }
           });
         } catch (error) {
-          return res.status(INTERNAL_SERVER_ERROR).send(error);
+          return res.status(INTERNAL_SERVER_ERROR).send({
+            status : 'error',
+            message : error
+          });
         }
     },
+
 	async getAll(req, res) {
         try {
-            const foundAids = await db.find();
+            const aids = await db.find();
             return res.status(OK).send({
-                message: 'Aidss retrieved successfully',
-                data: foundAids,
+                status: 'success',
+                data: {"Aids": aids}
             });
         } catch (error) {
-            return res.status(INTERNAL_SERVER_ERROR).send(error);
+            return res.status(INTERNAL_SERVER_ERROR).send({
+                status : 'error',
+                message : error
+            });
         }
-	},
+    },
+    
 	async getOne(req, res) {
 		const queryText = {
 			_id: req.params.id,
         };
         try{
-            const foundAid = await db.findOne(queryText);
-            if (!foundAid) return res.status(NOT_FOUND).send({ message: 'Aid not found' });
+            const aid = await db.findOne(queryText);
+            if (!aid) return res.status(NOT_FOUND).send({
+                status : 'error',
+                message : getStatusText(NOT_FOUND)
+            });
             return res.status(OK).send({
-              message: 'Aid retrieved successfully',
-              data: foundAid,
+                status: 'success',
+                data: {"Aid": aid}
             });
           }
         catch(err){
-            return res.status(INTERNAL_SERVER_ERROR).send(error);
+            return res.status(INTERNAL_SERVER_ERROR).send({
+                status : 'error',
+                message : error
+            });
         }
 	},
 	
@@ -59,38 +76,52 @@ const Aids = {
 
 		// Check Validation
 		if (!isValid) {
-			return res.status(BAD_REQUEST).json(errors);
+			return res.status(BAD_REQUEST).send({
+                status : "fail",
+                data : { "title" : errors }
+            });
         }
         
         const updateData = req.body;
         try {
             const updatedAid = await db.findOneAndUpdate(queryText, updateData);
-            if (!updatedAid) return res.status(NOT_FOUND).send({ message: 'Aid not found' });
+            if (!updatedAid) return res.status(NOT_FOUND).send({
+                status : 'error',
+                message : getStatusText(NOT_FOUND)
+            });
             return res.status(OK).send({
-                message: 'Aid updated successfully',
-                data: updatedAid,
+                status: 'success',
+                data: { UpdatedAid, message: 'Aid successfully updated' }
             });
         } catch (error) {
-            return res.status(INTERNAL_SERVER_ERROR).send(error);
+            return res.status(INTERNAL_SERVER_ERROR).send({
+                status : 'error',
+                message : error
+            });
         }
     },
+
     async deleteAid(req, res){
         const queryText = {
             _id: req.params.id
         };
         try {
             const deletedAid = await db.findOneAndDelete(queryText);
-            if (!deletedAid) return res.status(NOT_FOUND).send({ message: 'Aid not found' });
-            return res.status(OK).send({
-              message: 'Aid successfully deleted',
-              data: deletedAid,
+            if (!deletedAid) return res.status(NOT_FOUND).send({
+                status : 'error',
+                message : getStatusText(NOT_FOUND)
             });
-          } catch (error) {
-            return res.status(INTERNAL_SERVER_ERROR).send(error);
-          }
-    },
-
-	
+            return res.status(OK).send({
+                status : "success",
+                data : null
+            });
+        } catch (error) {
+            return res.status(INTERNAL_SERVER_ERROR).send({
+                status : 'error',
+                message : error
+            });
+        }
+    },	
 };
 
 module.exports = Aids;
