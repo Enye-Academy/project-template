@@ -2,36 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42b27d72-22bd-48f8-8967-d6ea91a4ad89" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/R_User_Library.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/project-template.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/js/app/App.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/js/app/actionTypes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/js/app/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/js/utils/history.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/scss/_globals.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/scss/_variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/scss/main.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/authentication/Auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/config/database.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/controllers/userControllers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/middlewares/validations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/models/users.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/utils/convertCase.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/utils/generateToken.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/utils/pagination.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webpack.config.babel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webpack.config.prod.babel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +11,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="227">
+              <caret line="72" column="19" lean-forward="true" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -60,14 +41,15 @@
         <option value="$PROJECT_DIR$/server/authentication/Auth.js" />
         <option value="$PROJECT_DIR$/server/server.js" />
         <option value="$PROJECT_DIR$/pages/index.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="346" />
-    <option name="y" value="153" />
-    <option name="width" value="1043" />
-    <option name="height" value="715" />
+    <option name="x" value="182" />
+    <option name="y" value="390" />
+    <option name="width" value="1045" />
+    <option name="height" value="716" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -130,24 +112,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1557222608130</updated>
-      <workItem from="1557222612582" duration="9629000" />
+      <workItem from="1557222612582" duration="9889000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9629000" />
+    <option name="totallyTimeSpent" value="9889000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24940239" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24940239" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.4026946" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.4026946" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -244,6 +227,13 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="72" column="19" lean-forward="true" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
         </state>
       </provider>
     </entry>

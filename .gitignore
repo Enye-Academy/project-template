@@ -70,6 +70,9 @@ typings/
 # next.js build output
 .next
 
+# idea build output
+.idea
+
 # nuxt.js build output
 .nuxt
 
