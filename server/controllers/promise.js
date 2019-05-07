@@ -1,5 +1,5 @@
-import Aid from  "../models/aid"
-import Report from "../models/report"
+import Aid from '../models/aid';
+import Report from '../models/report';
 
 /**
        * @param {string} param
@@ -9,45 +9,45 @@ import Report from "../models/report"
 
 class AidDb {
     static find(param) {
-      return Aid.find(param);
+        return Aid.find(param);
     }
-  
+
     static create(param) {
-      return  Aid.create(param);
+        return Aid.create(param);
     }
-  
+
     static findOne(param) {
-      return Aid.findOne(param);
+        return Aid.findOne(param);
     }
-  
+
     static findOneAndUpdate(param, text) {
-      return  Aid.findOneAndUpdate(param, text, { new: true });
+        return Aid.findOneAndUpdate(param, text, { new: true });
     }
-  
+
     static findOneAndDelete(param) {
-      return Aid.findOneAndDelete(param);
+        return Aid.findOneAndDelete(param);
     }
 }
 
 class ReportDb {
     static find(param) {
-      return Report.find(param);
+        return Report.find(param);
     }
-  
+
     static create(param) {
-      return Report.create(param);
+        return Report.create(param);
     }
-  
+
     static findOne(param) {
-      return Report.findOne(param);
+        return Report.findOne(param);
     }
-  
+
     static findOneAndDelete(param) {
-      return Report.findOneAndDelete(param);
+        return Report.findOneAndDelete(param);
     }
 }
 
 module.exports = {
     AidDb,
-    ReportDb
+    ReportDb,
 };

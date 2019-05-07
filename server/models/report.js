@@ -1,24 +1,24 @@
-import mongoose from "mongoose"
+import mongoose from 'mongoose';
 
 const reportSchema = new mongoose.Schema({
-    name: {
-      type: String,
-      required: true
-    },
-    number: {
-      type: Number,
-      required: true
-    },
     audio: {
-      type: String,
-      required: true
+        required: true,
+        type: String,
+    },
+    coords: {
+        index: '2dsphere',
+        required: true,
+        type: [Number],
     },
     image: String,
-    coords: {
-      type: [Number],
-      index: '2dsphere',
-      required: true
-    }
-  });
+    name: {
+        required: true,
+        type: String,
+    },
+    number: {
+        required: true,
+        type: Number,
+    },
+});
 
-module.exports = mongoose.model("Report", reportSchema);
+module.exports = mongoose.model('Report', reportSchema);
