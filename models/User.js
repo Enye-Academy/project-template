@@ -14,7 +14,7 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
-    // If there is an associated avatar it will show || a placeholder avatar
+    // If there is an associated avatar it will show a placeholder avatar for images
     avatar: {
         type: String,
     },
