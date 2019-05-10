@@ -1,13 +1,18 @@
 import auth0 from 'auth0-js';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const port = parseInt(process.env.PORT, 10) || 3000;
 
 export default class Auth {
     userProfile;
 
     auth0 = new auth0.WebAuth({
-        audience: 'https://iammiracle.auth0.com/userinfo',
-        clientID: 'I0Qpgj1efZdvUtV5nwRJyx14VJl2S2Qb',
-        domain: 'iammiracle.auth0.com',
-        redirectUri: 'http://localhost:3000',
+        audience: process.env.AUDIENCE,
+        clientID: process.env.CLIENT_ID,
+        domain: process.env.DOMAIN,
+        redirectUri: `http://localhost:${port}`,
         responseType: 'token id_token',
         scope: 'openid profile',
     });

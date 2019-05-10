@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 import expressValidator from 'express-validator';
 import logger from 'morgan';
 import path from 'path';
-import colors from 'colors';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
@@ -24,15 +23,15 @@ mongoose.Promise = global.Promise;
 let compiler;
 
 // Setup a default catch-all route that sends back a welcome message in JSON format.
-// if (process.env.NODE_ENV === 'production') {
-//     mongoose.connect(configDB.url_production, { useNewUrlParser: true });
-// } else if (process.env.NODE_ENV === 'test') {
-//     mongoose.connect(configDB.url_test, { useNewUrlParser: true });
-//     compiler = webpack(devConfig);
-// } else {
-//     mongoose.connect(configDB.url, { useNewUrlParser: true });
-//     compiler = webpack(devConfig);
-// }
+if (process.env.NODE_ENV === 'production') {
+    mongoose.connect(configDB.url_production, { useNewUrlParser: true });
+} else if (process.env.NODE_ENV === 'test') {
+    mongoose.connect(configDB.url_test, { useNewUrlParser: true });
+    compiler = webpack(devConfig);
+} else {
+    mongoose.connect(configDB.url, { useNewUrlParser: true });
+    compiler = webpack(devConfig);
+}
 
 // Log requests to the console.
 server.use(logger('dev'));

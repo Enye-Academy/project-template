@@ -1,3 +1,6 @@
+/* eslint react/jsx-filename-extension: 0 */
+/* eslint react/jsx-no-literals: 0 */
+/* eslint arrow-body-style: 0 */
 import React from 'react';
 import Auth from '../server/authentication/Auth';
 
