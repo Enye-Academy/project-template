@@ -24,15 +24,15 @@ mongoose.Promise = global.Promise;
 let compiler;
 
 // Setup a default catch-all route that sends back a welcome message in JSON format.
-if (process.env.NODE_ENV === 'production') {
-    mongoose.connect(configDB.url_production, { useNewUrlParser: true });
-} else if (process.env.NODE_ENV === 'test') {
-    mongoose.connect(configDB.url_test, { useNewUrlParser: true });
-    compiler = webpack(devConfig);
-} else {
-    mongoose.connect(configDB.url, { useNewUrlParser: true });
-    compiler = webpack(devConfig);
-}
+// if (process.env.NODE_ENV === 'production') {
+//     mongoose.connect(configDB.url_production, { useNewUrlParser: true });
+// } else if (process.env.NODE_ENV === 'test') {
+//     mongoose.connect(configDB.url_test, { useNewUrlParser: true });
+//     compiler = webpack(devConfig);
+// } else {
+//     mongoose.connect(configDB.url, { useNewUrlParser: true });
+//     compiler = webpack(devConfig);
+// }
 
 // Log requests to the console.
 server.use(logger('dev'));
@@ -51,7 +51,7 @@ if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
 }
 
 app.prepare().then(() => {
-    app.use('/api/v1', routes);
+    server.use('/api/v1', routes);
     server.get('*', (req, res) => {
         handle(req, res);
         // res.sendFile(path.join(__dirname, '../client/index.html'));
