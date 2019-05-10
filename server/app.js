@@ -1,9 +1,3 @@
-/* eslint no-restricted-globals: 0 */
-/* eslint indent: 0 */
-/* eslint no-tabs: 0 */
-/* eslint no-unused-vars: 0 */
-/* eslint no-mixed-spaces-and-tabs: 0 */
-/* eslint arrow-body-style:0 */
 import express from 'express';
 import mongoose from 'mongoose';
 import expressValidator from 'express-validator';
@@ -31,13 +25,13 @@ let compiler;
 
 // Setup a default catch-all route that sends back a welcome message in JSON format.
 if (process.env.NODE_ENV === 'production') {
-	mongoose.connect(configDB.url_production, { useNewUrlParser: true });
+    mongoose.connect(configDB.url_production, { useNewUrlParser: true });
 } else if (process.env.NODE_ENV === 'test') {
-	mongoose.connect(configDB.url_test, { useNewUrlParser: true });
-  	compiler = webpack(devConfig);
+    mongoose.connect(configDB.url_test, { useNewUrlParser: true });
+    compiler = webpack(devConfig);
 } else {
-  	mongoose.connect(configDB.url, { useNewUrlParser: true });
-  	compiler = webpack(devConfig);
+    mongoose.connect(configDB.url, { useNewUrlParser: true });
+    compiler = webpack(devConfig);
 }
 
 // Log requests to the console.
@@ -49,24 +43,25 @@ server.use(express.static(path.join(__dirname, './../public')));
 server.use('/api-docs', express.static(path.join(__dirname, './../api-docs')));
 
 if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
-	server.use(webpackDevMiddleware(compiler, {
-		open: false,
-	  	publicPath: devConfig.output.publicPath,
-  	}));
-  	server.use(webpackHotMiddleware(compiler));
+    server.use(webpackDevMiddleware(compiler, {
+        open: false,
+        publicPath: devConfig.output.publicPath,
+    }));
+    server.use(webpackHotMiddleware(compiler));
 }
 
 app.prepare().then(() => {
-	server.get('*', (req, res) => {
-		return handle(req, res);
-    	// res.sendFile(path.join(__dirname, '../client/index.html'));
-	});
+    app.use('/api/v1', routes);
+    server.get('*', (req, res) => {
+        handle(req, res);
+        // res.sendFile(path.join(__dirname, '../client/index.html'));
+    });
 
-	server.listen(port, err => {
-		if (err) throw err;
-		console.log(`> Ready on http://localhost:${port}`); /* eslint no-console:0 */
-	});
+    server.listen(port, err => {
+        if (err) throw err;
+        console.log(`> Ready on http://localhost:${port}`); /* eslint no-console:0 */
+    });
 }).catch(ex => {
-	console.error(ex); /* eslint no-console:0 */
+    console.error(ex); /* eslint no-console:0 */
     process.exit(1);
 });
