@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 import expressValidator from 'express-validator';
 import logger from 'morgan';
 import path from 'path';
-import colors from 'colors';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
