@@ -13,13 +13,14 @@
   },
   "parser": "babel-eslint",
     "parserOptions":{
-    "ecmaVersion": 10,
+    "ecmaVersion": 2018,
     "sourceType": "module",
     "ecmaFeatures": {
     "jsx": true
   }
   },
   "rules": {
+    "linebreak-style": 0,
     "semi": ["error", "always"],
     "comma-dangle": ["error", {
       "arrays": "always-multiline",
