@@ -41,19 +41,4 @@ const profileSchema = new Schema({
     },
 });
 
-const Profile = model('Profile', profileSchema);
-module.exports = Profile;
-
-module.exports.createProfile = (newProfile, callback) => {
-    newProfile.save(callback);
-};
-
-module.exports.updateProfile = (newProfile, callback) => {
-    Profile.findOneAndUpdate({
-        firstName: newProfile.firstName,
-    },
-    newProfile,
-    {
-        new: true,
-    }, callback);
-};
+module.exports = model('Profile', profileSchema);

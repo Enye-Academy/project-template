@@ -1,4 +1,6 @@
-import { Router } from 'express';
+const express = require('express');
+
+const Router = express.Router();
 
 const Profile = require('./routes/profile');
 
