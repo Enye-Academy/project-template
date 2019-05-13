@@ -69,7 +69,6 @@ export default function LandingPageContent(props) {
         </section>
     );
 }
-
 LandingPageContent.propTypes = {
     level: PropTypes.number,
     title: PropTypes.string,

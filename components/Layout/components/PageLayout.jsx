@@ -6,6 +6,7 @@ import NavHeader from './NavHeader';
 import Sidebar from './Sidebar';
 import PageFooter from './PageFooter';
 import './PageLayout.css';
+import { headerTitle } from '../constants';
 
 const { Content } = Layout;
 
@@ -20,28 +21,20 @@ const { Content } = Layout;
  * @param {Function} siderIsPresent  displays side for mobile pages
  * @return {Object} controlvhe over all layout of the webpage
  */
+
 export default function PageLayout(props) {
     const {
-        title,
-        isAuthenticated,
-        children,
-        footerPresent,
-        siderIsPresent,
+        title, isAuthenticated, children, footerPresent, siderIsPresent,
     } = props;
 
     return (
         <>
             <Layout className="LandingPage_layout">
-                <NavHeader
-                  title={title || 'Helpme | Connect with Friends'}
-                  isAuthenticated={isAuthenticated}
-                />
+                <NavHeader title={title || headerTitle} isAuthenticated={isAuthenticated} />
                 <Content className="PageLayout_body">
                     <Layout hasSider>
                         <Sidebar siderIsPresent={siderIsPresent} />
-                        <Content className="PageLayout_content">
-                            {children}
-                        </Content>
+                        <Content className="PageLayout_content">{children}</Content>
                     </Layout>
                 </Content>
             </Layout>
