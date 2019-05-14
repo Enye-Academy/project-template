@@ -6,7 +6,7 @@ import {
 } from 'antd';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import { headerTitle } from '../constants';
+import { headerTitle, menuItems } from '../constants';
 
 const { Header } = Layout;
 const { Search } = Input;
@@ -24,7 +24,6 @@ function NavHeader(props) {
     let isAuthenticated;
 
     // fake Authentication for development
-    console.log(global.location);
     if (global.location !== undefined && global.location.pathname === '/') {
         isAuthenticated = false;
     } else {
@@ -33,7 +32,7 @@ function NavHeader(props) {
 
     return (
         <>
-            {/* head parametes */ console.log(isAuthenticated)}
+            {/* head parametes */}
             <Head>
                 <meta charSet="UTF-8" />
                 <meta name="viewport" content="width=device-width initial-scale=1.0" />
@@ -89,23 +88,15 @@ function NavHeader(props) {
                           defaultSelectedKeys={['1']}
                           className="layout_header-list"
                         >
-                            <Menu.Item key="1">
-                                <Link href="/">
-                                    <a>Home</a>
-                                </Link>
-                            </Menu.Item>
-
-                            <Menu.Item key="2">
-                                <Link href="/forum">
-                                    <a>Forum</a>
-                                </Link>
-                            </Menu.Item>
-
-                            <Menu.Item key="3">
-                                <Link href="/Dairy">
-                                    <a>Dairy</a>
-                                </Link>
-                            </Menu.Item>
+                            {
+                                menuItems.map(menuItem => (
+                                    <Menu.Item key={menuItem.key}>
+                                        <Link href={menuItem.href}>
+                                            <a>{menuItem.text}</a>
+                                        </Link>
+                                    </Menu.Item>
+                                ))
+                            }
                         </Menu>
 
                         <Button className="LandingPage_login_button" type="danger">
