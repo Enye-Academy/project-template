@@ -53,6 +53,8 @@
 }
 
 @media screen and (min-width: 768px) {
+
+
 	.LandingPage_hero {
 		flex-direction: row;
 		align-items: center;
@@ -85,6 +87,8 @@
 		margin-top: 0;
 	}
 
+
+
 	.LandingPage_footer {
 		text-align: left;
 		display: flex;
@@ -103,11 +107,17 @@
 		margin-bottom: 0;
 	}
 
+
 }
 
 @media screen and (min-width: 1024px) {
+	.LandingPage_body > section {
+		/* padding: 0 3em; */
+	}
+
 	.layout_header-desktop {
 		padding: 0 6em;
 	}
+
 
 }

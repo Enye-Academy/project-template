@@ -1,21 +1,18 @@
 // eslint-disable-next-line import/prefer-default-export
-import React from 'react';
-import Link from 'next/link';
-
 const headerTitle = 'Helpme | Connect with Friends'; // title of the header
 
 const menuItems = [
     {
-        href: '/',
         key: 1,
+        href: '/',
         text: 'Home',
     }, {
-        href: '/forum',
         key: 2,
+        href: '/forum',
         text: 'Forum',
     }, {
-        href: '/Dairy',
         key: 3,
+        href: '/Dairy',
         text: 'Dairy',
     },
 ];
@@ -43,39 +40,25 @@ const footerSecondColumn = [
     },
 ];
 
-const footerListCreator = list => (
-    <ul>
-        {
-            list.map(link => (
-                <Link href={link.href} key={link.text}>
-                    <li>
-                        <a>{link.text}</a>
-                    </li>
-                </Link>
-            ))
-        }
-    </ul>
-);
-
 const sideBarMenuItems = [
     {
-        href: '/#',
         key: 1,
-        text: 'Home',
+        href: '/#',
         type: 'user',
+        text: 'Home',
     }, {
-        href: '/forum',
         key: 2,
-        text: 'Forum',
+        href: '/forum',
         type: 'video-camera',
+        text: 'Forum',
     }, {
-        href: '/dairy',
         key: 3,
-        text: 'Dairy',
+        href: '/dairy',
         type: 'upload',
+        text: 'Dairy',
     },
 ];
 
 export {
-    headerTitle, menuItems, footerFirstColumn, footerSecondColumn, footerListCreator, sideBarMenuItems
+    headerTitle, menuItems, footerFirstColumn, footerSecondColumn, sideBarMenuItems
 };

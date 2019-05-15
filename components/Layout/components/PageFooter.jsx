@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { Layout } from 'antd';
-import { footerFirstColumn, footerSecondColumn, footerListCreator } from '../constants';
-
+import { footerFirstColumn, footerSecondColumn } from '../constants';
+import FooterListCreator from './FooterListCreator';
 const { Content, Footer } = Layout;
 
 /**
@@ -24,8 +24,12 @@ export default function PageFooter() {
                             <img src="../../../static/logo-light.png" alt="helpme logo" className="logo" />
                         </a>
                     </Link>
-                    {footerListCreator(footerFirstColumn)}
-                    {footerListCreator(footerSecondColumn)}
+                    <FooterListCreator
+                      list={footerFirstColumn}
+                    />
+                    <FooterListCreator
+                      list={footerSecondColumn}
+                    />
                 </Footer>
             </Content>
         </Layout>

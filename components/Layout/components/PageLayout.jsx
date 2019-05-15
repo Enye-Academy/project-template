@@ -17,14 +17,14 @@ const { Content } = Layout;
  * @param {Function} title controls the title of the page
  * @param {Function} isAuthenticated controls if user is authrnticated or not
  * @param {Function} children other pages who are children of this layout
- * @param {Function} footerPresent displays footer if true
- * @param {Function} siderIsPresent  displays side for mobile pages
+ * @param {Function} isFooterPresent displays footer if true
+ * @param {Function} isSiderPresent  displays side for mobile pages
  * @return {Object} controlvhe over all layout of the webpage
  */
 
 export default function PageLayout(props) {
     const {
-        title, isAuthenticated, children, footerPresent, siderIsPresent,
+        title, isAuthenticated, children, isFooterPresent, isSiderPresent,
     } = props;
 
     return (
@@ -33,20 +33,20 @@ export default function PageLayout(props) {
                 <NavHeader title={title || headerTitle} isAuthenticated={isAuthenticated} />
                 <Content className="PageLayout_body">
                     <Layout hasSider>
-                        <Sidebar siderIsPresent={siderIsPresent} />
+                        <Sidebar isSiderPresent={isSiderPresent} />
                         <Content className="PageLayout_content">{children}</Content>
                     </Layout>
                 </Content>
             </Layout>
-            {footerPresent ? <PageFooter /> : null}
+            {isFooterPresent ? <PageFooter /> : null}
         </>
     );
 }
 
 PageLayout.propTypes = {
     children: PropTypes.node,
-    footerPresent: PropTypes.bool,
+    isFooterPresent: PropTypes.bool,
     isAuthenticated: PropTypes.bool,
-    siderIsPresent: PropTypes.bool,
+    isSiderPresent: PropTypes.bool,
     title: PropTypes.string,
 };
