@@ -1,12 +1,15 @@
+/* eslint-disable sort-keys */
 import express from 'express';
 import aidController from '../controllers/aidControllers';
 import reportController from '../controllers/reportControllers';
+import imageParser from '../middlewares/ImageParser';
+import audioParser from '../middlewares/audioParser';
 
 const router = express.Router();
 
 // aid route
 // Create a new Aid
-router.post('/aid', aidController.create);
+router.post('/aid', imageParser.single('image'), aidController.create);
 
 // Retrieve all Aids
 router.get('/aids', aidController.getAll);
@@ -22,7 +25,7 @@ router.delete('/aids/:id', aidController.deleteAid);
 
 // report route
 // Create a new Report
-router.post('/report', reportController.create);
+router.post('/report', audioParser.single('audio'), reportController.create);
 
 // Retrieve all reports
 router.get('/reports', reportController.getAll);

@@ -4,23 +4,27 @@ const { Schema } = mongoose;
 
 const aidSchema = new Schema(
     {
-        aidDescription: {
+        description: {
             required: true,
             type: String,
         },
-        aidIntro: {
+        imageId: {
             required: true,
             type: String,
         },
-        aidTitle: {
+        imageUrl: {
             required: true,
             type: String,
         },
-        imageLink: {
-            required: false,
+        intro: {
+            required: true,
             type: String,
         },
-        videoLink: {
+        title: {
+            required: true,
+            type: String,
+        },
+        video: {
             required: true,
             type: String,
         },

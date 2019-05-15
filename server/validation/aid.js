@@ -3,18 +3,18 @@ import isEmpty from './is-empty';
 
 const validateAidQueryText = data => {
     const errors = {};
-    data.aidTitle = !isEmpty(data.aidTitle) ? data.aidTitle : '';
-    data.aidIntro = !isEmpty(data.aidIntro) ? data.aidIntro : '';
-    data.aidDescription = !isEmpty(data.aidDescription) ? data.aidDescription : '';
+    data.title = !isEmpty(data.title) ? data.title : '';
+    data.intro = !isEmpty(data.intro) ? data.intro : '';
+    data.description = !isEmpty(data.description) ? data.description : '';
 
-    if (Validator.isEmpty(data.aidTitle)) {
-        errors.aidTitle = 'aid title is required';
+    if (Validator.isEmpty(data.title)) {
+        errors.title = 'aid title is required';
     }
-    if (Validator.isEmpty(data.aidIntro)) {
-        errors.aidIntro = 'aid intro  is required';
+    if (Validator.isEmpty(data.intro)) {
+        errors.intro = 'aid intro  is required';
     }
-    if (Validator.isEmpty(data.aidDescription)) {
-        errors.aidDescription = 'aidDescription is required';
+    if (Validator.isEmpty(data.description)) {
+        errors.description = 'description is required';
     }
     return {
         errors,

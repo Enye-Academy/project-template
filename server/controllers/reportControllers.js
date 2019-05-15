@@ -1,24 +1,19 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-undef */
 /* eslint-disable sort-keys */
 import {
     CREATED, getStatusText, INTERNAL_SERVER_ERROR, NOT_FOUND, OK
 } from 'http-status-codes';
-import validateReportQueryText from '../validation/report';
 
 const db = require('./promise').ReportDb;
 
 const Reports = {
     async create(req, res) {
-        const { errors, isValid } = validateReportQueryText(req.body);
-
-        // Check Validation
-        if (!isValid) {
-            return res.status(BAD_REQUEST).send({
-                status: 'fail',
-                data: { errors },
-            });
-        }
         const queryText = req.body;
+        const { public_id, url } = await req.file;
+        queryText.audioId = public_id;
+        queryText.audioUrl = url;
+
         try {
             const report = await db.create(queryText);
             return res.status(CREATED).send({

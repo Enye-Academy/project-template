@@ -1,7 +1,11 @@
 import mongoose from 'mongoose';
 
 const reportSchema = new mongoose.Schema({
-    audio: {
+    audioId: {
+        required: true,
+        type: String,
+    },
+    audioUrl: {
         required: true,
         type: String,
     },
