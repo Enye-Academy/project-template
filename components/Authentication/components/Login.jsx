@@ -23,7 +23,6 @@ const { Title, Paragraph } = Typography;
  * @function
  * @return {Object} the login page
  */
-
 class NormalLoginForm extends React.Component {
     state = {
         iconLoading: false, // loading icon when code is accessing network
