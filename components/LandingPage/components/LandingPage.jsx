@@ -5,7 +5,7 @@ import './LandingPage.css';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import LandingPageContent from './LandingPageContent';
 import PageLayout from '../../Layout';
-import { landingPageContents, pageTitle } from '../constants';
+import { LANDING_PAGE_CONTENTS, pageTitle } from '../constants';
 
 /**
  * Function for displaying the landing page
@@ -16,13 +16,13 @@ import { landingPageContents, pageTitle } from '../constants';
 
 const LandingPage = () => (
     <PageLayout
-        IsSiderPresent={false}
-        isFooterPresent
-        isAuthenticated={false}
-        title={pageTitle}
+      IsSiderPresent={false}
+      isFooterPresent
+      isAuthenticated={false}
+      title={pageTitle}
     >
         {
-            landingPageContents.map(landingPageContent => {
+            LANDING_PAGE_CONTENTS.map(landingPageContent => {
                 const {
                     paragraphText,
                     isButtonPresent,
@@ -38,17 +38,17 @@ const LandingPage = () => (
 
                 return (
                     <LandingPageContent
-                        key={paragraphText}
-                        isButtonPresent={isButtonPresent}
-                        columnSection={columnSection}
-                        isImagePresent={isImagePresent}
-                        imageLink={imageLink}
-                        level={level}
-                        paragraphText={paragraphText}
-                        title={title}
-                        reverseSection={reverseSection}
-                        buttonText={buttonText}
-                        buttonLink={buttonLink}
+                      key={paragraphText}
+                      isButtonPresent={isButtonPresent}
+                      columnSection={columnSection}
+                      isImagePresent={isImagePresent}
+                      imageLink={imageLink}
+                      level={level}
+                      paragraphText={paragraphText}
+                      title={title}
+                      reverseSection={reverseSection}
+                      buttonText={buttonText}
+                      buttonLink={buttonLink}
                     />
                 );
             })
