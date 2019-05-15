@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-literals */
 import React from 'react';
 import {
     Form,
@@ -35,11 +36,11 @@ class NormalLoginForm extends React.Component {
 
     // handles the submitting of the login form
     handleSubmit = e => {
+        const { validateFields } = this.props.form;
         e.preventDefault();
         // validate error and simulate api response with settimeout
-        this.props.form.validateFields((err, values) => {
+        validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
                 setTimeout(() => {
                     Router.push('/timeline');
                 }, 1000);
@@ -49,6 +50,7 @@ class NormalLoginForm extends React.Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
+        const { loading } = this.state;
         return (
             <section className="Login-Section">
                 <section className="login-image-section">
@@ -63,7 +65,10 @@ class NormalLoginForm extends React.Component {
                         <Form.Item>
                             {
                                 getFieldDecorator('username', {
-                                    rules: [{ required: true, message: loginUsernameInputError }],
+                                    rules: [{
+                                        message: loginUsernameInputError,
+                                        required: true,
+                                    }],
                                 })(
                                     <Input prefix={<Icon type="user" className="form_icon" />} placeholder="Username" />
                                 )
@@ -72,7 +77,10 @@ class NormalLoginForm extends React.Component {
 
                         <Form.Item>
                             {getFieldDecorator('password', {
-                                rules: [{ required: true, message: loginPasswordInputError }],
+                                rules: [{
+                                    message: loginPasswordInputError,
+                                    required: true,
+                                }],
                             })(
                                 <Input prefix={<Icon type="lock" className="form_icon" />} type="password" placeholder="Password" />
                             )}
@@ -80,7 +88,7 @@ class NormalLoginForm extends React.Component {
 
                         <Form.Item>
                             <a className="login-form-forgot" href="/password_reset">Forgot password</a>
-                            <Button type="primary" htmlType="submit" className="login-form-button" loading={this.state.loading} onClick={this.enterLoading}>
+                            <Button type="primary" htmlType="submit" className="login-form-button" loading={loading} onClick={this.enterLoading}>
                                 Log in
                             </Button>
                             Or
