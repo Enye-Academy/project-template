@@ -1,3 +1,3 @@
-import Head from './Head';
+import PageLayout from './PageLayout';
 
-export default Head;
+export default PageLayout;
