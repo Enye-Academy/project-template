@@ -3,17 +3,14 @@ import Link from 'next/link';
 import { Layout } from 'antd';
 import { footerFirstColumn, footerSecondColumn } from '../constants';
 import FooterListCreator from './FooterListCreator';
+
 const { Content, Footer } = Layout;
 
 /**
  * footer function that is infused into all pages
- *
  * @function
- *
  * @return {Object} footer
- *
  */
-
 export default function PageFooter() {
     return (
         <Layout>

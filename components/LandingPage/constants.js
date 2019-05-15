@@ -79,18 +79,5 @@ const landingPageContents = [
 
 export {
     pageTitle,
-    landingPageContents,
-    landingPageMainContentTitle,
-    landingPageMainContentParagraphText,
-    landingPageMainContentButtonText,
-    landingPageLevel2ContentTitle,
-    landingPageLevel2ParagraphText,
-    landingPageLevel2ButtonText,
-    landingPageLevel3ContentTitle,
-    landingPageLevel3ParagraphText,
-    landingPageLevel4ContentTitle,
-    landingPageLevel4ParagraphText,
-    landingPageLevel5ContentTitle,
-    landingPageLevel5ParagraphText,
-    landingPageLevel5ButtonText
+    landingPageContents
 };

@@ -15,45 +15,45 @@ import { landingPageContents, pageTitle } from '../constants';
  */
 
 const LandingPage = () => (
-  <PageLayout
-    IsSiderPresent={false}
-    isFooterPresent
-    isAuthenticated={false}
-    title={pageTitle}
-  >
-    {
-      landingPageContents.map(test => {
-        const {
-          paragraphText,
-          isButtonPresent,
-          columnSection,
-          isImagePresent,
-          imageLink,
-          level,
-          title,
-          reverseSection,
-          buttonText,
-          buttonLink,
-        } = test;
+    <PageLayout
+        IsSiderPresent={false}
+        isFooterPresent
+        isAuthenticated={false}
+        title={pageTitle}
+    >
+        {
+            landingPageContents.map(landingPageContent => {
+                const {
+                    paragraphText,
+                    isButtonPresent,
+                    columnSection,
+                    isImagePresent,
+                    imageLink,
+                    level,
+                    title,
+                    reverseSection,
+                    buttonText,
+                    buttonLink,
+                } = landingPageContent;
 
-        return (
-          <LandingPageContent
-            key={paragraphText}
-            isButtonPresent={isButtonPresent}
-            columnSection={columnSection}
-            isImagePresent={isImagePresent}
-            imageLink={imageLink}
-            level={level}
-            paragraphText={paragraphText}
-            title={title}
-            reverseSection={reverseSection}
-            buttonText={buttonText}
-            buttonLink={buttonLink}
-          />
-        );
-      })
-    }
-  </PageLayout>
+                return (
+                    <LandingPageContent
+                        key={paragraphText}
+                        isButtonPresent={isButtonPresent}
+                        columnSection={columnSection}
+                        isImagePresent={isImagePresent}
+                        imageLink={imageLink}
+                        level={level}
+                        paragraphText={paragraphText}
+                        title={title}
+                        reverseSection={reverseSection}
+                        buttonText={buttonText}
+                        buttonLink={buttonLink}
+                    />
+                );
+            })
+        }
+    </PageLayout>
 );
 
 export default LandingPage;
