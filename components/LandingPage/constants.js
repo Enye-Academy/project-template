@@ -7,8 +7,6 @@ const landingPageMainContentParagraphText = 'Lorem ipsum dolor sit amet consecte
 
 const landingPageMainContentButtonText = 'Lets begin this Journey';
 
-const landingPageLevel2ContentTitle = 'Title2';
-
 const landingPageLevel2ParagraphText = 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Deleniti porro veroDeleniti porro vero';
 
 const landingPageLevel2ButtonText = 'Lets begin this Journey';
