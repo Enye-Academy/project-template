@@ -3,16 +3,16 @@ const headerTitle = 'Helpme | Connect with Friends'; // title of the header
 
 const menuItems = [
     {
-        key: 1,
         href: '/',
+        key: 1,
         text: 'Home',
     }, {
-        key: 2,
         href: '/forum',
+        key: 2,
         text: 'Forum',
     }, {
-        key: 3,
         href: '/Dairy',
+        key: 3,
         text: 'Dairy',
     },
 ];
@@ -42,20 +42,20 @@ const footerSecondColumn = [
 
 const sideBarMenuItems = [
     {
-        key: 1,
         href: '/#',
-        type: 'user',
+        key: 1,
         text: 'Home',
+        type: 'user',
     }, {
-        key: 2,
         href: '/forum',
-        type: 'video-camera',
+        key: 2,
         text: 'Forum',
+        type: 'video-camera',
     }, {
-        key: 3,
         href: '/dairy',
-        type: 'upload',
+        key: 3,
         text: 'Dairy',
+        type: 'upload',
     },
 ];
 
