@@ -8,7 +8,6 @@ const { Title, Paragraph } = Typography;
 
 /**
  * Function used to generate section layout content for landing page
- *
  * @function
  * @param {Number} level - The Number from 1-5 representing the header level h1-h5
  * @param {String} title- The Title of that Section
@@ -53,7 +52,6 @@ export default function LandingPageContent(props) {
             <div className="LandingPage_content__text">
                 <Title level={level}>{title}</Title>
                 <Paragraph>{paragraphText}</Paragraph>
-
                 {/* displays button in a section */}
                 {
                     isButtonPresent ? (

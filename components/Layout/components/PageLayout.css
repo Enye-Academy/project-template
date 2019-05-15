@@ -1,12 +1,6 @@
-
-.PageLayout_body {
-	/* overflow: auto; */
-}
-
 .PageLayout_content {
 	height: 100%;
     margin-top: 64px;
-    /* overflow: auto; */
 }
 
 .layout_header-mobile {
@@ -45,11 +39,6 @@
 .ant-layout-sider-zero-width-trigger:hover {
 	background-color: #1890ff;
 }
-
-/* .ant-divider-horizontal {
-	height: 1px;
-	margin: 0.4px 0;
-} */
 
 a {
 	color: #ffffff;
@@ -96,7 +85,6 @@ background: #E6ECF0;
 		line-height: 63px;
 	}
 }
-
 
 @media screen and (min-width: 1024px) {
 	.layout_header-desktop {
