@@ -6,22 +6,18 @@ const PORT = process.env.PORT || 3000;
 const dev = process.env.NODE_DEV !== 'production';
 const nextApp = next({ dev });
 const handle = nextApp.getRequestHandler();
-const { MongoClient } = require('mongodb');
+const mongoose = require('mongoose');
+
 const api = require('./api');
 
 // Configure DB
-const uri = require('../config/keys').mongoURI;
+const db = require('../config/keys').mongoURI;
 
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-    if (err) {
-        console.log('Error occurred while connecting to MongoDB Atlas...\n', err);
-    }
-    console.log('Connected...');
-    const collection = client.db('test').collection('devices');
-    // perform actions on the collection object
-    client.close();
-});
+// Connect to MongoDB
+mongoose
+    .connect(db, { useNewUrlParser: true }) // Let us remove that nasty deprecation warrning :)
+    .then(() => console.log('MongoDB Connected'))
+    .catch(err => console.log(err));
 
 nextApp.prepare().then(() => {
     // express code here
