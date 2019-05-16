@@ -4,7 +4,8 @@ import Profile from '../models/profile.model';
 // eslint-disable-next-line consistent-return
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.city || !req.body.country || !req.body.email || !req.body.first_name || !req.body.last_name) {
+    if (!req.body.city || !req.body.country || !req.body.email
+        || !req.body.first_name || !req.body.last_name) {
         return res.status(400).send({
             message: 'Please ensure you fill all fields',
         });
@@ -67,7 +68,8 @@ exports.findAll = (req, res) => {
 // Update a profile identified by the profileId in the request
 exports.update = (req, res) => {
     // Validate Request
-    if (!req.body.city || !req.body.country || !req.body.email || !req.body.first_name || !req.body.last_name) {
+    if (!req.body.city || !req.body.country || !req.body.email
+        || !req.body.first_name || !req.body.last_name) {
         return res.status(400).send({
             message: 'Details cannot be empty',
         });

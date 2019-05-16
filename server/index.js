@@ -15,9 +15,9 @@ const db = require('../config/keys').mongoURI;
 
 // Connect to MongoDB
 mongoose
-    .connect(db, { useNewUrlParser: true }) // Let us remove that nasty deprecation warrning :)
-    .then(() => console.log('MongoDB Connected'))
-    .catch(err => console.log(err));
+    .connect(db, { useNewUrlParser: true })
+    .then()
+    .catch();
 
 nextApp.prepare().then(() => {
     // express code here
@@ -34,6 +34,5 @@ nextApp.prepare().then(() => {
     );
     app.listen(PORT, err => {
         if (err) throw err;
-        console.log(`Server ready at http://localhost:${PORT}`);
     });
 });
