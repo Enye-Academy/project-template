@@ -52,7 +52,7 @@ exports.findOne = (req, res) => {
         });
 };
 
-// Retrieve and return all notes from the database.
+// Retrieve and return all profiles from the database.
 exports.findAll = (req, res) => {
     Profile.find()
         .then(notes => {

@@ -8,10 +8,10 @@ router.post('/create', Profile.create);
 // Retrieve all profiles
 router.get('/all', Profile.findAll);
 // Retrieve a single Profile with profileId
-router.get('/profile/:profileId', Profile.findOne);
+router.get('/:profileId', Profile.findOne);
 // Update a Profile with profileId
-router.put('/profile/:profileId', Profile.update);
+router.put('/:profileId', Profile.update);
 // Delete a Profile with profileId
-router.delete('/profile/:profileId', Profile.delete);
+router.delete('/:profileId', Profile.delete);
 
 module.exports = router;
