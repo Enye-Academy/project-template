@@ -1,3 +1,3 @@
-import Head from './components/index';
+import PageLayout from './components/index';
 
-export default Head;
+export default PageLayout;

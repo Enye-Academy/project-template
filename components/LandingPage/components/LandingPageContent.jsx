@@ -8,17 +8,16 @@ const { Title, Paragraph } = Typography;
 
 /**
  * Function used to generate section layout content for landing page
- *
  * @function
  * @param {Number} level - The Number from 1-5 representing the header level h1-h5
  * @param {String} title- The Title of that Section
  *@param {String} paragraphText- The Text of that section
- * @param {Boolean} buttonIsPresent- If true, a button is shown on that section
+ * @param {Boolean} isButtonPresent- If true, a button is shown on that section
  * @param {String} buttonText- the text on the button
  * @param {String} buttonLink- the link that the button leads to
  * @param {String} imageLink- the link to an image in the section
  * @param {Boolean} reverseSection - if true, the image and section position is swapped
- * @param {Boolean} imageIsPresent - if true, the image is shown
+ * @param {Boolean} isImagePresent - if true, the image is shown
  * @param {Boolean} columnSection - if true, the section will be stacked
  * @return {Object} The landing page content component which is used to populate the landing page
  */
@@ -28,11 +27,11 @@ export default function LandingPageContent(props) {
         level,
         title,
         paragraphText,
-        buttonIsPresent,
+        isButtonPresent,
         buttonText,
         buttonLink,
         imageLink,
-        imageIsPresent,
+        isImagePresent,
         reverseSection,
         columnSection,
     } = props;
@@ -53,31 +52,31 @@ export default function LandingPageContent(props) {
             <div className="LandingPage_content__text">
                 <Title level={level}>{title}</Title>
                 <Paragraph>{paragraphText}</Paragraph>
-
                 {/* displays button in a section */}
-                {buttonIsPresent ? (
-                    <Button className="LandingPage_button" type="primary">
-                        <Link href={buttonLink}>
-                            <a>{buttonText}</a>
-                        </Link>
-                    </Button>
-                ) : null}
+                {
+                    isButtonPresent ? (
+                        <Button className="LandingPage_button" type="primary">
+                            <Link href={buttonLink}>
+                                <a>{buttonText}</a>
+                            </Link>
+                        </Button>
+                    ) : null
+                }
             </div>
 
             {/* displays image in a section */}
-            {imageIsPresent ? <img src={imageLink} alt={`${title} image`} /> : null}
+            {isImagePresent ? <img src={imageLink} alt={`${title} image`} /> : null}
         </section>
     );
 }
-
 LandingPageContent.propTypes = {
     level: PropTypes.number,
     title: PropTypes.string,
     paragraphText: PropTypes.string,
-    buttonIsPresent: PropTypes.bool,
+    isButtonPresent: PropTypes.bool,
     buttonText: PropTypes.string,
     buttonLink: PropTypes.string,
-    imageIsPresent: PropTypes.bool,
+    isImagePresent: PropTypes.bool,
     imageLink: PropTypes.string,
     reverseSection: PropTypes.bool,
     columnSection: PropTypes.bool,
