@@ -10,7 +10,7 @@ import LoginInputItemGenerator from './LoginInputItemGenerator';
 const { Title, Paragraph } = Typography;
 
 /**
- *  function that is used to display the Login Page
+ * function that is used to display the Login Page
  * @function
  * @return {Object} the login page
  */
@@ -21,7 +21,7 @@ class NormalLoginForm extends React.Component {
     }
 
     /**
-     *  function that is used to animate signup loading
+     * function that is used to animate signup loading
      * @function
      * @return {Object} sets loading state to true
      */
@@ -30,7 +30,7 @@ class NormalLoginForm extends React.Component {
     }
 
     /**
-    *  function that is used to handle submit
+    * function that is used to handle submit
     * @function
     * @return {Object}  returns the user values
     */
@@ -39,10 +39,12 @@ class NormalLoginForm extends React.Component {
         e.preventDefault();
 
         /**
-    *  function that is used to handle submit, This function helps to Validate the specified fields and get theirs values and errors., if the target field is not in visible area of form, form will be automatically scrolled to the target field area.
-    * @function
-    * @return {Object}  returns the values of the form
-    */
+        * function that is used to handle submit, This function helps to Validate the
+        * specified fields and get theirs values and errors., if the target field is not in
+        * visible area of form, form will be automatically scrolled to the target field area.
+        * @function
+        * @return {Object}  returns the values of the form
+        */
         validateFields((err, values) => {
             if (!err) {
                 setTimeout(() => {

@@ -24,10 +24,10 @@ import {
  */
 class RegistrationForm extends React.Component {
     state = {
-        confirmDirty: false,
+        isConfirmedDirty: false,
         autoCompleteResult: [],
-        iconLoading: false,
-        loading: false,
+        isIconLoading: false,
+        isLoading: false,
         isAgreementChecked: false,
     };
 
@@ -37,7 +37,7 @@ class RegistrationForm extends React.Component {
      * @return {Object} sets loading state to true
      */
     enterLoading = () => {
-        this.setState({ loading: true });
+        this.setState({ isLoading: true });
     }
 
     /**
@@ -78,12 +78,12 @@ class RegistrationForm extends React.Component {
     /**
     *  function that is used to handle password validation, this fires when the first password field has been filled and has lost focus. this will help in comparing the password in that field to the next input field;
     * @function
-    * @return {Object} sets the state of confirmDirty
+    * @return {Object} sets the state of isConfirmedDirty
     */
     handleConfirmBlur = e => {
         const { value } = e.target;
-        const { confirmDirty } = this.state;
-        this.setState({ confirmDirty: confirmDirty || !!value });
+        const { isConfirmedDirty } = this.state;
+        this.setState({ isConfirmedDirty: isConfirmedDirty || !!value });
     }
 
     /**
@@ -147,7 +147,7 @@ class RegistrationForm extends React.Component {
                             )}
                         </Form.Item>
                         <Form.Item>
-                            <Button type="primary" htmlType="submit" loading={this.state.loading}>Register</Button>
+                            <Button type="primary" htmlType="submit" loading={this.state.isLoading}>Register</Button>
                             {/* <br /> */}
                             <div>
                                 already have an account, please
