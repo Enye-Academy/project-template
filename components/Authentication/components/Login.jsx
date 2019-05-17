@@ -1,20 +1,11 @@
 /* eslint-disable react/jsx-no-literals */
 import React from 'react';
-import {
-    Form,
-    Icon,
-    Input,
-    Button,
-    Typography
-} from 'antd';
+import { Form, Button, Typography } from 'antd';
 import 'antd/dist/antd.css';
 import './Authentication.css';
 import Router from 'next/router';
 import LoginImage from '../../../static/login.svg';
-import {
-    loginUsernameInputError,
-    loginPasswordInputError
-} from '../constants';
+import LoginInputItemGenerator from './LoginInputItemGenerator';
 
 const { Title, Paragraph } = Typography;
 
@@ -29,15 +20,29 @@ class NormalLoginForm extends React.Component {
         loading: false,
     }
 
+    /**
+     *  function that is used to animate signup loading
+     * @function
+     * @return {Object} sets loading state to true
+     */
     enterLoading = () => {
         this.setState({ loading: true });
     }
 
-    // handles the submitting of the login form
+    /**
+    *  function that is used to handle submit
+    * @function
+    * @return {Object}  returns the user values
+    */
     handleSubmit = e => {
         const { validateFields } = this.props.form;
         e.preventDefault();
-        // validate error and simulate api response with settimeout
+
+        /**
+    *  function that is used to handle submit, This function helps to Validate the specified fields and get theirs values and errors., if the target field is not in visible area of form, form will be automatically scrolled to the target field area.
+    * @function
+    * @return {Object}  returns the values of the form
+    */
         validateFields((err, values) => {
             if (!err) {
                 setTimeout(() => {
@@ -50,6 +55,7 @@ class NormalLoginForm extends React.Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         const { loading } = this.state;
+
         return (
             <section className="Login-Section">
                 <section className="login-image-section">
@@ -60,37 +66,15 @@ class NormalLoginForm extends React.Component {
                     <Form onSubmit={this.handleSubmit} className="login-form">
                         <Title level={4}>Welcome</Title>
                         <Paragraph>Login to continue</Paragraph>
-
-                        <Form.Item>
-                            {
-                                getFieldDecorator('username', {
-                                    rules: [{
-                                        message: loginUsernameInputError,
-                                        required: true,
-                                    }],
-                                })(
-                                    <Input prefix={<Icon type="user" className="form_icon" />} placeholder="Username" />
-                                )
-                            }
-                        </Form.Item>
-
-                        <Form.Item>
-                            {getFieldDecorator('password', {
-                                rules: [{
-                                    message: loginPasswordInputError,
-                                    required: true,
-                                }],
-                            })(
-                                <Input prefix={<Icon type="lock" className="form_icon" />} type="password" placeholder="Password" />
-                            )}
-                        </Form.Item>
-
+                        {/* inputs for username and password */}
+                        {LoginInputItemGenerator(getFieldDecorator)}
+                        {/* buttons */}
                         <Form.Item>
                             <a className="login-form-forgot" href="/password_reset">Forgot password</a>
                             <Button type="primary" htmlType="submit" className="login-form-button" loading={loading} onClick={this.enterLoading}>
                                 Log in
                             </Button>
-                            Or
+                            or
                             <a className="login-form-register" href="/signup"> register now!</a>
                         </Form.Item>
                     </Form>
