@@ -1,7 +1,6 @@
 import Profile from '../models/profile.model';
 
 // Create and Save a new Profile
-// eslint-disable-next-line consistent-return
 exports.create = (req, res) => {
     // Validate request
     if (!req.body.city || !req.body.country || !req.body.email
@@ -10,7 +9,6 @@ exports.create = (req, res) => {
             message: 'Please ensure you fill all fields',
         });
     }
-
     // Create a Profile
     const profile = new Profile({
         city: req.body.city,
@@ -32,6 +30,7 @@ exports.create = (req, res) => {
                 message: err.message || 'Some error occurred while creating the Profile.',
             });
         });
+    return null;
 };
 
 // Find a single profile with a profileId
@@ -43,14 +42,16 @@ exports.findOne = (req, res) => {
                     message: `Profile not found with id ${req.params.profileId}`,
                 });
             }
-            res.send(profile);
+            return res.send(profile);
         }).catch(err => {
             if (err.kind === 'ObjectId') {
                 return res.status(404).send({
                     message: `Profile not found with id ${req.params.profileId}`,
                 });
             }
+            return null;
         });
+    return null;
 };
 
 // Retrieve and return all profiles from the database.
@@ -89,7 +90,7 @@ exports.update = (req, res) => {
                     message: `Profile not found with id ${req.params.profileId}`,
                 });
             }
-            res.send(profile);
+            return res.send(profile);
         }).catch(err => {
             if (err.kind === 'ObjectId') {
                 return res.status(404).send({
@@ -100,6 +101,7 @@ exports.update = (req, res) => {
                 message: `Error updating profile with id ${req.params.profileId}`,
             });
         });
+    return null;
 };
 
 // Delete a profile with the specified profileId in the request
@@ -111,7 +113,7 @@ exports.delete = (req, res) => {
                     message: `Profile not found with id ${req.params.profileId}`,
                 });
             }
-            res.send({ message: 'Profile deleted successfully!' });
+            return res.send({ message: 'Profile deleted successfully!' });
         }).catch(err => {
             if (err.kind === 'ObjectId' || err.name === 'NotFound') {
                 return res.status(404).send({
