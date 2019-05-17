@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/team-helpme/helpme.git"
   },
-  "author": "Uche Nnadi, Justice Otuya, Marshall Akpan, Daniel Damilare",
+  "author": "Justice Otuya, Marshall Akpan, Daniel Damilare",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/team-helpme/helpme/issues"
@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.4.3",
+    "@shelf/jest-mongodb": "^1.0.1",
     "@zeit/next-css": "^1.0.1",
     "antd": "^3.16.3",
     "auth0-js": "^9.10.2",
