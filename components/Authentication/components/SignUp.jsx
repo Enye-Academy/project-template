@@ -41,7 +41,7 @@ class RegistrationForm extends React.Component {
     }
 
     /**
-    *  function that is used to handle submit
+    * function that is used to handle submit
     * @function
     * @return {Object}  returns the user values
     */
@@ -49,11 +49,13 @@ class RegistrationForm extends React.Component {
         e.preventDefault();
         const { validateFieldsAndScroll } = this.props.form;
         const { isAgreementChecked } = this.state;
+
         /**
-    *  function that is used to handle submit, This function helps to Validate the specified fields and get theirs values and errors., if the target field is not in visible area of form, form will be automatically scrolled to the target field area.
-    * @function
-    * @return {Object}  returns the values of the form
-    */
+        * function that is used to handle submit, This function helps to Validate the specified
+        * fields and get theirs values and errors., if the target field is not in visible area of form, form will be automatically scrolled to the target field area.
+        * @function
+        * @return {Object}  returns the values of the form
+        */
         validateFieldsAndScroll((err, values) => {
             if (!err && isAgreementChecked === true) {
                 this.enterLoading();
@@ -65,7 +67,7 @@ class RegistrationForm extends React.Component {
     }
 
     /**
-    *  function that is used to handle checkbox agreement
+    * function that is used to handle checkbox agreement
     * @function
     * @return {Boolean} controls the state of of the checkbox
     */
@@ -76,7 +78,7 @@ class RegistrationForm extends React.Component {
     }
 
     /**
-    *  function that is used to handle password validation, this fires when the first password field has been filled and has lost focus. this will help in comparing the password in that field to the next input field;
+    * function that is used to handle password validation, this fires when the first password field has been filled and has lost focus. this will help in comparing the password in that field to the next input field;
     * @function
     * @return {Object} sets the state of isConfirmedDirty
     */
@@ -87,13 +89,13 @@ class RegistrationForm extends React.Component {
     }
 
     /**
-      *  function that is used to also handle password validation, this compares the two password field;
-      * @function
-      * @param {Array} rule the validation rule for the input field
-      * @param {String} value the value passed on the input field
-      * @param {function} callback error message to display
-      * @return {function} error message to display
-      */
+    * function that is used to also handle password validation, this compares the two password field;
+    * @function
+    * @param {Array} rule the validation rule for the input field
+    * @param {String} value the value passed on the input field
+    * @param {function} callback error message to display
+    * @return {function} error message to display
+    */
     compareToFirstPassword = (rule, value, callback) => {
         const { form } = this.props;
         if (value && value !== form.getFieldValue('password')) {
@@ -123,7 +125,7 @@ class RegistrationForm extends React.Component {
                         }
 
                         <Form.Item
-                          label="Confirm Password"
+                            label="Confirm Password"
                         >
                             {getFieldDecorator('confirm', {
                                 rules: [{
