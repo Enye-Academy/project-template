@@ -29,6 +29,15 @@ nextApp.prepare().then(() => {
 
     // next should handle all other routes except the ones specified.
     app.get('*', (req, res) => handle(req, res));
+
+    // Routes Middleware
+    app.use('/api/users', users);
+
+    app.get(
+        '*',
+        (req, res) => handle(req, res) // next should handle all other routes except the ones specified.
+    );
+
     app.listen(PORT, err => {
         if (err) throw err;
         // eslint-disable-next-line no-console

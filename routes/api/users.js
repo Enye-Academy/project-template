@@ -8,7 +8,6 @@ const router = express.Router();
 const User = require('../../models/User');
 
 // User Registration Route
-
 router.post('/register', async (req, res, next) => {
     try {
         // Check if the email coming in matches what is in the DB
@@ -42,4 +41,5 @@ router.post('/register', async (req, res, next) => {
         return next(err);
     }
 });
+
 module.exports = router;
