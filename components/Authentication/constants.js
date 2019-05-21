@@ -1,31 +1,25 @@
-const LOGIN_USERNAME_INPUT_ERROR = 'Please input your username!';
-const LOGIN_PASSWORD_INPUT_ERROR = 'Please input your Password!';
-
-const SIGNUP_NAME_INPUT_ERROR = 'Please input your name!';
-const SIGNUP_EMAIL_INPUT_ERROR = 'Please input your E-mail!';
-const SIGNUP_VALID_EMAIL_ERROR = 'The input is not a valid E-mail!';
-const SIGNUP_PASSWORD_INPUT_ERROR = 'Please input your password!';
-const SIGNUP_CONFIRM_PASSWORD_INPUT_ERROR = 'Please confirm your password!';
-const PASSWORD_COMPARE_ERROR_TEXT = 'The Two passwords that you enter is inconsistent!';
+import {
+    Input, Checkbox, Button
+} from 'antd';
 
 const LOGIN_INPUTS = [
     {
         className: 'form_icon',
-        field: 'username',
         iconType: 'user',
+        id: 'username',
         placeholder: 'Username',
         rules: [{
-            message: LOGIN_USERNAME_INPUT_ERROR,
+            message: 'Please input your username!',
             required: true,
         }],
     }, {
         className: 'form_icon',
-        field: 'password',
         iconType: 'lock',
+        id: 'password',
         inputType: 'password',
-        placeholder: 'Username',
+        placeholder: 'Password',
         rules: [{
-            message: LOGIN_PASSWORD_INPUT_ERROR,
+            message: 'Please input your Password!',
             required: true,
         }],
     },
@@ -33,26 +27,79 @@ const LOGIN_INPUTS = [
 
 const SIGNUP_INPUTS = [
     {
-        field: 'name',
-        label: 'Name',
-        rules: [{ message: SIGNUP_NAME_INPUT_ERROR, required: true, whitespace: true }],
+        items: {
+            FieldType: Input,
+            hasFieldChildren: false,
+            id: 'name',
+            label: 'Name',
+            rules: [{ message: 'Please input your name!', required: true, whitespace: true }],
+        },
     },
+
     {
-        field: 'email',
-        label: 'E-mail',
-        rules: [{ message: SIGNUP_VALID_EMAIL_ERROR, type: 'email' },
-            { message: SIGNUP_EMAIL_INPUT_ERROR, required: true }],
+        items: {
+            FieldType: Input,
+            hasFieldChildren: false,
+            label: 'E-mail',
+            id: 'email',
+            rules: [{ type: 'email', message: 'The input is not a valid E-mail!' }, {
+                required: true, message: 'Please input your E-mail!',
+            }],
+        },
     },
+
+    {
+        items: {
+            FieldType: Input,
+            hasFieldChildren: false,
+            label: 'Password',
+            id: 'password',
+            rules: [{ required: true, message: 'The input is not a valid E-mail!' },
+                // { validator: validateToNextPassword }
+            ],
+        },
+    },
+
+    {
+        items: {
+            FieldType: Input,
+            hasFieldChildren: false,
+            label: 'Confirm Password',
+            id: 'confirm',
+            rules: [{ required: true, message: 'Please confirm your password!' },
+                // { validator: compareToFirstPassword },
+            ],
+        },
+    },
+
+    {
+        items: {
+            FieldType: Checkbox,
+            hasFieldChildren: true,
+            id: 'agreement',
+            valuePropName: 'checked',
+            fieldChildren: (<span>
+				I have read and accepted the
+                <a href="/agreement" className="login-form-register"> agreement</a>
+            </span>),
+            rules: [{ required: true, message: 'Please accept the agreement ' },
+            ],
+
+        },
+    },
+
+    {
+        items: {
+            isButton: true,
+            FieldType: Button,
+            hasFieldChildren: true,
+            id: 'submit',
+        },
+    },
+
 ];
 
 export {
     LOGIN_INPUTS,
-    SIGNUP_INPUTS,
-    LOGIN_USERNAME_INPUT_ERROR,
-    LOGIN_PASSWORD_INPUT_ERROR,
-    SIGNUP_NAME_INPUT_ERROR,
-    SIGNUP_EMAIL_INPUT_ERROR,
-    SIGNUP_VALID_EMAIL_ERROR,
-    SIGNUP_PASSWORD_INPUT_ERROR,
-    SIGNUP_CONFIRM_PASSWORD_INPUT_ERROR, PASSWORD_COMPARE_ERROR_TEXT
+    SIGNUP_INPUTS
 };
