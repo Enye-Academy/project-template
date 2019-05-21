@@ -1,5 +1,7 @@
 import React from 'react';
-import { Form } from 'antd';
+import {
+    Form, Input, Checkbox, Button
+} from 'antd';
 import PropTypes from 'prop-types';
 
 /**
@@ -8,7 +10,6 @@ import PropTypes from 'prop-types';
 * @param {function} actions actions attached to the input field for validation
 * @param {Object} items the values passed on to the input field
 * @param {function} decorator a Two-way binding for form
-* @param {*} fieldChildren html element that complements the field
 * @param {string} label label for the input field
 * @param {string} id id of the input field
 * @param {Object[]} rules rules for input validation
@@ -22,7 +23,7 @@ import PropTypes from 'prop-types';
 */
 const SIGNUP_INPUT_GENERATOR = (actions, items, decorator) => {
     const {
-        fieldChildren, label, id, rules, hasOnBlur, hasOnChange, valuePropName, isButton, hasFieldChildren, FieldType,
+        label, id, rules, hasOnBlur, hasOnChange, valuePropName, isButton, hasFieldChildren, FieldType,
     } = items;
     const { onBlur, onChange } = actions;
     const actionProps = {
@@ -30,22 +31,53 @@ const SIGNUP_INPUT_GENERATOR = (actions, items, decorator) => {
         onChange: hasOnChange && onChange,
     };
 
+    let Field;
+    let fieldChildren;
+
+    switch (FieldType) {
+    case 'input':
+        Field = Input;
+        break;
+    case 'checkbox':
+        Field = Checkbox;
+        break;
+    case 'button':
+        Field = Button;
+        break;
+    default:
+        Field = null;
+        break;
+    }
+
+    if (isButton && hasFieldChildren) {
+        fieldChildren = (
+            <div>
+                already have an account, please
+                <a className="login-form-register" href="/login">login</a>
+            </div>
+        );
+    } else if (FieldType === 'checkbox' && hasFieldChildren) {
+        fieldChildren = (
+            <span>
+                I have read and accepted the
+                <a href="/agreement" className="login-form-register"> agreement</a>
+            </span>
+        );
+    }
+
     return (
         <Form.Item key={id} label={label}>
             {
                 isButton ? (
                     <>
-                        <FieldType type="primary" htmlType="submit">Register</FieldType>
-                        <div>
-                            {'already have an account, please '}
-                            <a className="login-form-register" href="/login">login</a>
-                        </div>
+                        <Field type="primary" htmlType="submit">Register</Field>
+                        {fieldChildren}
                     </>
                 )
                     : decorator(id, { rules }, { valuePropName })(
-                        <FieldType {...actionProps}>
+                        <Field {...actionProps}>
                             {hasFieldChildren ? fieldChildren : null}
-                        </FieldType>
+                        </Field>
                     )
             }
         </Form.Item>
@@ -55,7 +87,6 @@ const SIGNUP_INPUT_GENERATOR = (actions, items, decorator) => {
 export default SIGNUP_INPUT_GENERATOR;
 
 SIGNUP_INPUT_GENERATOR.propTypes = {
-    fieldChildren: PropTypes.instanceOf('span'),
     FieldType: PropTypes.elementType,
     hasFieldChildren: PropTypes.bool,
     hasOnBlur: PropTypes.bool,

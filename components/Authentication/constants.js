@@ -1,7 +1,3 @@
-import {
-    Input, Checkbox, Button
-} from 'antd';
-
 const LOGIN_INPUTS = [
     {
         className: 'form_icon',
@@ -28,7 +24,7 @@ const LOGIN_INPUTS = [
 const SIGNUP_INPUTS = [
     {
         items: {
-            FieldType: Input,
+            FieldType: 'input',
             hasFieldChildren: false,
             id: 'name',
             label: 'Name',
@@ -38,23 +34,23 @@ const SIGNUP_INPUTS = [
 
     {
         items: {
-            FieldType: Input,
+            FieldType: 'input',
             hasFieldChildren: false,
-            label: 'E-mail',
             id: 'email',
-            rules: [{ type: 'email', message: 'The input is not a valid E-mail!' }, {
-                required: true, message: 'Please input your E-mail!',
+            label: 'E-mail',
+            rules: [{ message: 'The input is not a valid E-mail!', type: 'email' }, {
+                message: 'Please input your E-mail!', required: true,
             }],
         },
     },
 
     {
         items: {
-            FieldType: Input,
+            FieldType: 'input',
             hasFieldChildren: false,
-            label: 'Password',
             id: 'password',
-            rules: [{ required: true, message: 'The input is not a valid E-mail!' },
+            label: 'Password',
+            rules: [{ message: 'The input is not a valid E-mail!', required: true },
                 // { validator: validateToNextPassword }
             ],
         },
@@ -62,11 +58,11 @@ const SIGNUP_INPUTS = [
 
     {
         items: {
-            FieldType: Input,
+            FieldType: 'input',
             hasFieldChildren: false,
-            label: 'Confirm Password',
             id: 'confirm',
-            rules: [{ required: true, message: 'Please confirm your password!' },
+            label: 'Confirm Password',
+            rules: [{ message: 'Please confirm your password!', required: true },
                 // { validator: compareToFirstPassword },
             ],
         },
@@ -74,26 +70,22 @@ const SIGNUP_INPUTS = [
 
     {
         items: {
-            FieldType: Checkbox,
+            FieldType: 'checkbox',
             hasFieldChildren: true,
             id: 'agreement',
-            valuePropName: 'checked',
-            fieldChildren: (<span>
-				I have read and accepted the
-                <a href="/agreement" className="login-form-register"> agreement</a>
-            </span>),
-            rules: [{ required: true, message: 'Please accept the agreement ' },
+            rules: [{ message: 'Please accept the agreement ', required: true },
             ],
+            valuePropName: 'checked',
 
         },
     },
 
     {
         items: {
-            isButton: true,
-            FieldType: Button,
+            FieldType: 'button',
             hasFieldChildren: true,
             id: 'submit',
+            isButton: true,
         },
     },
 
