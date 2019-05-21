@@ -20,12 +20,13 @@ router.post('/register', async (req, res, next) => {
             r: 'pg', // Rating
             s: '200', // Size
         });
+        const { email, name, password } = req.body;
         const newUser = new User({
             // create new user
             avatar,
-            email: req.body.email,
-            name: req.body.name,
-            password: req.body.password,
+            email,
+            name,
+            password,
         });
 
         // Hash Password
