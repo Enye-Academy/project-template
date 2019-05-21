@@ -35,7 +35,8 @@ nextApp.prepare().then(() => {
 
     app.get(
         '*',
-        (req, res) => handle(req, res) // next should handle all other routes except the ones specified.
+        // next should handle all other routes except the ones specified.
+        (req, res) => handle(req, res)
     );
 
     app.listen(PORT, err => {
