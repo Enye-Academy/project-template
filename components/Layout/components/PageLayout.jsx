@@ -6,7 +6,7 @@ import NavHeader from './NavHeader';
 import Sidebar from './Sidebar';
 import PageFooter from './PageFooter';
 import './PageLayout.css';
-import { headerTitle } from '../constants';
+import { HEADER_TITLE } from '../constants';
 
 const { Content } = Layout;
 /**
@@ -26,7 +26,7 @@ export default function PageLayout(props) {
     return (
         <>
             <Layout className="LandingPage_layout">
-                <NavHeader title={title || headerTitle} isAuthenticated={isAuthenticated} />
+                <NavHeader title={title || HEADER_TITLE} isAuthenticated={isAuthenticated} />
                 <Content className="PageLayout_body">
                     <Layout hasSider>
                         <Sidebar isSiderPresent={isSiderPresent} />

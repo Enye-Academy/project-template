@@ -1,3 +1,3 @@
-import { Login, SignUp } from './components';
+import { Login, SignUp, PasswordReset } from './components';
 
-export { Login, SignUp };
+export { Login, SignUp, PasswordReset };
