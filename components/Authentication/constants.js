@@ -83,7 +83,6 @@ const SIGNUP_INPUTS = [
             rules: [{ message: 'Please accept the agreement ', required: true },
             ],
             valuePropName: 'checked',
-
         },
     },
 
@@ -95,7 +94,6 @@ const SIGNUP_INPUTS = [
             isButton: true,
         },
     },
-
 ];
 
 export {
