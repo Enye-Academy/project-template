@@ -6,7 +6,7 @@ import {
 } from 'antd';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import { headerTitle, menuItems } from '../constants';
+import { HEADER_TITLE, MENU_ITEMS } from '../constants';    
 
 const { Header } = Layout;
 const { Search } = Input;
@@ -40,7 +40,7 @@ function NavHeader(props) {
                   rel="stylesheet"
                   href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
                 />
-                <title>{!title ? headerTitle : title}</title>
+                <title>{!title ? HEADER_TITLE : title}</title>
             </Head>
             {/* navheader for mobile */}
             <Header theme="light" className="layout_header-mobile">
@@ -81,7 +81,7 @@ function NavHeader(props) {
                           className="layout_header-list"
                         >
                             {
-                                menuItems.map(menuItem => {
+                                MENU_ITEMS.map(menuItem => {
                                     const { key, href, text } = menuItem;
                                     return (
                                         <Menu.Item key={key}>

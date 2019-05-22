@@ -3,11 +3,17 @@
     "development": {
       "presets": [
         "next/babel"
+      ],
+      "plugins": [
+        "inline-react-svg"
       ]
     },
     "production": {
       "presets": [
         "next/babel"
+      ],
+      "plugins": [
+        "inline-react-svg"
       ]
     },
     "test": {
@@ -20,6 +26,9 @@
             }
           }
         ]
+      ],
+      "plugins": [
+        "inline-react-svg"
       ]
     }
   }

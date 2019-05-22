@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Layout } from 'antd';
-import { footerFirstColumn, footerSecondColumn } from '../constants';
+import { FOOTER_FIRST_COLUMN, FOOTER_SECOND_COLUMN } from '../constants';
 import FooterListCreator from './FooterListCreator';
 
 const { Content, Footer } = Layout;
@@ -22,10 +22,10 @@ export default function PageFooter() {
                         </a>
                     </Link>
                     <FooterListCreator
-                      list={footerFirstColumn}
+                      list={FOOTER_FIRST_COLUMN}
                     />
                     <FooterListCreator
-                      list={footerSecondColumn}
+                      list={FOOTER_SECOND_COLUMN}
                     />
                 </Footer>
             </Content>
