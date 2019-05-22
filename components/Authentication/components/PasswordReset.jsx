@@ -76,7 +76,7 @@ class PasswordResetForm extends React.Component {
     };
 
     /**
-    * function that is used to close the message and redirect to the login page
+    * function that is used to show info on successful password change
     * @function
     * @param {String} type this is the type of message (success, warning or failure)
     * @param {String} email the email to whose password is been rest
