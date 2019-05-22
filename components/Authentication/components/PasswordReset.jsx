@@ -88,8 +88,7 @@ class PasswordResetForm extends React.Component {
         notification[type]({
             description: `${FORGET_PASSWORD_NOTIFICATION_DESCRIPTION} ${email}`,
             duration: 0,
-            message:
-                FORGET_PASSWORD_NOTIFICATION_TITLE,
+            message: FORGET_PASSWORD_NOTIFICATION_TITLE,
             onClose: this.close,
         });
     };
@@ -118,7 +117,7 @@ class PasswordResetForm extends React.Component {
                                     required: true,
                                 }],
                             })(
-                                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} />
+                                <Input prefix={<Icon type="user" className="input-icon" />} />
                             )}
                         </Form.Item>
 
