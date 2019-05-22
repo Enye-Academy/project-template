@@ -18,8 +18,6 @@ const db = require('../config/keys').mongoURI;
 // Connect to MongoDB
 mongoose.connect(db, { useNewUrlParser: true });
 
-mongoose.connect(db, { useNewUrlParser: true });
-
 nextApp.prepare().then(() => {
     // express code here
     const app = express();

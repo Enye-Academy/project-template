@@ -1,7 +1,10 @@
 const express = require('express');
 
 const router = express.Router();
+
 const Profile = require('../../models/profile.model');
+
+const validateInput = require('../../validation/profile');
 
 // Create a new Profile
 router.post('/new', async (req, res) => {
@@ -10,10 +13,11 @@ router.post('/new', async (req, res) => {
     } = req.body;
 
     // Validate request
-    if (!city || !country || !email || !firstName || !lastName) {
-        return res.json({
-            message: 'Please ensure you fill all fields',
-        });
+    const { errors, isValid } = validateInput(req.body);
+
+    // Check Validation
+    if (!isValid) {
+        return res.status(400).json(errors);
     }
     // create new profile
     const profile = new Profile({
@@ -76,6 +80,14 @@ router.put('/:profileId', async (req, res) => {
         city, country, email, firstName, lastName,
     } = req.body;
     const { profileId } = req.params;
+
+    // Validate request
+    const { errors, isValid } = validateInput(req.body);
+
+    // Check Validation
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
     const profile = new Profile({
         city,
         country,
