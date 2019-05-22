@@ -1,11 +1,10 @@
-
+/* eslint-disable react/jsx-no-literals */
 import React from 'react';
 import {
     Form,
     Input,
     Button,
-    Typography,
-    notification
+    notification, Icon
 } from 'antd';
 import 'antd/dist/antd.css';
 import './Authentication.css';
@@ -13,59 +12,89 @@ import Router from 'next/router';
 import ForgotPassword from '../../../static/forgot_password.svg';
 
 import {
-    forgetPasswordNotificationTitle,
-    forgetPasswordNotificationDescription,
-    forgetPasswordEmailInputError, forgetPasswordEmailInputInstruction
+    FORGET_PASSWORD_NOTIFICATION_TITLE,
+    FORGET_PASSWORD_NOTIFICATION_DESCRIPTION,
+    FORGET_PASSWORD_EMAIL_INPUT_ERROR,
+    FORGET_PASSWORD_EMAIL_INPUT_INSTRUCTION
 } from '../constants';
-
-const { Title, Paragraph } = Typography;
 
 /**
  *  function that is used to display the forget password Page
- *
  * @function
  * @return {Object} the forget password  page
  */
 class PasswordResetForm extends React.Component {
     state = {
         loading: false,
-        iconLoading: false,
     };
 
+    /**
+    * function that is used to animate signup loading
+    * @function
+    * @return {Object} sets loading state to true
+    */
     enterLoading = () => {
         this.setState({ loading: true });
     }
 
+    /**
+    * function that is used to handle submit
+    * @function
+    * @return {Object}  returns the user values
+    */
     handleSubmit = e => {
+        const { validateFieldsAndScroll, resetFields } = this.props.form;
         e.preventDefault();
-        // This function  after validation, if the target field is not in visible area of form, form will be automatically scrolled to the target field area.
-        this.props.form.validateFieldsAndScroll((err, values) => {
-            if (!err) {
+
+        /**
+        * function that is used to handle submit, This function helps to Validate the
+        * specified fields and get theirs values and errors., if the target field is not in
+        * visible area of form, form will be automatically scrolled to the target field area.
+        * @function
+        * @return {Object}  returns the values of the form
+        */
+        validateFieldsAndScroll((err, values) => {
+            if (!err && values !== '') {
+                this.setState({ loading: true });
                 setTimeout(() => {
-                    this.setState({ loading: false, values });
                     this.openNotificationWithIcon('success', values.email);
+                    this.setState({ loading: false, values });
+                    // resets the value on the input field
+                    resetFields();
                 }, 1000);
-                console.log('Received values of form: ', values.email);
             }
         });
     }
 
+    /**
+    * function that is used to close the message and redirect to the login page
+    * @function
+    * @return {Object}  returns the values of the form
+    */
     close = () => {
         Router.push('/login');
     };
 
+    /**
+    * function that is used to close the message and redirect to the login page
+    * @function
+    * @param {String} type this is the type of message (success, warning or failure)
+    * @param {String} email the email to whose password is been rest
+    * @return {Object}  returns a messeage toast which prompt users
+    */
     openNotificationWithIcon = (type, email) => {
         notification[type]({
-            description: `${forgetPasswordNotificationDescription} ${email}`,
+            description: `${FORGET_PASSWORD_NOTIFICATION_DESCRIPTION} ${email}`,
             duration: 0,
             message:
-                forgetPasswordNotificationTitle,
+                FORGET_PASSWORD_NOTIFICATION_TITLE,
             onClose: this.close,
         });
     };
 
     render() {
         const { getFieldDecorator } = this.props.form;
+        const { loading } = this.state;
         return (
             <section className="password-Section">
                 <section className="password-image-section">
@@ -77,27 +106,24 @@ class PasswordResetForm extends React.Component {
                       className="password-form"
                       onSubmit={this.handleSubmit}
                     >
-                        <Form.Item
-                          label="E-mail"
-                        >
+                        <Form.Item label="E-mail">
                             {getFieldDecorator('email', {
                                 rules: [{
+                                    message: FORGET_PASSWORD_EMAIL_INPUT_ERROR,
                                     type: 'email',
-                                    message: forgetPasswordEmailInputError,
                                 }, {
+                                    message: FORGET_PASSWORD_EMAIL_INPUT_INSTRUCTION,
                                     required: true,
-                                    message: forgetPasswordEmailInputInstruction,
                                 }],
                             })(
-                                <Input />
+                                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} />
                             )}
                         </Form.Item>
 
                         <Form.Item>
-                            <Button type="primary" htmlType="submit" loading={this.state.loading} onClick={this.enterLoading}>Request for Password Change</Button>
+                            <Button type="primary" htmlType="submit" loading={loading}>Request for Password Change</Button>
                             <br />
                             remember your password?
-                            {' '}
                             <a className="password-form-register" href="/login">login</a>
                         </Form.Item>
                     </Form>

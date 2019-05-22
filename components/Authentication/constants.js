@@ -1,3 +1,8 @@
+const FORGET_PASSWORD_NOTIFICATION_TITLE = 'Link Sent';
+const FORGET_PASSWORD_NOTIFICATION_DESCRIPTION = 'The resent link has been sent to';
+const FORGET_PASSWORD_EMAIL_INPUT_ERROR = 'The input is not a valid E-mail !';
+const FORGET_PASSWORD_EMAIL_INPUT_INSTRUCTION = 'Please input your E-mail so that we can send your reset link!';
+
 const LOGIN_INPUTS = [
     {
         className: 'form_icon',
@@ -93,5 +98,9 @@ const SIGNUP_INPUTS = [
 
 export {
     LOGIN_INPUTS,
-    SIGNUP_INPUTS
+    SIGNUP_INPUTS,
+    FORGET_PASSWORD_NOTIFICATION_TITLE,
+    FORGET_PASSWORD_NOTIFICATION_DESCRIPTION,
+    FORGET_PASSWORD_EMAIL_INPUT_ERROR,
+    FORGET_PASSWORD_EMAIL_INPUT_INSTRUCTION
 };
