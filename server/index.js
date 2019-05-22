@@ -1,6 +1,8 @@
 const express = require('express');
 const next = require('next');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const api = require('../routes/api/profile');
 
 const PORT = process.env.PORT || 3000;
 const dev = process.env.NODE_DEV !== 'production';
@@ -13,11 +15,15 @@ const api = require('./api');
 // Configure DB
 const db = require('../config/keys').mongoURI;
 
+<<<<<<< HEAD
 // Connect to MongoDB
 mongoose
     .connect(db, { useNewUrlParser: true })
     .then()
     .catch();
+=======
+mongoose.connect(db, { useNewUrlParser: true });
+>>>>>>> b3ad535... refactored code
 
 nextApp.prepare().then(() => {
     // express code here
@@ -25,8 +31,15 @@ nextApp.prepare().then(() => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
 
+<<<<<<< HEAD
     app.use('/api', api);
 
+=======
+    // Routes middleware
+    app.use('/api/profile', api);
+
+    // next should handle all other routes except the ones specified.
+>>>>>>> b3ad535... refactored code
     app.get(
         '*',
         // eslint-disable-next-line max-len
