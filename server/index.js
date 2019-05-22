@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const next = require('next');
 const bodyParser = require('body-parser');
 const users = require('../routes/api/users');
+const profile = require('../routes/api/profile');
 
 const PORT = process.env.PORT || 3000;
 const dev = process.env.NODE_DEV !== 'production';
@@ -15,7 +16,7 @@ const handle = nextApp.getRequestHandler();
 // Configure DB
 const db = require('../config/keys').mongoURI;
 // Connect to MongoDB
-mongoose.connect(db);
+mongoose.connect(db, { useNewUrlParser: true });
 
 nextApp.prepare().then(() => {
     // express code here
@@ -26,6 +27,7 @@ nextApp.prepare().then(() => {
 
     // Routes Middleware
     app.use('/api/users', users);
+    app.use('/api/profile', profile);
 
     // next should handle all other routes except the ones specified.
     app.get('*', (req, res) => handle(req, res));
