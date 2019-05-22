@@ -16,11 +16,15 @@ const api = require('./api');
 const db = require('../config/keys').mongoURI;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Connect to MongoDB
 mongoose
     .connect(db, { useNewUrlParser: true })
     .then()
     .catch();
+=======
+mongoose.connect(db, { useNewUrlParser: true });
+>>>>>>> b3ad535... refactored code
 =======
 mongoose.connect(db, { useNewUrlParser: true });
 >>>>>>> b3ad535... refactored code
@@ -32,9 +36,12 @@ nextApp.prepare().then(() => {
     app.use(bodyParser.urlencoded({ extended: true }));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     app.use('/api', api);
 
 =======
+=======
+>>>>>>> b3ad535... refactored code
     // Routes middleware
     app.use('/api/profile', api);
 
