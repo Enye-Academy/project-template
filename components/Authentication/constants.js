@@ -3,7 +3,8 @@ const FORGET_PASSWORD_NOTIFICATION_DESCRIPTION = 'The resent link has been sent 
 const FORGET_PASSWORD_EMAIL_INPUT_ERROR = 'The input is not a valid E-mail !';
 // eslint-disable-next-line max-len
 const FORGET_PASSWORD_EMAIL_INPUT_INSTRUCTION = 'Please input your E-mail so that we can send your reset link!';
-
+const PASSWORD_CHANGE_TEXT = 'Request for Password Change';
+const REMEMBER_PASSWORD_TEXT = 'remember your password? ';
 const LOGIN_INPUTS = [
     {
         className: 'form_icon',
@@ -103,5 +104,7 @@ export {
     FORGET_PASSWORD_NOTIFICATION_TITLE,
     FORGET_PASSWORD_NOTIFICATION_DESCRIPTION,
     FORGET_PASSWORD_EMAIL_INPUT_ERROR,
-    FORGET_PASSWORD_EMAIL_INPUT_INSTRUCTION
+    FORGET_PASSWORD_EMAIL_INPUT_INSTRUCTION,
+    PASSWORD_CHANGE_TEXT,
+    REMEMBER_PASSWORD_TEXT
 };

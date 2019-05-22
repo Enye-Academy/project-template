@@ -15,7 +15,9 @@ import {
     FORGET_PASSWORD_NOTIFICATION_TITLE,
     FORGET_PASSWORD_NOTIFICATION_DESCRIPTION,
     FORGET_PASSWORD_EMAIL_INPUT_ERROR,
-    FORGET_PASSWORD_EMAIL_INPUT_INSTRUCTION
+    FORGET_PASSWORD_EMAIL_INPUT_INSTRUCTION,
+    PASSWORD_CHANGE_TEXT,
+    REMEMBER_PASSWORD_TEXT
 } from '../constants';
 
 /**
@@ -121,9 +123,9 @@ class PasswordResetForm extends React.Component {
                         </Form.Item>
 
                         <Form.Item>
-                            <Button type="primary" htmlType="submit" loading={loading}>Request for Password Change</Button>
+                            <Button type="primary" htmlType="submit" loading={loading}>{PASSWORD_CHANGE_TEXT}</Button>
                             <br />
-                            remember your password?
+                            {REMEMBER_PASSWORD_TEXT}
                             <a className="password-form-register" href="/login">login</a>
                         </Form.Item>
                     </Form>
