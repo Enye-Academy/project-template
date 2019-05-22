@@ -21,7 +21,7 @@ import PropTypes from 'prop-types';
 * @param {function} FieldType type of html form element
 * @return {function} input item of the form
 */
-const SIGNUP_INPUT_GENERATOR = (actions, items, decorator) => {
+const SignupInputGenerator = (actions, items, decorator) => {
     const {
         label, id, rules, hasOnBlur, hasOnChange, valuePropName, isButton, hasFieldChildren, FieldType,
     } = items;
@@ -84,9 +84,9 @@ const SIGNUP_INPUT_GENERATOR = (actions, items, decorator) => {
     );
 };
 
-export default SIGNUP_INPUT_GENERATOR;
+export default SignupInputGenerator;
 
-SIGNUP_INPUT_GENERATOR.propTypes = {
+SignupInputGenerator.propTypes = {
     FieldType: PropTypes.elementType,
     hasFieldChildren: PropTypes.bool,
     hasOnBlur: PropTypes.bool,

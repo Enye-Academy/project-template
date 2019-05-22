@@ -21,7 +21,7 @@ import {
 * @return {function} input item of the form
 */
 
-const LOGIN_INPUT_ITEM_GENERATOR = decorator => LOGIN_INPUTS.map(input => {
+const LoginInputItemGenerator = decorator => LOGIN_INPUTS.map(input => {
     const {
         className,
         id,
@@ -44,9 +44,9 @@ const LOGIN_INPUT_ITEM_GENERATOR = decorator => LOGIN_INPUTS.map(input => {
     );
 });
 
-export default LOGIN_INPUT_ITEM_GENERATOR;
+export default LoginInputItemGenerator;
 
-LOGIN_INPUT_ITEM_GENERATOR.propTypes = {
+LoginInputItemGenerator.propTypes = {
     className: PropTypes.string,
     field: PropTypes.string,
     iconType: PropTypes.string,

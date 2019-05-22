@@ -9,7 +9,7 @@ import RegistrationImage from '../../../static/register.svg';
 import {
     SIGNUP_INPUTS
 } from '../constants';
-import SIGNUP_INPUT_GENERATOR from './SignupInputItemGenerator';
+import SignupInputGenerator from './SignupInputItemGenerator';
 
 /**
  *  function that is used to display the registration Page
@@ -35,22 +35,22 @@ class RegistrationForm extends React.Component {
     }
 
     /**
-        * function that is used to handle submit
-        * @function
-        * @return {Object}  returns the user values
-        */
+    * function that is used to handle submit
+    * @function
+    * @return {Object}  returns the user values
+    */
     handleSubmit = e => {
         e.preventDefault();
         const { validateFieldsAndScroll } = this.props.form;
+
         /**
-            * function that is used to handle submit, This function helps to Validate the specified
-            * fields and get theirs values and errors., if the target field is not in visible area of form, form will be automatically scrolled to the target field area.
-            * @function
-            * @return {Object}  returns the values of the form
-            */
+        * function that is used to handle submit, This function helps to Validate the specified
+        * fields and get theirs values and errors., if the target field is not in visible area of form, form will be automatically scrolled to the target field area.
+        * @function
+        * @return {Object}  returns the values of the form
+        */
         validateFieldsAndScroll((err, values) => {
             if (!err && values.agreement) {
-                console.log('Received values of form: ', values);
                 this.enterLoading();
                 setTimeout(() => {
                     Router.push('/timeline');
@@ -60,25 +60,23 @@ class RegistrationForm extends React.Component {
     }
 
     /**
-        * function that is used to handle password validation, this fires when the first password field has been filled and has lost focus. this will help in comparing the password in that field to the next input field;
-        * @function
-        * @return {Object} sets the state of isConfirmedDirty
-        */
+     * function that is used to handle password validation, this fires when the first password field has been filled and has lost focus. this will help in comparing the password in that field to the next input field;
+    * @function
+    * @return {Object} sets the state of isConfirmedDirty
+    */
     handleConfirmBlur = e => {
         const { value } = e.target;
         this.setState({ confirmDirty: this.state.confirmDirty || !!value });
-        console.log('dirty state', this.state.confirmDirty);
-        console.log('value', !!value);
     }
 
     /**
-* function that is used to also handle password validation, this compares the two password field;
-* @function
-* @param {Array} rule the validation rule for the input field
-* @param {String} value the value passed on the input field
-* @param {function} callback error message to display
-* @return {function} error message to display
-*/
+    * function that is used to also handle password validation, this compares the two password field;
+    * @function
+    * @param {Array} rule the validation rule for the input field
+    * @param {String} value the value passed on the input field
+    * @param {function} callback error message to display
+    * @return {function} error message to display
+    */
     compareToFirstPassword = (rule, value, callback) => {
         const { form } = this.props;
         if (value && value !== form.getFieldValue('password')) {
@@ -112,7 +110,7 @@ class RegistrationForm extends React.Component {
                         {
                             SIGNUP_INPUTS.map(input => {
                                 const { actions = {}, items } = input;
-                                return SIGNUP_INPUT_GENERATOR(actions, items, getFieldDecorator);
+                                return SignupInputGenerator(actions, items, getFieldDecorator);
                             })
                         }
                     </Form>
