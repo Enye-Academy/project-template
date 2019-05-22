@@ -10,17 +10,18 @@ const User = require('../../models/User');
 // User Registration Route
 router.post('/register', async (req, res, next) => {
     try {
+        const { email, name, password } = req.body;
         // Check if the email coming in matches what is in the DB
-        const user = await User.findOne({ email: req.body.email });
+        const user = await User.findOne({ email });
         if (user) {
-            return res.status(400).json({ email: 'Email already exist' });
+            return res.status(400).json({ message: `${email} already exist` });
         }
-        const avatar = gravatar.url(req.body.email, {
+        const avatar = gravatar.url(email, {
             d: 'mm', // Default
             r: 'pg', // Rating
             s: '200', // Size
         });
-        const { email, name, password } = req.body;
+
         const newUser = new User({
             // create new user
             avatar,
