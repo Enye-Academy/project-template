@@ -2,8 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const next = require('next');
 const bodyParser = require('body-parser');
+<<<<<<< HEAD
 const users = require('../routes/api/users');
 const profile = require('../routes/api/profile');
+=======
+const mongoose = require('mongoose');
+const api = require('../routes/api/profile');
+>>>>>>> d6f70cd4896cdf4d677a3ad9d9788d3063cec6ff
 
 const PORT = process.env.PORT || 3000;
 const dev = process.env.NODE_DEV !== 'production';
@@ -16,6 +21,8 @@ const handle = nextApp.getRequestHandler();
 // Configure DB
 const db = require('../config/keys').mongoURI;
 // Connect to MongoDB
+mongoose.connect(db, { useNewUrlParser: true });
+
 mongoose.connect(db, { useNewUrlParser: true });
 
 nextApp.prepare().then(() => {

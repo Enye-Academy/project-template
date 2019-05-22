@@ -4,6 +4,7 @@ module.exports = {
     collectCoverage: true,
     globals: {
         jest: {
+            preset: '@shelf/jest-mongodb',
             useBabelrc: true,
         },
     },

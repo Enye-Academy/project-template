@@ -23,7 +23,11 @@ router.post('/new', async (req, res) => {
         firstName,
         lastName,
     });
+<<<<<<< HEAD
     // Save Profile in the database
+=======
+        // Save Profile in the database
+>>>>>>> d6f70cd4896cdf4d677a3ad9d9788d3063cec6ff
     try {
         const newProfile = await profile.save();
         return res.json({
