@@ -1,11 +1,9 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { Layout, Divider } from 'antd';
 import './LandingPage.css';
-import Paragraph from 'antd/lib/typography/Paragraph';
 import LandingPageContent from './LandingPageContent';
 import PageLayout from '../../Layout';
-import { LANDING_PAGE_CONTENTS, pageTitle } from '../constants';
+import { LANDING_PAGE_CONTENTS, PAGE_TITLE } from '../constants';
 
 /**
  * Function for displaying the landing page
@@ -19,7 +17,7 @@ const LandingPage = () => (
       IsSiderPresent={false}
       isFooterPresent
       isAuthenticated={false}
-      title={pageTitle}
+      title={PAGE_TITLE}
     >
         {
             LANDING_PAGE_CONTENTS.map(landingPageContent => {

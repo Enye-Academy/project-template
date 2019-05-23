@@ -84,3 +84,6 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+# dummy data
+data
