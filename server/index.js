@@ -33,9 +33,9 @@ nextApp.prepare().then(() => {
 
     // config express-session
     const sess = {
-        secret: 'CHANGE THIS TO A RANDOM SECRET',
         cookie: {},
         resave: false,
+        secret: 'CHANGE THIS TO A RANDOM SECRET',
         saveUninitialized: true,
     };
 

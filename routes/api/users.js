@@ -63,7 +63,8 @@ router.get(
 
 // Perform the final stage of authentication and redirect to previously requested URL or '/user'
 router.get('/callback', (req, res, next) => {
-    passport.authenticate('auth0', (err, user, info) => {
+    passport.authenticate('auth0', (err, user) => {
+        // console.log(info);
         if (err) {
             return next(err);
         }
