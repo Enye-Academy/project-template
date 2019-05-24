@@ -104,11 +104,6 @@ router.put('/:profileId', async (req, res) => {
         }
         return res.json(updatedProfile);
     } catch (err) {
-        if (err.kind === 'ObjectId') {
-            return res.status(404).json({
-                message: `Profile not found with id ${profileId}`,
-            });
-        }
         return res.status(500).json({
             message: `Error updating profile with id ${profileId}`,
         });

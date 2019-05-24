@@ -5,14 +5,13 @@ const isEmpty = require('./is_empty');
 module.exports = function validateInput(data) {
     const errors = {};
 
-    let {
-        city, country, email, firstName, lastName,
+    const {
+        city = '',
+        country = '',
+        email = '',
+        firstName = '',
+        lastName = '',
     } = data;
-    city = !isEmpty(city) ? city : '';
-    country = !isEmpty(country) ? country : '';
-    email = !isEmpty(email) ? email : '';
-    firstName = !isEmpty(firstName) ? firstName : '';
-    lastName = !isEmpty(lastName) ? lastName : '';
 
     if (Validator.isEmpty(country)) {
         errors.country = 'Country field is required';
