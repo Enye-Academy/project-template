@@ -63,17 +63,20 @@ router.get(
 
 // Perform the final stage of authentication and redirect to previously requested URL or '/user'
 router.get('/callback', (req, res, next) => {
+    // eslint-disable-next-line no-unused-vars
     passport.authenticate('auth0', (err, user) => {
         // console.log(info);
+
         if (err) {
             return next(err);
         }
+
         if (!user) {
             return res.redirect('/login');
         }
-        req.logIn(user, err => {
-            if (err) {
-                return next(err);
+        req.logIn(user, error => {
+            if (error) {
+                return next(error);
             }
             const { returnTo } = req.session;
             delete req.session.returnTo;

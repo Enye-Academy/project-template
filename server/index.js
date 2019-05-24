@@ -35,8 +35,8 @@ nextApp.prepare().then(() => {
     const sess = {
         cookie: {},
         resave: false,
-        secret: 'CHANGE THIS TO A RANDOM SECRET',
         saveUninitialized: true,
+        secret: process.env.SESSION_SECRET,
     };
 
     if (app.get('env') === 'production') {
