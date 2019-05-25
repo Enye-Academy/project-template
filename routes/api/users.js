@@ -19,9 +19,11 @@ router.post('/register', async (req, res, next) => {
         const { email, name, password } = req.body;
         // Check if the email coming in matches what is in the DB
         const user = await User.findOne({ email });
+
         if (user) {
             return res.status(400).json({ message: `${email} already exist` });
         }
+
         const avatar = gravatar.url(email, {
             d: 'mm', // Default
             r: 'pg', // Rating
@@ -62,7 +64,7 @@ router.get(
 );
 
 // Perform the final stage of authentication and redirect to previously requested URL or '/user'
-router.get('/callback', (req, res, next) => (passport.authenticate('auth0', (err, user) => {
+router.get('/callback', (req, res, next) => passport.authenticate('auth0', (err, user) => {
     // eslint-disable-next-line no-unused-vars
 
     // console.log(info);
@@ -79,11 +81,12 @@ router.get('/callback', (req, res, next) => (passport.authenticate('auth0', (err
         if (error) {
             return next(error);
         }
+
         const { returnTo } = req.session;
         delete req.session.returnTo;
         return res.redirect(returnTo || '/user');
     });
-}))(req, res, next));
+})(req, res, next));
 
 // Perform session logout and redirect to homepage
 router.get('/logout', (req, res) => {
@@ -91,9 +94,11 @@ router.get('/logout', (req, res) => {
 
     let returnTo = `${req.protocol}://${req.hostname}`;
     const port = req.connection.localPort;
+
     if (port !== undefined && port !== 80 && port !== 443) {
         returnTo += `:${port}`;
     }
+    
     const logoutURL = new URL(util.format('https://%s/logout', process.env.AUTH0_DOMAIN));
     const searchString = querystring.stringify({
         client_id: process.env.AUTH0_CLIENT_ID,
