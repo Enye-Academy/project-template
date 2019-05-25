@@ -62,28 +62,28 @@ router.get(
 );
 
 // Perform the final stage of authentication and redirect to previously requested URL or '/user'
-router.get('/callback', (req, res, next) => {
+router.get('/callback', (req, res, next) => (passport.authenticate('auth0', (err, user) => {
     // eslint-disable-next-line no-unused-vars
-    passport.authenticate('auth0', (err, user) => {
-        // console.log(info);
 
-        if (err) {
-            return next(err);
-        }
+    // console.log(info);
 
-        if (!user) {
-            return res.redirect('/login');
+    if (err) {
+        return next(err);
+    }
+
+    if (!user) {
+        return res.redirect('/login');
+    }
+
+    return req.logIn(user, error => {
+        if (error) {
+            return next(error);
         }
-        req.logIn(user, error => {
-            if (error) {
-                return next(error);
-            }
-            const { returnTo } = req.session;
-            delete req.session.returnTo;
-            res.redirect(returnTo || '/user');
-        });
-    })(req, res, next);
-});
+        const { returnTo } = req.session;
+        delete req.session.returnTo;
+        return res.redirect(returnTo || '/user');
+    });
+}))(req, res, next));
 
 // Perform session logout and redirect to homepage
 router.get('/logout', (req, res) => {
