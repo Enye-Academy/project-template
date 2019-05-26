@@ -19,6 +19,14 @@ router.post('/new', async (req, res) => {
     if (!isValid) {
         return res.status(400).json(errors);
     }
+
+    // check if user profile exists
+
+    const user = await Profile.findOne({ email });
+
+    if (user) {
+        return res.status(400).json({ message: `${email} already exist` });
+    }
     // create new profile
     const profile = new Profile({
         city,
@@ -74,6 +82,7 @@ router.get('/:profileId', async (req, res) => {
     }
     return null;
 });
+
 // Update a Profile with profileId
 router.put('/:profileId', async (req, res) => {
     const {
