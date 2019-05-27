@@ -98,10 +98,11 @@ router.get('/logout', (req, res) => {
     if (port !== undefined && port !== 80 && port !== 443) {
         returnTo += `:${port}`;
     }
-    
-    const logoutURL = new URL(util.format('https://%s/logout', process.env.AUTH0_DOMAIN));
+
+    const { AUTH0_CLIENT_ID, AUTH0_DOMAIN } = process.env;
+    const logoutURL = new URL(util.format('https://%s/logout', AUTH0_DOMAIN));
     const searchString = querystring.stringify({
-        client_id: process.env.AUTH0_CLIENT_ID,
+        client_id: AUTH0_CLIENT_ID,
         returnTo,
     });
     logoutURL.search = searchString;

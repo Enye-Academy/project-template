@@ -5,12 +5,16 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // Configure Passport to use Auth0
+const {
+    AUTH0_CALLBACK_URL, AUTH0_CLIENT_ID, AUTH0_CLIENT_SECRET, AUTH0_DOMAIN,
+} = process.env;
 const strategy = new Auth0Strategy(
+
     {
-        callbackURL: process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/api/users/callback',
-        clientID: process.env.AUTH0_CLIENT_ID,
-        clientSecret: process.env.AUTH0_CLIENT_SECRET,
-        domain: process.env.AUTH0_DOMAIN,
+        callbackURL: AUTH0_CALLBACK_URL || 'http://localhost:3000/api/users/callback',
+        clientID: AUTH0_CLIENT_ID,
+        clientSecret: AUTH0_CLIENT_SECRET,
+        domain: AUTH0_DOMAIN,
     },
     (accessToken, refreshToken, extraParams, profile, done) => {
         // accessToken is the token to call Auth0 API (not needed in the most cases)
