@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, Typography } from 'antd';
 import PropTypes from 'prop-types';
-import { normalize } from 'path';
 import Link from 'next/link';
 
 const { Title, Paragraph } = Typography;

@@ -3,6 +3,10 @@
     margin-top: 64px;
 }
 
+.PageLayout_content_sidebar{
+height: calc(100vh - 64px);
+}
+
 .layout_header-mobile {
 	display: flex;
 	justify-content: space-between;

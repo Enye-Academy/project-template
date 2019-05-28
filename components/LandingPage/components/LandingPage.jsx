@@ -14,7 +14,7 @@ import { LANDING_PAGE_CONTENTS, PAGE_TITLE } from '../constants';
 
 const LandingPage = () => (
     <PageLayout
-      IsSiderPresent={false}
+      isSiderPresent={false}
       isFooterPresent
       isAuthenticated={false}
       title={PAGE_TITLE}

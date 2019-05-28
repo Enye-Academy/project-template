@@ -47,6 +47,7 @@ class NormalLoginForm extends React.Component {
         */
         validateFields((err, values) => {
             if (!err) {
+                this.enterLoading();
                 setTimeout(() => {
                     Router.push('/timeline');
                 }, 1000);
@@ -73,7 +74,7 @@ class NormalLoginForm extends React.Component {
                         {/* buttons */}
                         <Form.Item>
                             <a className="login-form-forgot" href="/password_reset">Forgot password</a>
-                            <Button type="primary" htmlType="submit" className="login-form-button" loading={loading} onClick={this.enterLoading}>
+                            <Button type="primary" htmlType="submit" className="login-form-button" loading={loading}>
                                 Log in
                             </Button>
                             or
