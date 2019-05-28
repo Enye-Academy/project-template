@@ -6,15 +6,26 @@ const router = express.Router();
 
 // Bring in the User Model
 const User = require('../../models/User');
+// Import Input Validation
+const validateRegInput = require('../../validation/register');
+// const validateLoginInput = require('../../validation/login');
 
 // User Registration Route
 router.post('/register', async (req, res, next) => {
     try {
+        // Validate everything coming the request body
+        const { errors, isValid } = validateRegInput(req.body);
+        // Check Validation
+        if (!isValid) {
+            return res.status(400).json(errors);
+        }
         const { email, name, password } = req.body;
         // Check if the email coming in matches what is in the DB
         const user = await User.findOne({ email });
         if (user) {
-            return res.status(400).json({ message: `${email} already exist` });
+            errors.email = 'Email already exist';
+            return res.status(400).json(errors);
+            // return res.status(400).json({ message: `${email} already exist` });
         }
         const avatar = gravatar.url(email, {
             d: 'mm', // Default
