@@ -8,40 +8,40 @@ module.exports = function validateRegInput(data) {
 
     /* Assign 'data' pty in a func to variable to avoid Assignment
     to property of function parameter 'data' no-param-reassign */
-    let checkname = data.name;
-    checkname = !isEmpty(checkname) ? checkname : '';
+    let checkName = data.name;
+    checkName = !isEmpty(checkName) ? checkName : '';
     // Validate Email
-    let checkemail = data.email;
-    checkemail = !isEmpty(checkemail) ? checkemail : '';
+    let checkEmail = data.email;
+    checkEmail = !isEmpty(checkEmail) ? checkEmail : '';
     // Validate Password
-    let checkpassword = data.password;
+    let checkPassword = data.password;
 
-    checkpassword = !isEmpty(checkpassword) ? checkpassword : '';
+    checkPassword = !isEmpty(checkPassword) ? checkPassword : '';
     // Validate Confirm password
-    let checkpassword2 = data.confirmPassword;
-    checkpassword2 = !isEmpty(checkpassword2) ? checkpassword2 : '';
-    if (!Validator.isLength(checkname, { max: 50, min: 2 })) {
+    let checkPassword2 = data.confirmPassword;
+    checkPassword2 = !isEmpty(checkPassword2) ? checkPassword2 : '';
+    if (!Validator.isLength(checkName, { max: 50, min: 2 })) {
         errors.name = 'Name must be between 2 and 50 characters long!';
     }
-    if (Validator.isEmpty(checkname)) {
+    if (Validator.isEmpty(checkName)) {
         errors.name = 'Name field is required';
     }
-    if (Validator.isEmpty(checkemail)) {
+    if (Validator.isEmpty(checkEmail)) {
         errors.email = 'Email field is required';
     }
-    if (!Validator.isEmail(checkemail)) {
+    if (!Validator.isEmail(checkEmail)) {
         errors.email = 'Email is invalid';
     }
-    if (Validator.isEmpty(checkpassword)) {
+    if (Validator.isEmpty(checkPassword)) {
         errors.password = 'Password field is required';
     }
-    if (!Validator.isLength(checkpassword, { max: 30, min: 6 })) {
+    if (!Validator.isLength(checkPassword, { max: 30, min: 6 })) {
         errors.password = 'Password must be at least 6 characters';
     }
-    if (Validator.isEmpty(checkpassword2)) {
+    if (Validator.isEmpty(checkPassword2)) {
         errors.confirmPassword = 'Confirm Password field is required';
     }
-    if (!Validator.equals(checkpassword, checkpassword2)) {
+    if (!Validator.equals(checkPassword, checkPassword2)) {
         errors.password = 'Passwords must match';
     }
 

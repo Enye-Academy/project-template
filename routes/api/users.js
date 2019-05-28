@@ -8,7 +8,6 @@ const router = express.Router();
 const User = require('../../models/User');
 // Import Input Validation
 const validateRegInput = require('../../validation/register');
-// const validateLoginInput = require('../../validation/login');
 
 // User Registration Route
 router.post('/register', async (req, res, next) => {
@@ -16,17 +15,20 @@ router.post('/register', async (req, res, next) => {
         // Validate everything coming the request body
         const { errors, isValid } = validateRegInput(req.body);
         // Check Validation
+
         if (!isValid) {
             return res.status(400).json(errors);
         }
+
         const { email, name, password } = req.body;
         // Check if the email coming in matches what is in the DB
         const user = await User.findOne({ email });
+
         if (user) {
-            errors.email = 'Email already exist';
+            errors.email = `${email} already exist`;
             return res.status(400).json(errors);
-            // return res.status(400).json({ message: `${email} already exist` });
         }
+
         const avatar = gravatar.url(email, {
             d: 'mm', // Default
             r: 'pg', // Rating
