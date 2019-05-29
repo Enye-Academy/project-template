@@ -3,6 +3,7 @@ import React from 'react';
 import {
     Icon, Divider
 } from 'antd';
+
 import PageLayout from '../../Layout';
 import './TimeLine.css';
 import CreatePostModal from './CreatePostModal';
