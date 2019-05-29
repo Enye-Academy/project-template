@@ -1,6 +1,7 @@
 import React from 'react';
-import 'antd/dist/antd.css';
+
 import './LandingPage.css';
+import 'antd/dist/antd.css';
 import LandingPageContent from './LandingPageContent';
 import PageLayout from '../../Layout';
 import { LANDING_PAGE_CONTENTS, PAGE_TITLE } from '../constants';

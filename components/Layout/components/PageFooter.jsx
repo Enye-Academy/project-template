@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Layout } from 'antd';
+
 import { FOOTER_FIRST_COLUMN, FOOTER_SECOND_COLUMN } from '../constants';
 import FooterListCreator from './FooterListCreator';
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+
 import { SIDEBAR_MENU_ITEMS } from '../constants';
 
 const { Sider } = Layout;
