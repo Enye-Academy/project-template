@@ -203,7 +203,6 @@ list-style-type: none;
      margin: 1em;
     display: grid;
     grid-template-columns: 1fr 3fr;
-    /* grid-template-columns: 1fr 3fr; */
     grid-template-rows:350px repeat(2, minmax(auto, 310px)) auto;
     grid-gap: 1em;
 }
