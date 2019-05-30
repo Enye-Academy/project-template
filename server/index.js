@@ -7,6 +7,7 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const users = require('../routes/api/users');
 const profile = require('../routes/api/profile');
+const userInViews = require('../lib/middleware/userInViews');
 
 const PORT = process.env.PORT || 3000;
 const dev = process.env.NODE_DEV !== 'production';
@@ -49,6 +50,7 @@ nextApp.prepare().then(() => {
     app.use(session(sess));
 
     // Routes Middleware
+    app.use(userInViews());
     app.use('/api/users', users);
     app.use('/api/profile', profile);
 
