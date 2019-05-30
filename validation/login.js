@@ -5,20 +5,22 @@ module.exports = function validateLoginInput(data) {
     const errors = {};
 
     // Validate Email
-    let checkemail = data.email;
-    checkemail = !isEmpty(checkemail) ? checkemail : '';
+    let checkEmail = data.email;
+    checkEmail = !isEmpty(checkEmail) ? checkEmail : '';
     // Validate Password
-    let checkpassword = data.password;
+    let checkPassword = data.password;
 
-    checkpassword = !isEmpty(checkpassword) ? checkpassword : '';
+    checkPassword = !isEmpty(checkPassword) ? checkPassword : '';
 
-    if (!Validator.isEmail(checkemail)) {
+    if (!Validator.isEmail(checkEmail)) {
         errors.email = 'Email is invalid';
     }
-    if (Validator.isEmpty(checkemail)) {
+
+    if (Validator.isEmpty(checkEmail)) {
         errors.email = 'Email field is required';
     }
-    if (Validator.isEmpty(checkpassword)) {
+
+    if (Validator.isEmpty(checkPassword)) {
         errors.password = 'Password field is required';
     }
 
