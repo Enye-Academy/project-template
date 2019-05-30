@@ -4,6 +4,12 @@ import {
 } from 'antd';
 import PropTypes from 'prop-types';
 
+import {
+    READ_ACCEPTED_AGREEMENT,
+    AGREEMENT,
+    REGISTER, LOGIN, ALREADY_HAVE_ACCOUNT
+} from '../constants';
+
 /**
 * function that is used to also handle password validation, this compares the two password field;
 * @function
@@ -35,32 +41,34 @@ const SignupInputGenerator = (actions, items, decorator) => {
     let fieldChildren;
 
     switch (FieldType) {
-    case 'input':
-        Field = Input;
-        break;
-    case 'checkbox':
-        Field = Checkbox;
-        break;
-    case 'button':
-        Field = Button;
-        break;
-    default:
-        Field = null;
-        break;
+        case 'input':
+            Field = Input;
+            break;
+        case 'checkbox':
+            Field = Checkbox;
+            break;
+        case 'button':
+            Field = Button;
+            break;
+        default:
+            Field = null;
+            break;
     }
 
     if (isButton && hasFieldChildren) {
         fieldChildren = (
             <div>
-                already have an account, please
-                <a className="login-form-register" href="/login">login</a>
+                {ALREADY_HAVE_ACCOUNT}
+                <a className="login-form-register" href="/login">{LOGIN}</a>
             </div>
         );
     } else if (FieldType === 'checkbox' && hasFieldChildren) {
         fieldChildren = (
             <span>
-                I have read and accepted the
-                <a href="/agreement" className="login-form-register"> agreement</a>
+                {READ_ACCEPTED_AGREEMENT}
+                <a href="/agreement" className="login-form-register">
+                    {AGREEMENT}
+                </a>
             </span>
         );
     }
@@ -70,7 +78,7 @@ const SignupInputGenerator = (actions, items, decorator) => {
             {
                 isButton ? (
                     <>
-                        <Field type="primary" htmlType="submit">Register</Field>
+                        <Field type="primary" htmlType="submit">{REGISTER}</Field>
                         {fieldChildren}
                     </>
                 )

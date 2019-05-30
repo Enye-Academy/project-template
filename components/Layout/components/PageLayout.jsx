@@ -2,6 +2,7 @@
 import React from 'react';
 import { Layout } from 'antd';
 import PropTypes from 'prop-types';
+
 import NavHeader from './NavHeader';
 import Sidebar from './Sidebar';
 import PageFooter from './PageFooter';
@@ -28,7 +29,7 @@ export default function PageLayout(props) {
             <Layout className="LandingPage_layout">
                 <NavHeader title={title || HEADER_TITLE} isAuthenticated={isAuthenticated} />
                 <Content className="PageLayout_body">
-                    <Layout hasSider>
+                    <Layout hasSider className="PageLayout_content_sidebar">
                         <Sidebar isSiderPresent={isSiderPresent} />
                         <Content className="PageLayout_content">{children}</Content>
                     </Layout>
