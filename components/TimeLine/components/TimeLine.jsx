@@ -87,6 +87,12 @@ class TimeLine extends React.Component {
         });
     };
 
+    /**
+    * Helper function that is used to handle clicking on the comment button
+    * @function
+    * @param {Number} id the id of the commented post
+    * @return {Object} changes the state of the like component
+    */
     handleComment = id => {
         this.setState({
             comment: !this.state.comment,
@@ -94,12 +100,22 @@ class TimeLine extends React.Component {
         });
     };
 
+    /**
+    * Helper function that is used to handle comment value
+    * @function
+    * @return {Object} changes the state of the comment value
+    */
     handleCommentValue = e => {
         this.setState({
             commentValue: e.target.value,
         });
     }
 
+    /**
+    * Helper function that is used to handle status value
+    * @function
+    * @return {Object} changes the state of the status value
+    */
     handleStatusValue = e => {
         this.setState({
             statusValue: e.target.value,
