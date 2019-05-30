@@ -9,7 +9,7 @@ import './TimeLine.css';
 import CreatePostModal from './CreatePostModal';
 import { CreatePostComponent } from './CreatePostComponent';
 // dummy data to be replaced with api data, commented so that test can pass, will be removed when api is ready
-import data from '../../../data/data.json';
+// import data from '../../../data/data.json';
 import {
     CREATEPOST_PLACEHOLDER, TIMELINE_TITLE
 } from '../constant';
@@ -24,24 +24,17 @@ import TimeLinePosts from './TimeLinePosts';
  * @return {Object} returns the TimeLine component
  */
 class TimeLine extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            profileData: '',
-            visible: false,
-            like: false,
-            likeCount: 0,
-            comment: false,
-            activeComment: '',
-            activeLikeButton: '',
-            statusValue: '',
-            commentValue: '',
-        };
-        this.handleOk = this.handleOk.bind(this);
-        this.handleLikeButton = this.handleLikeButton.bind(this);
-        this.handleStatusValue = this.handleStatusValue.bind(this);
-        this.handleCommentValue = this.handleCommentValue.bind(this);
-    }
+    state = {
+        activeComment: '',
+        activeLikeButton: '',
+        comment: false,
+        commentValue: '',
+        like: false,
+        likeCount: 0,
+        profileData: '',
+        statusValue: '',
+        visible: false,
+    };
 
     componentDidMount() {
         this.setState({ profileData: data });
@@ -53,8 +46,9 @@ class TimeLine extends React.Component {
      * @return {Object} returns 'true' to show the modal
      */
     modalHandler = () => {
+        const { visible } = this.state;
         this.setState({
-            visible: !this.state.visible,
+            visible,
         });
     };
 
@@ -82,8 +76,9 @@ class TimeLine extends React.Component {
     * @return {Object} changes the state of the like component
     */
     handleLikeButton = id => {
+        const { like } = this.state;
         this.setState({
-            like: !this.state.like,
+            like: !like,
         });
     };
 
@@ -94,9 +89,10 @@ class TimeLine extends React.Component {
     * @return {Object} changes the state of the like component
     */
     handleComment = id => {
+        const { comment } = this.state;
         this.setState({
-            comment: !this.state.comment,
             activeComment: id,
+            comment: !comment,
         });
     };
 
