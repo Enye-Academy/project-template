@@ -95,7 +95,7 @@ router.get('/callback', (req, res, next) => passport.authenticate('auth0', (err,
 
         const { returnTo } = req.session;
         delete req.session.returnTo;
-        return res.redirect(returnTo || '/user');
+        return res.redirect(returnTo || '/');
     });
 })(req, res, next));
 
