@@ -33,6 +33,8 @@ const POPULAR_TOPIC = [
     },
 ];
 
+const ONLINE_FRIENDS = 'Online Friends';
+
 const LOADING_SKELETON = [{
     active: true,
     avatar: true,
@@ -77,5 +79,6 @@ export {
     COMMENT_PLACEHOLDER,
     USER_PROFILE,
     FOLLOWING,
-    FOLLOWERS
+    FOLLOWERS,
+    ONLINE_FRIENDS
 };
