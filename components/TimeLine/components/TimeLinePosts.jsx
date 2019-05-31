@@ -11,7 +11,7 @@ import {
 
 const IconText = ({ type, text, action }) => (
     <span>
-        <Icon type={type} style={{ marginRight: 8 }} onClick={action} />
+        <Icon type={type} className="icon_text" onClick={action} />
       {text}
     </span>
 );
@@ -26,20 +26,29 @@ const TimeLinePosts = props => {
             <List
                 itemLayout="vertical"
                 dataSource={profileData}
-                style={{ margin: '0 1em' }}
+                className="list_style"
                 size="large"
                 renderItem={user => {
                     const {
-                        id, first_name, last_name, email, post, avatar, image, likeCount, textValue,
+                        id,
+                        first_name,
+                        last_name,
+                        email,
+                        post,
+                        avatar,
+                        image,
+                        likeCount,
+                        textValue,
                         handleOnChange,
                     } = user;
+
                     return (
-              <List.Item
+                        <List.Item
                             key={id}
                             actions={[
-                  <IconText type="star-o" text="156" />,
-                                <IconText type="like-o" text={likeCount} action={() => handleLikeButton(id)} />,
-                                <IconText type="message" text={likeCount} action={() => handleComment(id)} />,
+                                <IconText type="star-o" text="156" />,
+                  <IconText type="like-o" text={likeCount} action={() => handleLikeButton(id)} />,
+                  <IconText type="message" text={likeCount} action={() => handleComment(id)} />,
                             ]}
                         >
                             <List.Item.Meta

@@ -22,6 +22,14 @@
   display: inline
 }
 
+.icon_text {
+  margin-right: 8px;
+}
+
+.list_style {
+  margin: 0 1em;
+}
+
 .modal-footer {
   display: flex;
   justify-content: space-between;
