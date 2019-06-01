@@ -12,16 +12,27 @@ const router = express.Router();
 
 // Bring in the User Model
 const User = require('../../models/User');
+// Import Input Validation
+const validateRegInput = require('../../validation/register');
 
 // User Registration Route
 router.post('/register', async (req, res, next) => {
     try {
+        // Validate everything coming the request body
+        const { errors, isValid } = validateRegInput(req.body);
+        // Check Validation
+
+        if (!isValid) {
+            return res.status(400).json(errors);
+        }
+
         const { email, name, password } = req.body;
         // Check if the email coming in matches what is in the DB
         const user = await User.findOne({ email });
 
         if (user) {
-            return res.status(400).json({ message: `${email} already exist` });
+            errors.email = `${email} already exist`;
+            return res.status(400).json(errors);
         }
 
         const avatar = gravatar.url(email, {
@@ -84,7 +95,7 @@ router.get('/callback', (req, res, next) => passport.authenticate('auth0', (err,
 
         const { returnTo } = req.session;
         delete req.session.returnTo;
-        return res.redirect(returnTo || '/user');
+        return res.redirect(returnTo || '/');
     });
 })(req, res, next));
 

@@ -1,12 +1,13 @@
 import React from 'react';
 import Head from 'next/head';
-import 'antd/dist/antd.css';
 import {
     Layout, Menu, Button, Input
 } from 'antd';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import { HEADER_TITLE, MENU_ITEMS } from '../constants';    
+
+import 'antd/dist/antd.css';
+import { HEADER_TITLE, MENU_ITEMS } from '../constants';
 
 const { Header } = Layout;
 const { Search } = Input;

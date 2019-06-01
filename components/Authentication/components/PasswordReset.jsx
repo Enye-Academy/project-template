@@ -6,18 +6,19 @@ import {
     Button,
     notification, Icon
 } from 'antd';
-import 'antd/dist/antd.css';
-import './Authentication.css';
 import Router from 'next/router';
-import ForgotPassword from '../../../static/forgot_password.svg';
 
+import './Authentication.css';
+import 'antd/dist/antd.css';
+import ForgotPassword from '../../../static/forgot_password.svg';
 import {
     FORGET_PASSWORD_NOTIFICATION_TITLE,
     FORGET_PASSWORD_NOTIFICATION_DESCRIPTION,
     FORGET_PASSWORD_EMAIL_INPUT_ERROR,
     FORGET_PASSWORD_EMAIL_INPUT_INSTRUCTION,
     PASSWORD_CHANGE_TEXT,
-    REMEMBER_PASSWORD_TEXT
+    REMEMBER_PASSWORD_TEXT,
+    LOGIN
 } from '../constants';
 
 /**
@@ -125,7 +126,7 @@ class PasswordResetForm extends React.Component {
                             <Button type="primary" htmlType="submit" loading={loading}>{PASSWORD_CHANGE_TEXT}</Button>
                             <br />
                             {REMEMBER_PASSWORD_TEXT}
-                            <a className="password-form-register" href="/login">login</a>
+                            <a className="password-form-register" href="/login">{LOGIN}</a>
                         </Form.Item>
                     </Form>
                 </section>

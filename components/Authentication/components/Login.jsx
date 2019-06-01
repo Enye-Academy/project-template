@@ -1,11 +1,20 @@
 /* eslint-disable react/jsx-no-literals */
 import React from 'react';
 import { Form, Button, Typography } from 'antd';
-import 'antd/dist/antd.css';
-import './Authentication.css';
 import Router from 'next/router';
+
+import './Authentication.css';
+import 'antd/dist/antd.css';
 import LoginImage from '../../../static/login.svg';
 import LoginInputItemGenerator from './LoginInputItemGenerator';
+import {
+    WELCOME,
+    LOGIN_TO_CONTINUE,
+    FORGOT_PASSWORD,
+    LOGIN,
+    OR,
+    REGISTER_NOW
+} from '../constants';
 
 const { Title, Paragraph } = Typography;
 
@@ -47,6 +56,7 @@ class NormalLoginForm extends React.Component {
         */
         validateFields((err, values) => {
             if (!err) {
+                this.enterLoading();
                 setTimeout(() => {
                     Router.push('/timeline');
                 }, 1000);
@@ -66,18 +76,20 @@ class NormalLoginForm extends React.Component {
 
                 <section className="Login-Form-section">
                     <Form onSubmit={this.handleSubmit} className="login-form">
-                        <Title level={4}>Welcome</Title>
-                        <Paragraph>Login to continue</Paragraph>
+                        <Title level={4}>{WELCOME}</Title>
+                        <Paragraph>{LOGIN_TO_CONTINUE}</Paragraph>
                         {/* inputs for username and password */}
                         {LoginInputItemGenerator(getFieldDecorator)}
                         {/* buttons */}
                         <Form.Item>
-                            <a className="login-form-forgot" href="/password_reset">Forgot password</a>
-                            <Button type="primary" htmlType="submit" className="login-form-button" loading={loading} onClick={this.enterLoading}>
-                                Log in
+                            <a className="login-form-forgot" href="/password_reset">{FORGOT_PASSWORD}</a>
+                            <Button type="primary" htmlType="submit" className="login-form-button" loading={loading}>
+                                {LOGIN}
                             </Button>
-                            or
-                            <a className="login-form-register" href="/signup"> register now!</a>
+                            {OR}
+                            <a className="login-form-register" href="/signup">
+                                {REGISTER_NOW}
+                            </a>
                         </Form.Item>
                     </Form>
                 </section>
