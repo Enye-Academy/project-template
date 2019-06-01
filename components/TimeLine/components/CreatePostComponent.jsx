@@ -22,22 +22,23 @@ const CreatePostInput = props => {
     } = props;
     return (
         <TextArea
-            placeholder={InputPlaceholder}
-            size="small"
-            className="compose-textarea"
-            autosize={{ minRows: rowHeight }}
-            autoFocus
-            onChange={handleOnChange}
-            value={textValue}
+          placeholder={InputPlaceholder}
+          size="small"
+          className="compose-textarea"
+          autosize={{ minRows: rowHeight }}
+          autoFocus
+          onChange={handleOnChange}
+          value={textValue}
         />
     );
 };
 
 /**
- * Helper function that controls picture upload of the post component and is also the footer of the post component
+ * Helper function that controls and houses picture upload and post button of the post component and is also the footer of the post component
  * @function
  * @param {Function} handleOkFunction -  controls what happens when the submit button  of the modal is clicked
- * @return {Object} the input part of the createpost component
+ * @return {Object} The footer part of the post component which contains both the upload picture
+ * and the send post components
  */
 const CreatePostButtons = props => {
     const { handleOkFunction } = props;
@@ -45,8 +46,8 @@ const CreatePostButtons = props => {
         <section className="modal-footer">
             <Upload>
                 <Icon
-                    type="picture"
-                    className="create-post-icon"
+                  type="picture"
+                  className="create-post-icon"
                 />
             </Upload>
 
@@ -77,10 +78,10 @@ const CreatePostComponent = props => {
     return (
         <>
             <CreatePostInput
-                InputPlaceholder={InputPlaceholder}
-                rowHeight={rowHeight}
-                handleOnChange={handleOnChange}
-                textValue={textValue}
+              InputPlaceholder={InputPlaceholder}
+              rowHeight={rowHeight}
+              handleOnChange={handleOnChange}
+              textValue={textValue}
             />
             <div className="comment-post-button">
                 <CreatePostButtons handleOkFunction={handleOkFunction} />
