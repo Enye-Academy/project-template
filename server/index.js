@@ -7,6 +7,7 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const users = require('../routes/api/users');
 const profile = require('../routes/api/profile');
+const topic = require('../routes/api/topic');
 
 const PORT = process.env.PORT || 3000;
 const dev = process.env.NODE_DEV !== 'production';
@@ -51,6 +52,7 @@ nextApp.prepare().then(() => {
     // Routes Middleware
     app.use('/api/users', users);
     app.use('/api/profile', profile);
+    app.use('/api/topic', topic);
 
     // next should handle all other routes except the ones specified.
     app.get('*', (req, res) => handle(req, res));

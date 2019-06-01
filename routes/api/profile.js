@@ -7,7 +7,7 @@ const Profile = require('../../models/profile.model');
 const validateInput = require('../../validation/profile');
 
 // Create a new Profile
-router.post('/new', async (req, res) => {
+router.post('/', async (req, res) => {
     const {
         city, country, email, firstName, lastName,
     } = req.body;
@@ -48,7 +48,7 @@ router.post('/new', async (req, res) => {
 });
 
 // Retrieve all profiles
-router.get('/all', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const profiles = await Profile.find();
         if (!profiles) {
