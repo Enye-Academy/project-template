@@ -2,7 +2,7 @@ import React from 'react';
 
 // dummy data to be replaced with api data, commented so that test can
 // pass, will be removed when api is ready
-import profile from '../../../data/profiles.json';
+import profile from '../../../static/data/profiles.json';
 import './TimeLine.css';
 import { ONLINE_FRIENDS } from '../constant';
 
