@@ -1,34 +1,34 @@
 const POPULAR_TOPIC = [
     {
-        link: '#',
+        link: '/Lorem',
         text: 'Lorem, ipsum.',
     },
     {
-        link: '#',
+        link: '/Quaerat',
         text: 'Quaerat, fuga!',
     },
     {
-        link: '#',
+        link: '/Nemo',
         text: 'Nemo, odit.',
     },
     {
-        link: '#',
+        link: '/Aspernatur',
         text: 'Aspernatur, harum?',
     },
     {
-        link: '#',
+        link: '/Pariatur',
         text: 'Pariatur, libero!',
     },
     {
-        link: '#',
+        link: '/Voluptatem',
         text: 'Voluptatem, rerum!',
     },
     {
-        link: '#',
+        link: '/Placeat',
         text: 'Placeat, illo!',
     },
     {
-        link: '#',
+        link: '/Voluptatem',
         text: 'Voluptatem, nesciunt?',
     },
 ];

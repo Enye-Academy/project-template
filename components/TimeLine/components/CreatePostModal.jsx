@@ -10,7 +10,7 @@ const CreatePostModal = props => {
     } = props;
 
     return (
-      <Modal
+        <Modal
             visible={visible}
             onOk={handleOkFunction}
             onCancel={closeModal}
@@ -30,10 +30,9 @@ const CreatePostModal = props => {
 
 export default CreatePostModal;
 CreatePostModal.propTypes = {
-    closeModal: PropTypes.func,
-    handleOkFunction: PropTypes.func,
-    handleStatusChange: PropTypes.func,
-    visible: PropTypes.bool,
-    handleOnChange: PropTypes.func,
-    textValue: PropTypes.string,
+    closeModal: PropTypes.func.isRequired,
+    handleOkFunction: PropTypes.func.isRequired,
+    handleOnChange: PropTypes.func.isRequired,
+    textValue: PropTypes.string.isRequired,
+    visible: PropTypes.bool.isRequired,
 };

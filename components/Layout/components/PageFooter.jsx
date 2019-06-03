@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
 import { Layout } from 'antd';
@@ -19,14 +20,18 @@ export default function PageFooter() {
                 <Footer className="LandingPage_footer">
                     <Link href="/">
                         <a>
-                            <img src="../../../static/logo-light.png" alt="helpme logo" className="logo" />
+                            <img
+                                src="../../../static/logo-light.png"
+                                alt="helpme logo"
+                                className="logo"
+                            />
                         </a>
                     </Link>
                     <FooterListCreator
-                      list={FOOTER_FIRST_COLUMN}
+                        list={FOOTER_FIRST_COLUMN}
                     />
                     <FooterListCreator
-                      list={FOOTER_SECOND_COLUMN}
+                        list={FOOTER_SECOND_COLUMN}
                     />
                 </Footer>
             </Content>

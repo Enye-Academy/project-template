@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
@@ -11,9 +12,7 @@ const FooterListCreator = props => {
                     const { href, text } = link;
                     return (
                         <Link href={href} key={text}>
-                            <li>
-                                <a>{text}</a>
-                            </li>
+                            <a>{text}</a>
                         </Link>
                     );
                 })

@@ -12,9 +12,9 @@ const TimeLineProfileInfo = () => {
     return (
         <aside className="TimeLine_profile-info">
             <img
-              src="https://robohash.org/temporeinventorererum.bmp?size=50x50&set=set1"
-              alt="profile info of user"
-              className="user-avatar"
+                src="https://robohash.org/temporeinventorererum.bmp?size=50x50&set=set1"
+                alt="profile info of user"
+                className="user-avatar"
             />
             {/* followers stat */}
             <h3 className="user-name">{name}</h3>

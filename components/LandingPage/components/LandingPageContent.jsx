@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Button, Typography } from 'antd';
 import PropTypes from 'prop-types';
@@ -64,19 +65,19 @@ export default function LandingPageContent(props) {
             </div>
 
             {/* displays image in a section */}
-            {isImagePresent ? <img src={imageLink} alt={`${title} image`} /> : null}
+            {isImagePresent ? <img src={imageLink} alt={title} /> : null}
         </section>
     );
 }
 LandingPageContent.propTypes = {
-    level: PropTypes.number,
-    title: PropTypes.string,
-    paragraphText: PropTypes.string,
-    isButtonPresent: PropTypes.bool,
-    buttonText: PropTypes.string,
-    buttonLink: PropTypes.string,
-    isImagePresent: PropTypes.bool,
-    imageLink: PropTypes.string,
-    reverseSection: PropTypes.bool,
-    columnSection: PropTypes.bool,
+    buttonLink: PropTypes.string.isRequired,
+    buttonText: PropTypes.string.isRequired,
+    columnSection: PropTypes.bool.isRequired,
+    imageLink: PropTypes.string.isRequired,
+    isButtonPresent: PropTypes.bool.isRequired,
+    isImagePresent: PropTypes.bool.isRequired,
+    level: PropTypes.number.isRequired,
+    paragraphText: PropTypes.string.isRequired,
+    reverseSection: PropTypes.bool.isRequired,
+    title: PropTypes.string.isRequired,
 };

@@ -1,7 +1,8 @@
 import React from 'react';
 
-// dummy data to be replaced with api data, commented so that test can pass, will be removed when api is ready
-import profile from '../../../data/profile.json';
+// dummy data to be replaced with api data, commented so that test can
+// pass, will be removed when api is ready
+import profile from '../../../data/profiles.json';
 import './TimeLine.css';
 import { ONLINE_FRIENDS } from '../constant';
 
@@ -16,9 +17,9 @@ const TimeLineOnlineFriends = () => (
                 return (
                     <li key={email}>
                         <img
-                          src={photo}
-                          alt="user's face"
-                          className="user-avatar avartar-online"
+                            src={photo}
+                            alt="user's face"
+                            className="user-avatar avartar-online"
                         />
                         {name}
                     </li>

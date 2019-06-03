@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LandingPage from './index';
+import LandingPage from './LandingPage';
 
 describe('LandingPage', () => {
     it('LandingPage should renders without crashing', () => {

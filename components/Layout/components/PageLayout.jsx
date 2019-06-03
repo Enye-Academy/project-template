@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 import NavHeader from './NavHeader';
 import Sidebar from './Sidebar';
 import PageFooter from './PageFooter';
-import './PageLayout.css';
-import { HEADER_TITLE } from '../constants';
+import { STRINGS } from '../constants';
 
+const { HEADER_TITLE } = STRINGS;
 const { Content } = Layout;
 /**
  * Function for displaying the landing page
@@ -22,27 +22,35 @@ const { Content } = Layout;
  */
 export default function PageLayout(props) {
     const {
-        title, isAuthenticated, children, isFooterPresent, isSiderPresent,
+        title, isAuthenticated, children, isFooterPresent,
+        isSiderPresent, handleSearch, searchValue,
     } = props;
     return (
         <>
             <Layout className="LandingPage_layout">
-                <NavHeader title={title || HEADER_TITLE} isAuthenticated={isAuthenticated} />
+                <NavHeader
+                    title={title || HEADER_TITLE}
+                    isAuthenticated={isAuthenticated}
+                    handleSearch={null || handleSearch}
+                    searchValue={searchValue}
+                />
                 <Content className="PageLayout_body">
                     <Layout hasSider className="PageLayout_content_sidebar">
                         <Sidebar isSiderPresent={isSiderPresent} />
                         <Content className="PageLayout_content">{children}</Content>
                     </Layout>
                 </Content>
+                {isFooterPresent ? <PageFooter /> : null}
             </Layout>
-            {isFooterPresent ? <PageFooter /> : null}
         </>
     );
 }
 PageLayout.propTypes = {
     children: PropTypes.node,
+    handleSearch: PropTypes.func,
     isAuthenticated: PropTypes.bool,
     isFooterPresent: PropTypes.bool,
     isSiderPresent: PropTypes.bool,
+    searchValue: PropTypes.string,
     title: PropTypes.string,
 };

@@ -1,3 +1,4 @@
-import TimeLine from './components/index';
+/* eslint-disable import/prefer-default-export */
+import * as components from './components';
 
-export default TimeLine;
+export { components };

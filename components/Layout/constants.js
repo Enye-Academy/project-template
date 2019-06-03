@@ -1,9 +1,8 @@
 // eslint-disable-next-line import/prefer-default-export
-const HEADER_TITLE = 'Helpme | Connect with Friends'; // title of the header
 
-const MENU_ITEMS = [
+export const MENU_ITEMS = [
     {
-        href: '/',
+        href: '/home',
         key: 1,
         text: 'Home',
     }, {
@@ -17,9 +16,9 @@ const MENU_ITEMS = [
     },
 ];
 
-const FOOTER_FIRST_COLUMN = [
+export const FOOTER_FIRST_COLUMN = [
     {
-        href: '/#',
+        href: '/',
         text: 'Home',
     }, {
         href: '/contact',
@@ -30,7 +29,7 @@ const FOOTER_FIRST_COLUMN = [
     },
 ];
 
-const FOOTER_SECOND_COLUMN = [
+export const FOOTER_SECOND_COLUMN = [
     {
         href: '/about-us',
         text: 'Security & Privacy',
@@ -40,7 +39,7 @@ const FOOTER_SECOND_COLUMN = [
     },
 ];
 
-const SIDEBAR_MENU_ITEMS = [
+export const SIDEBAR_MENU_ITEMS = [
     {
         href: '/#',
         key: 1,
@@ -59,6 +58,8 @@ const SIDEBAR_MENU_ITEMS = [
     },
 ];
 
-export {
-    HEADER_TITLE, MENU_ITEMS, FOOTER_FIRST_COLUMN, FOOTER_SECOND_COLUMN, SIDEBAR_MENU_ITEMS
+export const STRINGS = {
+    HEADER_TITLE: 'Helpme | Connect with Friends', // title of the header
+    LOGIN: 'Login',
+    LOGOUT: 'Logout',
 };

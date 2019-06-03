@@ -1,3 +1,4 @@
-import LandingPage from './components/index';
+/* eslint-disable import/prefer-default-export */
+import * as components from './components';
 
-export default LandingPage;
+export { components };

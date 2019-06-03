@@ -4,12 +4,13 @@ import {
     Icon, Divider
 } from 'antd';
 
-import PageLayout from '../../Layout';
-import './TimeLine.css';
+import { components } from '../../layout';
 import CreatePostModal from './CreatePostModal';
 import { CreatePostComponent } from './CreatePostComponent';
-// dummy data to be replaced with api data, commented so that test can pass, will be removed when api is ready
-import data from '../../../data/data.json';
+// dummy data to be replaced with api data, commented so that test
+// can pass, will be removed when api is ready
+import data from '../../../static/data/timelineData.json';
+
 import {
     CREATEPOST_PLACEHOLDER, TIMELINE_TITLE
 } from '../constant';
@@ -17,6 +18,8 @@ import TimeLineProfileInfo from './TimeLineProfileInfo';
 import TimeLinePopularTopic from './TimeLinePopularTopic';
 import TimeLineOnlineFriends from './TimeLineOnlineFriends';
 import TimeLinePosts from './TimeLinePosts';
+
+const { PageLayout } = components;
 
 /** Helper function that is used to render the TimeLine Component
  * @class TimeLine
@@ -31,13 +34,14 @@ class TimeLine extends React.Component {
         commentValue: '',
         like: false,
         likeCount: 0,
-        profileData: '',
+        searchValue: '',
         statusValue: '',
+        timelineData: '',
         visible: false,
     };
 
     componentDidMount() {
-        this.setState({ profileData: data });
+        this.setState({ timelineData: data });
     }
 
     /**
@@ -53,11 +57,12 @@ class TimeLine extends React.Component {
     };
 
     /**
-     * Helper function that is used to handle the data from post component, it also closes the post modal
+     * Helper function that is used to handle the data from post component,
+     *  it also closes the post modal
      * @function
      * @return {Object} returns 'false' to close the modal post component
      */
-    handleOk = e => {
+    handleOk = () => {
         const { visible } = this.state;
         // close the modal;
         if (visible) {
@@ -75,7 +80,7 @@ class TimeLine extends React.Component {
     * @param {Number} id the id of the liked post
     * @return {Object} changes the state of the like component
     */
-    handleLikeButton = id => {
+    handleLikeButton = () => {
         const { like } = this.state;
         this.setState({
             like: !like,
@@ -118,16 +123,25 @@ class TimeLine extends React.Component {
         });
     }
 
+    handleSearch=e => {
+        this.setState({
+            searchValue: e.target.value,
+        });
+    }
+
     render() {
         const {
-            profileData, visible, statusValue, like, likeCount, activeComment, activeLikeButton, commentValue,
+            timelineData, visible, statusValue, likes,
+            likeCount, activeComment, activeLikeButton, commentValue, searchValue,
         } = this.state;
         return (
             <PageLayout
-                isSiderPresent={profileData.length > 0}
+                isSiderPresent={timelineData.length > 0}
                 isFooterPresent={false}
                 isAuthenticated
                 title={TIMELINE_TITLE}
+                handleSearch={this.handleSearch}
+                searchValue={searchValue}
             >
                 <main className="TimeLine_content">
 
@@ -170,8 +184,8 @@ class TimeLine extends React.Component {
                         <section style={{ background: 'white' }}>
                             {/* timeline posts */}
                             <TimeLinePosts
-                                profileData={profileData}
-                                like={like}
+                                timelineData={timelineData}
+                                likes={likes}
                                 likeCount={likeCount}
                                 activeComment={activeComment}
                                 activeLikeButton={activeLikeButton}

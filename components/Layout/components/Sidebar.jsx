@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import Link from 'next/link';
@@ -45,4 +46,8 @@ export default function Sidebar(props) {
 
 Sidebar.propTypes = {
     isSiderPresent: PropTypes.bool,
+};
+
+Sidebar.defaultProps = {
+    isSiderPresent: false,
 };
