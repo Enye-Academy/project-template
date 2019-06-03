@@ -9,7 +9,7 @@ import './TimeLine.css';
 import CreatePostModal from './CreatePostModal';
 import { CreatePostComponent } from './CreatePostComponent';
 // dummy data to be replaced with api data, commented so that test can pass, will be removed when api is ready
-// import data from '../../../data/data.json';
+import data from '../../../data/data.json';
 import {
     CREATEPOST_PLACEHOLDER, TIMELINE_TITLE
 } from '../constant';
@@ -124,10 +124,10 @@ class TimeLine extends React.Component {
         } = this.state;
         return (
             <PageLayout
-              isSiderPresent={profileData.length > 0}
-              isFooterPresent={false}
-              isAuthenticated
-              title={TIMELINE_TITLE}
+                isSiderPresent={profileData.length > 0}
+                isFooterPresent={false}
+                isAuthenticated
+                title={TIMELINE_TITLE}
             >
                 <main className="TimeLine_content">
 
@@ -138,11 +138,11 @@ class TimeLine extends React.Component {
                         </div>
 
                         <CreatePostModal
-                          visible={visible}
-                          handleOkFunction={this.handleOk}
-                          closeModal={this.modalHandler}
-                          handleOnChange={this.handleStatusValue}
-                          textValue={statusValue}
+                            visible={visible}
+                            handleOkFunction={this.handleOk}
+                            closeModal={this.modalHandler}
+                            handleOnChange={this.handleStatusValue}
+                            textValue={statusValue}
                         />
                     </section>
 
@@ -158,10 +158,10 @@ class TimeLine extends React.Component {
                         {/* create post component */}
                         <section className="TimeLine-post-component">
                             <CreatePostComponent
-                              InputPlaceholder={CREATEPOST_PLACEHOLDER}
-                              rowHeight={5}
-                              handleOnChange={this.handleStatusValue}
-                              textValue={statusValue}
+                                InputPlaceholder={CREATEPOST_PLACEHOLDER}
+                                rowHeight={5}
+                                handleOnChange={this.handleStatusValue}
+                                textValue={statusValue}
                             />
                         </section>
 
@@ -170,16 +170,16 @@ class TimeLine extends React.Component {
                         <section style={{ background: 'white' }}>
                             {/* timeline posts */}
                             <TimeLinePosts
-                              profileData={profileData}
-                              like={like}
-                              likeCount={likeCount}
-                              activeComment={activeComment}
-                              activeLikeButton={activeLikeButton}
-                              handleComment={this.handleComment}
-                              handleLikeButton={this.handleLikeButton}
-                              handleOk={this.handleOk}
-                              handleOnChange={this.handleCommentValue}
-                              textValue={commentValue}
+                                profileData={profileData}
+                                like={like}
+                                likeCount={likeCount}
+                                activeComment={activeComment}
+                                activeLikeButton={activeLikeButton}
+                                handleComment={this.handleComment}
+                                handleLikeButton={this.handleLikeButton}
+                                handleOk={this.handleOk}
+                                handleOnChange={this.handleCommentValue}
+                                textValue={commentValue}
                             />
                         </section>
                     </section>

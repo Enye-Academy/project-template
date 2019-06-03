@@ -33,6 +33,8 @@ const POPULAR_TOPIC = [
     },
 ];
 
+const ONLINE_FRIENDS = 'Online Friends';
+
 const LOADING_SKELETON = [{
     active: true,
     avatar: true,
@@ -56,9 +58,27 @@ const USERS_BIO = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repe
 const CREATEPOST_PLACEHOLDER = 'What is on your mind?';
 const COMMENT_PLACEHOLDER = 'Write your reply';
 const TIMELINE_TITLE = 'Timeline | Find friends';
+const POST = 'post';
+const POPULAR_TOPIC_TEXT = 'Popular Topic';
+const USER_PROFILE = {
+    followers: 445,
+    following: 234,
+    name: 'Baba Rahman',
+};
+const FOLLOWING = 'following';
+const FOLLOWERS = 'followers';
 
 export {
-    POPULAR_TOPIC, USERS_BIO,
+    POPULAR_TOPIC,
+    USERS_BIO,
     CREATEPOST_PLACEHOLDER,
-    LOADING_SKELETON, TIMELINE_TITLE, COMMENT_PLACEHOLDER
+    POST,
+    POPULAR_TOPIC_TEXT,
+    LOADING_SKELETON,
+    TIMELINE_TITLE,
+    COMMENT_PLACEHOLDER,
+    USER_PROFILE,
+    FOLLOWING,
+    FOLLOWERS,
+    ONLINE_FRIENDS
 };
