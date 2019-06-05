@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import actionTypes from './actionTypes';
 
 const {
@@ -41,11 +40,11 @@ export const fetchProfileData = () => dispatch => {
 
 export const handlePostUpdate = data => {
     const {
-        id, first_name, last_name, email, post, avatar,
+        id, firstName, lastName, email, post, avatar,
     } = data;
     return ({
         payload: {
-            avatar, email, first_name, id, last_name, post,
+            avatar, email, firstName, id, lastName, post,
         },
         type: ADD_POST_TO_TIMELINE,
     });

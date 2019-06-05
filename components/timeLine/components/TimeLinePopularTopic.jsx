@@ -15,7 +15,6 @@ const TimeLinePopularTopic = () => (
                     return (
                         <li key={text}>
                             <Link href={link}>
-                                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                                 <a>{text}</a>
                             </Link>
                         </li>

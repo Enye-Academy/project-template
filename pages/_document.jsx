@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-literals */
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 

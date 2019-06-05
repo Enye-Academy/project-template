@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { STRINGS } from './constants';
 
 const { NAME } = STRINGS;
