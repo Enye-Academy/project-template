@@ -2,9 +2,10 @@ import React from 'react';
 import { Divider } from 'antd';
 
 import {
-    USERS_BIO, USER_PROFILE, FOLLOWING, FOLLOWERS
+    USER_PROFILE, STRINGS
 } from '../constants';
-import './TimeLine.css';
+
+const { FOLLOWING, FOLLOWERS, USERS_BIO } = STRINGS;
 
 const TimeLineProfileInfo = () => {
     const { followers, following, name } = USER_PROFILE;

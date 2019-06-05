@@ -5,10 +5,10 @@ import {
 import PropTypes from 'prop-types';
 
 import './TimeLine.css';
-import { POST } from '../constants';
+import { STRINGS } from '../constants';
 
 const { TextArea } = Input;
-
+const { POST } = STRINGS;
 /**
  * Helper function that is used for creating the input part of the post *component
  * @function
@@ -106,6 +106,7 @@ CreatePostInput.propTypes = {
     rowHeight: PropTypes.number.isRequired,
     textValue: PropTypes.string.isRequired,
 };
+
 CreatePostButtons.propTypes = {
     handleOkFunction: PropTypes.func.isRequired,
 };

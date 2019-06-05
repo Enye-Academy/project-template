@@ -4,7 +4,9 @@ import React from 'react';
 // pass, will be removed when api is ready
 import profile from '../../../static/data/profiles.json';
 import './TimeLine.css';
-import { ONLINE_FRIENDS } from '../constants';
+import { STRINGS } from '../constants';
+
+const { ONLINE_FRIENDS } = STRINGS;
 
 const TimeLineOnlineFriends = () => (
     <aside className="TimeLine_online-friends">

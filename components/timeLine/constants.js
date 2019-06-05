@@ -52,10 +52,22 @@ export const LOADING_SKELETON = [{
     title: true,
 }];
 
+export const USER_PROFILE = {
+    followers: 445,
+    following: 234,
+    name: 'Baba Rahman',
+};
+
 export const STRINGS = {
     COMMENT_PLACEHOLDER: 'Write your reply',
     CREATE_POST_PLACEHOLDER: 'What is on your mind?',
+    FOLLOWERS: 'followers',
+    FOLLOWING: 'following',
+    ONLINE_FRIENDS: 'Online Friends',
+	POPULAR_TOPIC_TEXT: 'Popular Topic',
+	POST : 'post',
     TIMELINE_TITLE: 'Timeline | Find friends',
     TOGGLE_MODAL: 'TOGGLE_MODAL',
-    USERS_BIO: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellen dusharum odit inventore, iste dignissimos laudantium! Veniam.',
+    USERS_BIO: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    Repellen dusharum odit inventore, iste dignissimos laudantium! Veniam.`,
 };

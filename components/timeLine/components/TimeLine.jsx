@@ -12,7 +12,7 @@ import { CreatePostComponent } from './CreatePostComponent';
 import data from '../../../static/data/timelineData.json';
 
 import {
-    CREATEPOST_PLACEHOLDER, TIMELINE_TITLE
+    STRINGS
 } from '../constants';
 import TimeLineProfileInfo from './TimeLineProfileInfo';
 import TimeLinePopularTopic from './TimeLinePopularTopic';
@@ -20,6 +20,7 @@ import TimeLineOnlineFriends from './TimeLineOnlineFriends';
 import TimeLinePosts from './TimeLinePosts';
 
 const { PageLayout } = components;
+const { CREATE_POST_PLACEHOLDER, TIMELINE_TITLE } = STRINGS;
 
 /** Helper function that is used to render the TimeLine Component
  * @class TimeLine
@@ -172,7 +173,7 @@ class TimeLine extends React.Component {
                         {/* create post component */}
                         <section className="TimeLine-post-component">
                             <CreatePostComponent
-                                InputPlaceholder={CREATEPOST_PLACEHOLDER}
+                                InputPlaceholder={CREATE_POST_PLACEHOLDER}
                                 rowHeight={5}
                                 handleOnChange={this.handleStatusValue}
                                 textValue={statusValue}

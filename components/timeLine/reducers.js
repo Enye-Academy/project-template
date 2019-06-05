@@ -36,7 +36,9 @@ export const reducers = (state = initialState, action) => {
     case TOGGLE_MODAL:
         return { ...state, isOpen: !isOpen };
     case ADD_POST_TO_TIMELINE:
-        return payload.post !== '' ? { ...state, timelineData: [payload, ...state.timelineData] } : state;
+        return payload.post !== ''
+            ? { ...state, timelineData: [payload, ...state.timelineData] }
+            : state;
     case UPDATE_STATUS:
         return { ...state, statusValue: payload };
     case CLEAR_STATUS_FIELD:

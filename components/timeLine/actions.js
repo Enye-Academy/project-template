@@ -44,7 +44,6 @@ export const handlePostUpdate = data => {
         id, first_name, last_name, email, post, avatar,
     } = data;
     return ({
-        type: ADD_POST_TO_TIMELINE,
         payload: {
             avatar,
             email,
@@ -53,6 +52,7 @@ export const handlePostUpdate = data => {
             last_name,
             post,
         },
+        type: ADD_POST_TO_TIMELINE,
     });
 };
 
