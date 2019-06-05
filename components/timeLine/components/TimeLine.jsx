@@ -181,7 +181,7 @@ class TimeLine extends React.Component {
 
                         <Divider />
 
-                        <section style={{ background: 'white' }}>
+                        <section className="TimeLine_posts">
                             {/* timeline posts */}
                             <TimeLinePosts
                                 timelineData={timelineData}

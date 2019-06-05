@@ -58,6 +58,18 @@ export const SIDEBAR_MENU_ITEMS = [
     },
 ];
 
+export const LINKS = {
+    LOGIN_LINK: '/api/users/login',
+};
+
+export const IMAGE_URLS = {
+    HELPME_LOGO: '../../../static/logo.png',
+};
+
+export const IMAGE_ALT = {
+    HELPME_LOGO_DESC: 'helpme logo',
+};
+
 export const STRINGS = {
     HEADER_TITLE: 'Helpme | Connect with Friends', // title of the header
     LOGIN: 'Login',

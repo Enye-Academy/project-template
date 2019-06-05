@@ -1,19 +1,20 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
-import Head from 'next/head';
 import {
-    Layout, Menu, Button, Input
+    Button, Input, Layout, Menu
 } from 'antd';
+import Head from 'next/head';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import {
-    MENU_ITEMS, STRINGS
+    IMAGE_ALT, IMAGE_URLS, LINKS, MENU_ITEMS, STRINGS
 } from '../constants';
 
-const { HEADER_TITLE, LOGIN, LOGOUT } = STRINGS;
-
 const { Header } = Layout;
+const { HEADER_TITLE, LOGIN, LOGOUT } = STRINGS;
+const { HELPME_LOGO } = IMAGE_URLS;
+const { HELPME_LOGO_DESC } = IMAGE_ALT;
+const { LOGIN_LINK } = LINKS;
 const { Search } = Input;
 
 /**
@@ -23,7 +24,7 @@ const { Search } = Input;
  * @return {Object} head metadata which is inserted in every page
  */
 function NavHeader(props) {
-    const { title, handleSearch, searchValue } = props;
+    const { handleSearch, searchValue, title } = props;
     let isAuthenticated;
     // fake Authentication for development
     if (global.location !== undefined && global.location.pathname === '/') {
@@ -36,28 +37,19 @@ function NavHeader(props) {
         <>
             {/* head parametes */}
             <Head>
-                <meta charSet="UTF-8" />
-                <meta name="viewport" content="width=device-width initial-scale=1.0" />
-                <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-                <link rel="shortcut icon" href="../../static/favicon.ico" type="image/x-icon" />
-                <link rel="icon" href="../../static/favicon.ico" type="image/x-icon" />
-                <link
-                    rel="stylesheet"
-                    href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-                />
                 <title>{!title ? HEADER_TITLE : title}</title>
             </Head>
             {/* navheader for mobile */}
             <Header theme="light" className="layout_header-mobile">
-                <Link href="/api/users/login">
+                <Link href={LOGIN_LINK}>
                     <a>
-                        <img src="../../../static/logo.png" alt="helpme logo" className="logo" />
+                        <img src={HELPME_LOGO} alt={HELPME_LOGO_DESC} className="logo" />
                     </a>
                 </Link>
                 {/* hide when authenticated */}
                 {isAuthenticated ? null : (
                     <Button className="LandingPage_login_button" type="primary">
-                        <Link href="/api/users/login">
+                        <Link href={LOGIN_LINK}>
                             <a>{LOGIN}</a>
                         </Link>
                     </Button>
@@ -67,7 +59,7 @@ function NavHeader(props) {
             <Header theme="light" className="layout_header-desktop">
                 <Link href="/">
                     <a>
-                        <img src="../../../static/logo.png" alt="helpme logo" className="logo" />
+                        <img src={HELPME_LOGO} alt={HELPME_LOGO_DESC} className="logo" />
                     </a>
                 </Link>
                 {isAuthenticated ? (
@@ -107,7 +99,7 @@ function NavHeader(props) {
                     </>
                 ) : (
                     <Button className="LandingPage_login_button" type="primary">
-                        <Link href="/api/users/login">
+                        <Link href={LOGIN_LINK}>
                             <a>{LOGIN}</a>
                         </Link>
                     </Button>
@@ -126,5 +118,5 @@ NavHeader.propTypes = {
 NavHeader.defaultProps = {
     handleSearch: null,
     searchValue: '',
-    title: 'welcome to Helpme',
+    title: 'Welcome to Helpme',
 };

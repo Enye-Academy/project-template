@@ -85,7 +85,8 @@
     "react/jsx-tag-spacing": "error",
     "react/jsx-no-literals": "error",
     "react/jsx-wrap-multilines": "error",
-    "react/jsx-no-comment-textnodes": "error"
+    "react/jsx-no-comment-textnodes": "error",
+    "jsx-a11y/anchor-is-valid": 0
   },
   "settings": {
     "react": {

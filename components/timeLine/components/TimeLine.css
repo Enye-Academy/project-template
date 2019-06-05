@@ -183,7 +183,7 @@
   display: block
 }
 
-.skeleton-section {
+.skeleton-section, .TimeLine_posts {
   padding: 1em;
   background-color: #ffffff;
 }
