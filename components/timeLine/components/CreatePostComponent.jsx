@@ -29,7 +29,7 @@ const CreatePostInput = props => {
             autosize={{ minRows: rowHeight }}
             autoFocus
             onChange={handleOnChange}
-            value={textValue}
+            // value={textValue}
         />
     );
 };
@@ -89,7 +89,7 @@ const CreatePostComponent = props => {
                 InputPlaceholder={InputPlaceholder}
                 rowHeight={rowHeight}
                 handleOnChange={handleOnChange}
-                textValue={textValue}
+                // textValue={textValue}
             />
             <div className="comment-post-button">
                 <CreatePostButtons handleOkFunction={handleOkFunction} />
@@ -116,5 +116,4 @@ CreatePostComponent.propTypes = {
     handleOnChange: PropTypes.func.isRequired,
     rowHeight: PropTypes.number.isRequired,
     textValue: PropTypes.string.isRequired,
-
 };

@@ -2,9 +2,8 @@
 import actionTypes from './actionTypes';
 
 const {
-    TOGGLE_MODAL, FETCH_PROFILE_REQUEST,
-    FETCH_PROFILE_DATA_FAILURE,
-    FETCH_PROFILE_DATA_SUCCESS, UPDATE_STATUS, ADD_POST_TO_TIMELINE,
+    TOGGLE_MODAL, FETCH_PROFILE_REQUEST, FETCH_PROFILE_DATA_FAILURE, FETCH_PROFILE_DATA_SUCCESS, 
+    UPDATE_STATUS, ADD_POST_TO_TIMELINE, TOGGLE_POST_LIKE,TOGGLE_POST_FAV,TOGGLE_COMMENT_BUTTON
 } = actionTypes;
 
 export const controlModal = () => ({ type: TOGGLE_MODAL });
@@ -41,21 +40,31 @@ export const fetchProfileData = () => dispatch => {
 
 export const handlePostUpdate = data => {
     const {
-        id, first_name, last_name, email, post, avatar,
+         id, firstName, lastName, email, post, avatar,liked, favourited, favouriteCount, comment,
+         likes
     } = data;
     return ({
         payload: {
-            avatar,
-            email,
-            first_name,
-            id,
-            last_name,
-            post,
+            avatar, email, firstName, id, lastName, post, liked, favourited, favouriteCount, 
+            comment, likes
         },
         type: ADD_POST_TO_TIMELINE,
     });
 };
 
-// export const handleLikeButton = id => {
+export const likeButtonClicked = id => ({
+    payload: id,
+    type: TOGGLE_POST_LIKE,
+});
 
-// };
+export const favButtonClicked = id => ({
+    payload: id,
+    type: TOGGLE_POST_FAV,
+});
+
+export const commentButtonClicked = id => ({
+    payload: id,
+    type: TOGGLE_COMMENT_BUTTON,
+});
+
+

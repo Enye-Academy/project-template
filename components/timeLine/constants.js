@@ -64,8 +64,8 @@ export const STRINGS = {
     FOLLOWERS: 'followers',
     FOLLOWING: 'following',
     ONLINE_FRIENDS: 'Online Friends',
-	POPULAR_TOPIC_TEXT: 'Popular Topic',
-	POST : 'post',
+    POPULAR_TOPIC_TEXT: 'Popular Topic',
+    POST: 'post',
     TIMELINE_TITLE: 'Timeline | Find friends',
     TOGGLE_MODAL: 'TOGGLE_MODAL',
     USERS_BIO: `Lorem ipsum dolor sit amet consectetur adipisicing elit.

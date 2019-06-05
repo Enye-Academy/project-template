@@ -124,8 +124,19 @@
   margin-right: 8px
 }
 
-.liked {
-  color: #1890ff
+.liked, .favourited {
+  margin-right: 8px;
+  transform: scale(1.05);
+}
+.liked{
+  color: #1890ff;
+}
+.favourited{
+  color:#FFD700
+}
+
+.mr-8{
+  margin-right: 8px
 }
 
 .post-reaction>*:active {
