@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 
 import './TimeLine.css';
-import { POST } from '../constant';
+import { POST } from '../constants';
 
 const { TextArea } = Input;
 

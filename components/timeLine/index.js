@@ -1,4 +1,5 @@
-/* eslint-disable import/prefer-default-export */
+import { reducers } from './reducers';
 import * as components from './components';
+import * as actions from './actions';
 
-export { components };
+export { actions, components, reducers };

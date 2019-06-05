@@ -13,7 +13,7 @@ import data from '../../../static/data/timelineData.json';
 
 import {
     CREATEPOST_PLACEHOLDER, TIMELINE_TITLE
-} from '../constant';
+} from '../constants';
 import TimeLineProfileInfo from './TimeLineProfileInfo';
 import TimeLinePopularTopic from './TimeLinePopularTopic';
 import TimeLineOnlineFriends from './TimeLineOnlineFriends';

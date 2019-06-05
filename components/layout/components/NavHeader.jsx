@@ -49,7 +49,7 @@ function NavHeader(props) {
             </Head>
             {/* navheader for mobile */}
             <Header theme="light" className="layout_header-mobile">
-                <Link href="http://localhost:3000/api/users/login">
+                <Link href="/api/users/login">
                     <a>
                         <img src="../../../static/logo.png" alt="helpme logo" className="logo" />
                     </a>
@@ -57,7 +57,7 @@ function NavHeader(props) {
                 {/* hide when authenticated */}
                 {isAuthenticated ? null : (
                     <Button className="LandingPage_login_button" type="primary">
-                        <Link href="http://localhost:3000/api/users/login">
+                        <Link href="/api/users/login">
                             <a>{LOGIN}</a>
                         </Link>
                     </Button>
@@ -107,7 +107,7 @@ function NavHeader(props) {
                     </>
                 ) : (
                     <Button className="LandingPage_login_button" type="primary">
-                        <Link href="/http://localhost:3000/api/users/login">
+                        <Link href="/api/users/login">
                             <a>{LOGIN}</a>
                         </Link>
                     </Button>

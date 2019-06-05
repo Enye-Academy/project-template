@@ -11,7 +11,7 @@ const {
 const strategy = new Auth0Strategy(
 
     {
-        callbackURL: AUTH0_CALLBACK_URL || 'http://localhost:3000/api/users/callback',
+        callbackURL: AUTH0_CALLBACK_URL || '/timeline',
         clientID: AUTH0_CLIENT_ID,
         clientSecret: AUTH0_CLIENT_SECRET,
         domain: AUTH0_DOMAIN,

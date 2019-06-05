@@ -9,7 +9,7 @@ import { CreatePostComponent } from './CreatePostComponent';
 import './TimeLine.css';
 import {
     LOADING_SKELETON, COMMENT_PLACEHOLDER
-} from '../constant';
+} from '../constants';
 
 const IconText = ({ type, text, action }) => (
     <span>

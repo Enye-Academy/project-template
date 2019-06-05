@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { POPULAR_TOPIC, POPULAR_TOPIC_TEXT } from '../constant';
+import { POPULAR_TOPIC, POPULAR_TOPIC_TEXT } from '../constants';
 import './TimeLine.css';
 
 const TimeLinePopularTopic = () => (

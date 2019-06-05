@@ -36,7 +36,7 @@ const {
 
 const LANDING_PAGE_CONTENTS = [
     {
-        buttonLink: 'http://localhost:3000/api/users/login',
+        buttonLink: '/api/users/login',
         buttonText: LANDING_PAGE_MAIN_CONTENT_BUTTON_TEXT,
         columnSection: false,
         imageLink: '../../../static/connected.svg',
@@ -84,7 +84,7 @@ const LANDING_PAGE_CONTENTS = [
         title: LANDING_PAGE_LEVEL_4_CONTENT_TITLE,
     },
     {
-        buttonLink: 'http://localhost:3000/api/users/login',
+        buttonLink: '/api/users/login',
         buttonText: LANDING_PAGE_LEVEL_5_BUTTON_TEXT,
         columnSection: false,
         imageLink: '../../../static/hangout.svg',

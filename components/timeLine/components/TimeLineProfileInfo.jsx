@@ -3,7 +3,7 @@ import { Divider } from 'antd';
 
 import {
     USERS_BIO, USER_PROFILE, FOLLOWING, FOLLOWERS
-} from '../constant';
+} from '../constants';
 import './TimeLine.css';
 
 const TimeLineProfileInfo = () => {

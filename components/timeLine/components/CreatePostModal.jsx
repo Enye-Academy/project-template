@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal } from 'antd';
 import PropTypes from 'prop-types';
 import { CreatePostComponent } from './CreatePostComponent';
-import { CREATEPOST_PLACEHOLDER } from '../constant';
+import { CREATEPOST_PLACEHOLDER } from '../constants';
 
 const CreatePostModal = props => {
     const {
