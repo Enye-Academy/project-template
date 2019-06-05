@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import NavHeader from './NavHeader';
 import PageFooter from './PageFooter';
-import Sidebar from './Sidebar';
 import PageLayout from './PageLayout';
+import Sidebar from './Sidebar';
 
 describe('PageLayout , NavHeader, PageFooter,Sidebar and PageLayout', () => {
     it('NavHeader should render without crashing', () => {

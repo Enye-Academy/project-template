@@ -68,7 +68,7 @@ function NavHeader(props) {
                         <Search
                             placeholder="input search text"
                             onSearch={handleSearch}
-                            style={{ width: 200 }}
+                            className="search"
                             value={searchValue}
                         />
                         {/* navbar for authenticated desktop */}

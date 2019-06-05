@@ -1,19 +1,21 @@
-import React from 'react';
 import { Divider } from 'antd';
+import React from 'react';
 
-import {
-    USERS_BIO, USER_PROFILE, FOLLOWING, FOLLOWERS
-} from '../constants';
+import { STRINGS, USER_PROFILE } from '../constants';
 import './TimeLine.css';
 
+const { FOLLOWERS, FOLLOWING, USERS_BIO } = STRINGS;
+
 const TimeLineProfileInfo = () => {
-    const { followers, following, name } = USER_PROFILE;
+    const {
+        followers, following, name, image,
+    } = USER_PROFILE;
 
     return (
         <aside className="TimeLine_profile-info">
             <img
-                src="https://robohash.org/temporeinventorererum.bmp?size=50x50&set=set1"
-                alt="profile info of user"
+                src={image}
+                alt="name"
                 className="user-avatar"
             />
             {/* followers stat */}

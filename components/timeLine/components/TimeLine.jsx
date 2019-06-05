@@ -1,8 +1,5 @@
-/* eslint-disable no-tabs */
+import { Divider, Icon } from 'antd';
 import React from 'react';
-import {
-    Icon, Divider
-} from 'antd';
 
 import { components } from '../../layout';
 import CreatePostModal from './CreatePostModal';
@@ -10,15 +7,13 @@ import { CreatePostComponent } from './CreatePostComponent';
 // dummy data to be replaced with api data, commented so that test
 // can pass, will be removed when api is ready
 import data from '../../../static/data/timelineData.json';
-
-import {
-    CREATEPOST_PLACEHOLDER, TIMELINE_TITLE
-} from '../constants';
-import TimeLineProfileInfo from './TimeLineProfileInfo';
-import TimeLinePopularTopic from './TimeLinePopularTopic';
+import { STRINGS } from '../constants';
 import TimeLineOnlineFriends from './TimeLineOnlineFriends';
+import TimeLinePopularTopic from './TimeLinePopularTopic';
 import TimeLinePosts from './TimeLinePosts';
+import TimeLineProfileInfo from './TimeLineProfileInfo';
 
+const { CREATE_POST_PLACEHOLDER, TIMELINE_TITLE } = STRINGS;
 const { PageLayout } = components;
 
 /** Helper function that is used to render the TimeLine Component
@@ -172,7 +167,7 @@ class TimeLine extends React.Component {
                         {/* create post component */}
                         <section className="TimeLine-post-component">
                             <CreatePostComponent
-                                InputPlaceholder={CREATEPOST_PLACEHOLDER}
+                                InputPlaceholder={CREATE_POST_PLACEHOLDER}
                                 rowHeight={5}
                                 handleOnChange={this.handleStatusValue}
                                 textValue={statusValue}

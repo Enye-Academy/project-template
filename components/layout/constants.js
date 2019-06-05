@@ -1,21 +1,5 @@
 // eslint-disable-next-line import/prefer-default-export
 
-export const MENU_ITEMS = [
-    {
-        href: '/home',
-        key: 1,
-        text: 'Home',
-    }, {
-        href: '/forum',
-        key: 2,
-        text: 'Forum',
-    }, {
-        href: '/Dairy',
-        key: 3,
-        text: 'Dairy',
-    },
-];
-
 export const FOOTER_FIRST_COLUMN = [
     {
         href: '/',
@@ -39,6 +23,35 @@ export const FOOTER_SECOND_COLUMN = [
     },
 ];
 
+export const IMAGE_ALT = {
+    HELPME_LOGO_DESC: 'helpme logo',
+};
+
+export const IMAGE_URLS = {
+    HELPME_LOGO: '../../../static/logo.png',
+    HELPME_LOGO_LIGHT: '../../../static/logo-light.png',
+};
+
+export const LINKS = {
+    LOGIN_LINK: '/api/users/login',
+};
+
+export const MENU_ITEMS = [
+    {
+        href: '/home',
+        key: 1,
+        text: 'Home',
+    }, {
+        href: '/forum',
+        key: 2,
+        text: 'Forum',
+    }, {
+        href: '/Dairy',
+        key: 3,
+        text: 'Dairy',
+    },
+];
+
 export const SIDEBAR_MENU_ITEMS = [
     {
         href: '/#',
@@ -57,18 +70,6 @@ export const SIDEBAR_MENU_ITEMS = [
         type: 'upload',
     },
 ];
-
-export const LINKS = {
-    LOGIN_LINK: '/api/users/login',
-};
-
-export const IMAGE_URLS = {
-    HELPME_LOGO: '../../../static/logo.png',
-};
-
-export const IMAGE_ALT = {
-    HELPME_LOGO_DESC: 'helpme logo',
-};
 
 export const STRINGS = {
     HEADER_TITLE: 'Helpme | Connect with Friends', // title of the header

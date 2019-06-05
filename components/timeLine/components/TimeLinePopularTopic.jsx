@@ -1,7 +1,9 @@
-import React from 'react';
 import Link from 'next/link';
-import { POPULAR_TOPIC, POPULAR_TOPIC_TEXT } from '../constants';
-import './TimeLine.css';
+import React from 'react';
+
+import { POPULAR_TOPIC, STRINGS } from '../constants';
+
+const { POPULAR_TOPIC_TEXT } = STRINGS;
 
 const TimeLinePopularTopic = () => (
     <aside className="TimeLine_popular-topic">

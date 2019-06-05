@@ -1,15 +1,15 @@
 /* eslint-disable react/jsx-no-literals */
-import React from 'react';
 import {
-    Icon, Skeleton, List, Avatar
+    Avatar, Icon, List, Skeleton
 } from 'antd';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import { CreatePostComponent } from './CreatePostComponent';
+import { LOADING_SKELETON, STRINGS } from '../constants';
 import './TimeLine.css';
-import {
-    LOADING_SKELETON, COMMENT_PLACEHOLDER
-} from '../constants';
+
+const { COMMENT_PLACEHOLDER } = STRINGS;
 
 const IconText = ({ type, text, action }) => (
     <span>
@@ -32,17 +32,8 @@ const TimeLinePosts = props => {
                 size="large"
                 renderItem={user => {
                     const {
-                        id,
-                        firstName,
-                        lastName,
-                        post,
-                        avatar,
-                        image,
-                        textValue,
-                        handleOnChange,
-                        comment,
-                        likes,
-                        favs,
+                        id, firstName, lastName, post, avatar, image, textValue, handleOnChange,
+                        comment, likes, favs,
                     } = user;
 
                     return (
@@ -81,7 +72,7 @@ const TimeLinePosts = props => {
                                 />
                             ) : null
                             }
-                            {post}
+                            {post.substring(0, 300)}
                             {/* post comment component */}
                             <div className={activeComment === id ? 'show' : 'hide'}>
                                 <CreatePostComponent
@@ -100,12 +91,7 @@ const TimeLinePosts = props => {
             : LOADING_SKELETON.map(items => {
                 // data loading simulation
                 const {
-                    paragraph,
-                    title,
-                    loading,
-                    active,
-                    avatar,
-                    id,
+                    paragraph, title, loading, active, avatar, id,
                 } = items;
                 return (
                     <Skeleton
@@ -145,5 +131,4 @@ TimeLinePosts.propTypes = {
         likes: PropTypes.number.isRequired,
         post: PropTypes.string.isRequired,
     })).isRequired,
-
 };

@@ -1,15 +1,16 @@
 /* eslint-disable react/require-default-props */
-import React from 'react';
 import { Layout } from 'antd';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import NavHeader from './NavHeader';
-import Sidebar from './Sidebar';
 import PageFooter from './PageFooter';
+import Sidebar from './Sidebar';
 import { STRINGS } from '../constants';
 
-const { HEADER_TITLE } = STRINGS;
 const { Content } = Layout;
+const { HEADER_TITLE } = STRINGS;
+
 /**
  * Function for displaying the landing page
  * @function

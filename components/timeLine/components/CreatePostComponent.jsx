@@ -1,12 +1,12 @@
-import React from 'react';
 import {
-    Icon, Button, Upload, Input
+    Button, Icon, Input, Upload
 } from 'antd';
 import PropTypes from 'prop-types';
+import React from 'react';
 
-import './TimeLine.css';
-import { POST } from '../constants';
+import { STRINGS } from '../constants';
 
+const { POST } = STRINGS;
 const { TextArea } = Input;
 
 /**

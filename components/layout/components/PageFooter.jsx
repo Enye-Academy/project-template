@@ -1,12 +1,15 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
-import Link from 'next/link';
 import { Layout } from 'antd';
+import Link from 'next/link';
+import React from 'react';
 
-import { FOOTER_FIRST_COLUMN, FOOTER_SECOND_COLUMN } from '../constants';
+import {
+    FOOTER_FIRST_COLUMN, FOOTER_SECOND_COLUMN, IMAGE_ALT, IMAGE_URLS
+} from '../constants';
 import FooterListCreator from './FooterListCreator';
 
 const { Content, Footer } = Layout;
+const { HELPME_LOGO_DESC } = IMAGE_ALT;
+const { HELPME_LOGO_LIGHT } = IMAGE_URLS;
 
 /**
  * footer function that is infused into all pages
@@ -21,8 +24,8 @@ export default function PageFooter() {
                     <Link href="/">
                         <a>
                             <img
-                                src="../../../static/logo-light.png"
-                                alt="helpme logo"
+                                src={HELPME_LOGO_LIGHT}
+                                alt={HELPME_LOGO_DESC}
                                 className="logo"
                             />
                         </a>

@@ -1,8 +1,11 @@
-import React from 'react';
 import { Modal } from 'antd';
 import PropTypes from 'prop-types';
+import React from 'react';
+
 import { CreatePostComponent } from './CreatePostComponent';
-import { CREATEPOST_PLACEHOLDER } from '../constants';
+import { STRINGS } from '../constants';
+
+const { CREATE_POST_PLACEHOLDER } = STRINGS;
 
 const CreatePostModal = props => {
     const {
@@ -20,7 +23,7 @@ const CreatePostModal = props => {
             <CreatePostComponent
                 handleOkFunction={handleOkFunction}
                 rowHeight={5}
-                InputPlaceholder={CREATEPOST_PLACEHOLDER}
+                InputPlaceholder={CREATE_POST_PLACEHOLDER}
                 textValue={textValue}
                 handleOnChange={handleOnChange}
             />

@@ -1,12 +1,12 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
-import { Layout, Menu, Icon } from 'antd';
+import { Icon, Layout, Menu } from 'antd';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import { SIDEBAR_MENU_ITEMS } from '../constants';
 
 const { Sider } = Layout;
+
 /**
  * Function that controls the sidebar which displays on mobile
  * @function
