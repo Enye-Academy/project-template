@@ -1,5 +1,5 @@
-import React from 'react';
 import { Divider } from 'antd';
+import React from 'react';
 
 import {
     USER_PROFILE, STRINGS
@@ -8,13 +8,15 @@ import {
 const { FOLLOWING, FOLLOWERS, USERS_BIO } = STRINGS;
 
 const TimeLineProfileInfo = () => {
-    const { followers, following, name } = USER_PROFILE;
+    const {
+        followers, following, name, image,
+    } = USER_PROFILE;
 
     return (
         <aside className="TimeLine_profile-info">
             <img
-                src="https://robohash.org/temporeinventorererum.bmp?size=50x50&set=set1"
-                alt="profile info of user"
+                src={image}
+                alt="name"
                 className="user-avatar"
             />
             {/* followers stat */}

@@ -1,11 +1,12 @@
 import React from 'react';
 
-import LandingPageContent from './LandingPageContent';
 import { components } from '../../layout';
+import LandingPageContent from './LandingPageContent';
 import { LANDING_PAGE_CONTENTS, STRING } from '../constants';
 
-const { PAGE_TITLE } = STRING;
 const { PageLayout } = components;
+const { PAGE_TITLE } = STRING;
+
 /**
  * Function for displaying the landing page
  *

@@ -3,7 +3,6 @@ import React from 'react';
 // dummy data to be replaced with api data, commented so that test can
 // pass, will be removed when api is ready
 import profile from '../../../static/data/profiles.json';
-import './TimeLine.css';
 import { STRINGS } from '../constants';
 
 const { ONLINE_FRIENDS } = STRINGS;
@@ -20,7 +19,7 @@ const TimeLineOnlineFriends = () => (
                     <li key={email}>
                         <img
                             src={photo}
-                            alt="user's face"
+                            alt={name}
                             className="user-avatar avartar-online"
                         />
                         {name}

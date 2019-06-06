@@ -1,6 +1,7 @@
-import React from 'react';
 import { Modal } from 'antd';
 import PropTypes from 'prop-types';
+import React from 'react';
+
 import { CreatePostComponent } from './CreatePostComponent';
 import { STRINGS } from '../constants';
 

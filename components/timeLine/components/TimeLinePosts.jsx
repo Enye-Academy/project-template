@@ -1,13 +1,16 @@
 /* eslint-disable react/jsx-no-literals */
-import React from 'react';
 import {
-    Icon, Divider, Skeleton, List, Typography, Avatar
+    Avatar, Icon, List, Skeleton
 } from 'antd';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import { CreatePostComponent } from './CreatePostComponent';
 import { LOADING_SKELETON, STRINGS } from '../constants';
+import './TimeLine.css';
 
 const { COMMENT_PLACEHOLDER } = STRINGS;
+
 const IconText = ({
     type, text, action, className,
 }) => (
@@ -25,7 +28,6 @@ const IconText = ({
 const TimeLinePosts = props => {
     const {
         profileData,
-        activeComment,
         handleComment,
         handleOk,
         handleLikeButton,
@@ -42,13 +44,11 @@ const TimeLinePosts = props => {
                     id,
                     firstName,
                     lastName,
-                    email,
                     post,
                     avatar,
                     image,
                     liked,
                     favourited,
-                    likeCount,
                     textValue,
                     handleOnChange,
                     likes,
@@ -59,9 +59,27 @@ const TimeLinePosts = props => {
                     <List.Item
                         key={id}
                         actions={[
-                            <IconText type="star-o" className={favourited ? 'favourited' : 'mr-8'} text={favouriteCount} action={() => handleFavButton(id)} key={1} />,
-                            <IconText type="like-o" className={liked ? 'liked' : 'mr-8'} text={likes} action={() => handleLikeButton(id)} key={2} />,
-                            <IconText type="message" className="mr-8" text={comment} action={() => handleComment(id)} key={3} />,
+                            <IconText
+                                type="star-o"
+                                className={favourited ? 'favourited' : 'mr-8'}
+                                text={favouriteCount}
+                                action={() => handleFavButton(id)}
+                                key={1}
+                            />,
+                            <IconText
+                                type="like-o"
+                                className={liked ? 'liked' : 'mr-8'}
+                                text={likes}
+                                action={() => handleLikeButton(id)}
+                                key={2}
+                            />,
+                            <IconText
+                                type="message"
+                                className="mr-8"
+                                text={comment}
+                                action={() => handleComment(id)}
+                                key={3}
+                            />,
                         ]}
                     >
                         <List.Item.Meta
@@ -77,10 +95,9 @@ const TimeLinePosts = props => {
                                     alt={image ? `${firstName} image` : null}
                                     src={image}
                                 />
-                            ) : null
+                            ) : <div />
                         }
-                        {post}
-
+                        {post.substr(0, 150)}
                         {/* post comment component */}
 
                         <div className={profileData[id - 1].isCommentOpen ? 'show' : 'hide'}>
@@ -124,3 +141,27 @@ const TimeLinePosts = props => {
 };
 
 export default TimeLinePosts;
+
+IconText.propTypes = {
+    action: PropTypes.func.isRequired,
+    className: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+};
+
+TimeLinePosts.propTypes = {
+    handleComment: PropTypes.func.isRequired,
+    handleFavButton: PropTypes.func.isRequired,
+    handleLikeButton: PropTypes.func.isRequired,
+    handleOk: PropTypes.func.isRequired,
+    profileData: PropTypes.arrayOf(PropTypes.shape({
+        avatar: PropTypes.string.isRequired,
+        comment: PropTypes.string.isRequired,
+        favs: PropTypes.number.isRequired,
+        firstName: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        lastName: PropTypes.string.isRequired,
+        likes: PropTypes.number.isRequired,
+        post: PropTypes.string.isRequired,
+    })).isRequired,
+};

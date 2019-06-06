@@ -1,24 +1,23 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
 import { Button, Typography } from 'antd';
-import PropTypes from 'prop-types';
 import Link from 'next/link';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-const { Title, Paragraph } = Typography;
+const { Paragraph, Title } = Typography;
 
 /**
  * Function used to generate section layout content for landing page
  * @function
- * @param {Number} level - The Number from 1-5 representing the header level h1-h5
- * @param {String} title- The Title of that Section
- *@param {String} paragraphText- The Text of that section
- * @param {Boolean} isButtonPresent- If true, a button is shown on that section
- * @param {String} buttonText- the text on the button
  * @param {String} buttonLink- the link that the button leads to
- * @param {String} imageLink- the link to an image in the section
- * @param {Boolean} reverseSection - if true, the image and section position is swapped
- * @param {Boolean} isImagePresent - if true, the image is shown
+ * @param {String} buttonText- the text on the button
  * @param {Boolean} columnSection - if true, the section will be stacked
+ * @param {Boolean} isButtonPresent- If true, a button is shown on that section
+ * @param {Boolean} isImagePresent - if true, the image is shown
+ * @param {String} imageLink- the link to an image in the section
+ * @param {Number} level - The Number from 1-5 representing the header level h1-h5
+ *@param {String} paragraphText- The Text of that section
+ * @param {Boolean} reverseSection - if true, the image and section position is swapped
+ * @param {String} title- The Title of that Section
  * @return {Object} The landing page content component which is used to populate the landing page
  */
 

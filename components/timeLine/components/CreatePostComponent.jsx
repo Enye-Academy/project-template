@@ -1,14 +1,14 @@
-import React from 'react';
 import {
-    Icon, Button, Upload, Input
+    Button, Icon, Input, Upload
 } from 'antd';
 import PropTypes from 'prop-types';
+import React from 'react';
 
-import './TimeLine.css';
 import { STRINGS } from '../constants';
 
-const { TextArea } = Input;
 const { POST } = STRINGS;
+const { TextArea } = Input;
+
 /**
  * Helper function that is used for creating the input part of the post *component
  * @function
@@ -19,7 +19,7 @@ const { POST } = STRINGS;
  */
 const CreatePostInput = props => {
     const {
-        InputPlaceholder, rowHeight, handleOnChange, textValue,
+        InputPlaceholder, rowHeight, handleOnChange,
     } = props;
     return (
         <TextArea
@@ -29,7 +29,6 @@ const CreatePostInput = props => {
             autosize={{ minRows: rowHeight }}
             autoFocus
             onChange={handleOnChange}
-            // value={textValue}
         />
     );
 };
@@ -80,7 +79,6 @@ const CreatePostComponent = props => {
         rowHeight,
         handleOkFunction,
         handleOnChange,
-        textValue,
     } = props;
 
     return (
@@ -89,7 +87,6 @@ const CreatePostComponent = props => {
                 InputPlaceholder={InputPlaceholder}
                 rowHeight={rowHeight}
                 handleOnChange={handleOnChange}
-                // textValue={textValue}
             />
             <div className="comment-post-button">
                 <CreatePostButtons handleOkFunction={handleOkFunction} />
@@ -104,7 +101,6 @@ CreatePostInput.propTypes = {
     InputPlaceholder: PropTypes.string.isRequired,
     handleOnChange: PropTypes.func.isRequired,
     rowHeight: PropTypes.number.isRequired,
-    textValue: PropTypes.string.isRequired,
 };
 
 CreatePostButtons.propTypes = {
@@ -115,5 +111,4 @@ CreatePostComponent.propTypes = {
     handleOkFunction: PropTypes.func.isRequired,
     handleOnChange: PropTypes.func.isRequired,
     rowHeight: PropTypes.number.isRequired,
-    textValue: PropTypes.string.isRequired,
 };

@@ -1,7 +1,6 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 const FooterListCreator = props => {
     const { list } = props;

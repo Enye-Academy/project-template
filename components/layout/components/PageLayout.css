@@ -25,6 +25,10 @@
     margin-top: 64px;
 }
 
+.search{
+    width: 200px
+}
+
 .ant-layout {
     background: #ffffff;
 }

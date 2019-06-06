@@ -1,21 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
-
-export const MENU_ITEMS = [
-    {
-        href: '/home',
-        key: 1,
-        text: 'Home',
-    }, {
-        href: '/forum',
-        key: 2,
-        text: 'Forum',
-    }, {
-        href: '/Dairy',
-        key: 3,
-        text: 'Dairy',
-    },
-];
-
 export const FOOTER_FIRST_COLUMN = [
     {
         href: '/',
@@ -36,6 +18,35 @@ export const FOOTER_SECOND_COLUMN = [
     }, {
         href: '/terms',
         text: 'Terms Of Service',
+    },
+];
+
+export const IMAGE_ALT = {
+    HELPME_LOGO_DESC: 'helpme logo',
+};
+
+export const IMAGE_URLS = {
+    HELPME_LOGO: '../../../static/logo.png',
+    HELPME_LOGO_LIGHT: '../../../static/logo-light.png',
+};
+
+export const LINKS = {
+    LOGIN_LINK: '/api/users/login',
+};
+
+export const MENU_ITEMS = [
+    {
+        href: '/home',
+        key: 1,
+        text: 'Home',
+    }, {
+        href: '/forum',
+        key: 2,
+        text: 'Forum',
+    }, {
+        href: '/Dairy',
+        key: 3,
+        text: 'Dairy',
     },
 ];
 

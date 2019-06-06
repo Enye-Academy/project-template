@@ -1,7 +1,7 @@
-import React from 'react';
 import Link from 'next/link';
+import React from 'react';
+
 import { POPULAR_TOPIC, STRINGS } from '../constants';
-import './TimeLine.css';
 
 const { POPULAR_TOPIC_TEXT } = STRINGS;
 
@@ -15,7 +15,6 @@ const TimeLinePopularTopic = () => (
                     return (
                         <li key={text}>
                             <Link href={link}>
-                                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                                 <a>{text}</a>
                             </Link>
                         </li>
