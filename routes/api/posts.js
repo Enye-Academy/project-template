@@ -74,7 +74,7 @@ router.post('/', secured(), async (req, res) => {
         // Check Validation
         if (!isValid) {
             // Return any errors with 400(Bad Request) status if not valid
-            return res.status(BAD_REQUEST).json(errors);
+            return res.status(BAD_REQUEST).json({errors});
         }
 
         const newPost = new Post({
@@ -142,7 +142,7 @@ router.post('/like/:id', secured(), async (req, res) => {
 
         // Check if user already like the post
         if (postFound.likes.filter(like => like.user.toString() === req.user.id).length > 0) {
-            return res.status(BAD_REQUEST).json({ alreadyliked: 'User already liked this post' });
+            return res.status(BAD_REQUEST).json({ message: 'User already liked this post' });
         }
 
         // Add user id to likes array
@@ -174,7 +174,7 @@ router.post('/unlike/:id', secured(), async (req, res) => {
 
         // Check if user have not yet like the post
         if (postFound.likes.filter(like => like.user.toString() === req.user.id).length === 0) {
-            return res.status(BAD_REQUEST).json({ notliked: 'You need to like this post first!' });
+            return res.status(BAD_REQUEST).json({ message: 'You need to like this post first!' });
         }
 
         // Get Index to be removed
@@ -210,7 +210,7 @@ router.post('/comment/:id', secured(), async (req, res) => {
         // Check Validation
         if (!isValid) {
             // Return any errors with 400 status if not valid
-            return res.status(BAD_REQUEST).json(errors);
+            return res.status(BAD_REQUEST).json({errors});
         }
 
         // Find a particular post and add comments to it
@@ -253,7 +253,7 @@ router.delete('/comment/:id/:comment_id', secured(), async (req, res) => {
             postFound.comments.filter(comment => comment.id.toString() === req.params.comment_id)
                 .length === 0
         ) {
-            return res.status(BAD_REQUEST).json({ commentnotexists: 'Comment does not exist' });
+            return res.status(BAD_REQUEST).json({ message: 'Comment does not exist' });
         }
 
         // Get Index to be removed
