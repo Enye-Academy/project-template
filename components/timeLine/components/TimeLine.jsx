@@ -6,18 +6,30 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import {
-    commentButtonClicked, controlModal, favButtonClicked, fetchProfileData, handlePostUpdate,
+    commentButtonClicked, favButtonClicked, fetchProfileData, handlePostUpdate,
     likeButtonClicked, setPostUpdateField
 } from '../actions';
 import { components } from '../../layout';
 import { CreatePostComponent } from './CreatePostComponent';
 import CreatePostModal from './CreatePostModal';
-import { getIsOpen, getStatusValue, getTimelineData } from '../selectors';
+import { getStatusValue, getTimelineData } from '../selectors';
 import TimeLinePosts from './TimeLinePosts';
-import { STRINGS, data } from '../constants';
+import { STRINGS } from '../constants';
 
 const { CREATE_POST_PLACEHOLDER, TIMELINE_TITLE } = STRINGS;
 const { PageLayout } = components;
+export const data = (id, post) => ({
+    comment: 0,
+    email: 'jotuya2@gmail.com',
+    favouriteCount: 0,
+    favourited: false,
+    firstName: 'Justice',
+    id,
+    lastName: 'Otuya',
+    liked: false,
+    likes: 0,
+    post,
+});
 
 /** Helper function that is used to render the TimeLine Component
  * @class TimeLine
@@ -25,10 +37,14 @@ const { PageLayout } = components;
  * @return {Object} returns the TimeLine component
  */
 class TimeLine extends React.Component {
-    componentDidMount() {
-        const { fetchProfileData } = this.props;
-        fetchProfileData();
-    }
+state ={
+    isModalOpen: false,
+}
+
+componentDidMount() {
+    const { fetchProfileData } = this.props;
+    fetchProfileData();
+}
 
     /**
      * Helper function that handles the visibility of a modal
@@ -36,8 +52,10 @@ class TimeLine extends React.Component {
      * @return {Object} returns 'true' to show the modal
      */
     modalHandler = () => {
-        const { controlModal } = this.props;
-        controlModal();
+        const { isModalOpen } = this.state;
+        this.setState({
+            isModalOpen: !isModalOpen,
+        });
     };
 
     /**
@@ -48,14 +66,16 @@ class TimeLine extends React.Component {
      */
     handleCreateStatus = () => {
         const {
-            handlePostUpdate, setPostUpdateField, statusValue, timelineData, isOpen,
+            handlePostUpdate, setPostUpdateField, statusValue, timelineData,
         } = this.props;
 
+        const { isModalOpen } = this.state;
+
         // get post
-        handlePostUpdate(data(timelineData.length, statusValue));
+        handlePostUpdate(data(timelineData.length + 1, statusValue));
 
         // close modal
-        if (isOpen) this.modalHandler();
+        if (isModalOpen) this.modalHandler();
 
         // clear post component
         setPostUpdateField('');
@@ -112,8 +132,10 @@ class TimeLine extends React.Component {
 
     render() {
         const {
-            timelineData, isOpen,
+            timelineData,
         } = this.props;
+        const { isModalOpen } = this.state;
+
         return (
             <PageLayout
                 isSiderPresent={timelineData.length > 0}
@@ -130,7 +152,7 @@ class TimeLine extends React.Component {
                         </div>
 
                         <CreatePostModal
-                            visible={isOpen}
+                            visible={isModalOpen}
                             handleOkFunction={this.handleCreateStatus}
                             closeModal={this.modalHandler}
                             handleOnChange={this.handleStatusValue}
@@ -157,15 +179,7 @@ class TimeLine extends React.Component {
                                 profileData={timelineData}
                                 handleLikeButton={this.handleLikeButton}
                                 handleFavButton={this.handleFavButton}
-                                //   liked={this.handleLikeButton}
-                                //   likeCount={likeCount}
-                                //   activeComment={activeComment}
-                                // activeLikeButton={timelineData.like}
                                 handleComment={this.handleComment}
-                                // handleComment={this.handleComment}
-                            //   handleCreateStatus={this.handleCreateStatus}
-                            //   handleOnChange={this.handleCommentValue}
-                            //   textValue={commentValue}
                             />
                         </section>
                     </section>
@@ -176,14 +190,12 @@ class TimeLine extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    isOpen: getIsOpen(state),
     statusValue: getStatusValue(state),
     timelineData: getTimelineData(state),
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     commentButtonClicked,
-    controlModal,
     favButtonClicked,
     fetchProfileData,
     handlePostUpdate,
@@ -194,11 +206,9 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 export default connect(mapStateToProps, mapDispatchToProps)(TimeLine);
 TimeLine.propTypes = {
     commentButtonClicked: PropTypes.func.isRequired,
-    controlModal: PropTypes.func.isRequired,
     favButtonClicked: PropTypes.func.isRequired,
     fetchProfileData: PropTypes.func.isRequired,
     handlePostUpdate: PropTypes.func.isRequired,
-    isOpen: PropTypes.bool.isRequired,
     likeButtonClicked: PropTypes.func.isRequired,
     setPostUpdateField: PropTypes.func.isRequired,
     statusValue: PropTypes.string.isRequired,

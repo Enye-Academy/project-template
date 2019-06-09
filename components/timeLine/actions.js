@@ -1,11 +1,9 @@
 import actionTypes from './actionTypes';
 
 const {
-    TOGGLE_MODAL, FETCH_PROFILE_REQUEST, FETCH_PROFILE_DATA_FAILURE, FETCH_PROFILE_DATA_SUCCESS,
+    FETCH_PROFILE_REQUEST, FETCH_PROFILE_DATA_FAILURE, FETCH_PROFILE_DATA_SUCCESS,
     UPDATE_STATUS, ADD_POST_TO_TIMELINE, TOGGLE_POST_LIKE, TOGGLE_POST_FAV, TOGGLE_COMMENT_BUTTON,
 } = actionTypes;
-
-export const controlModal = () => ({ type: TOGGLE_MODAL });
 
 export const setPostUpdateField = text => ({ payload: text, type: UPDATE_STATUS });
 
@@ -37,28 +35,10 @@ export const fetchProfileData = () => dispatch => {
         });
 };
 
-export const handlePostUpdate = data => {
-    const {
-        id, firstName, lastName, email, post, avatar, liked, favourited, favouriteCount, comment,
-        likes,
-    } = data;
-    return ({
-        payload: {
-            avatar,
-            comment,
-            email,
-            favouriteCount,
-            favourited,
-            firstName,
-            id,
-            lastName,
-            liked,
-            likes,
-            post,
-        },
-        type: ADD_POST_TO_TIMELINE,
-    });
-};
+export const handlePostUpdate = data => ({
+    payload: data,
+    type: ADD_POST_TO_TIMELINE,
+});
 
 export const likeButtonClicked = id => ({
     payload: id,

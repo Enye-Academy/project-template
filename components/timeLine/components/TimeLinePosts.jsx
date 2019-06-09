@@ -60,14 +60,14 @@ const TimeLinePosts = props => {
                         key={id}
                         actions={[
                             <IconText
-                                type="star-o"
+                                type="star"
                                 className={favourited ? 'favourited' : 'mr-8'}
                                 text={favouriteCount}
                                 action={() => handleFavButton(id)}
                                 key={1}
                             />,
                             <IconText
-                                type="like-o"
+                                type="like"
                                 className={liked ? 'liked' : 'mr-8'}
                                 text={likes}
                                 action={() => handleLikeButton(id)}

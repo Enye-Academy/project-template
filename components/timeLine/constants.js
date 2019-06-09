@@ -1,16 +1,3 @@
-export const data = (id, post) => ({
-    comment: 0,
-    email: 'jotuya2@gmail.com',
-    favouriteCount: 0,
-    favourited: false,
-    firstName: 'Justice',
-    id,
-    lastName: 'Otuya',
-    liked: false,
-    likes: 0,
-    post,
-});
-
 export const LOADING_SKELETON = [{
     active: true,
     avatar: true,

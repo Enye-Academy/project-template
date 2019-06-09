@@ -82,7 +82,7 @@ const CreatePostComponent = props => {
     } = props;
 
     return (
-        <>
+        <form onSubmit={handleOkFunction}>
             <CreatePostInput
                 InputPlaceholder={InputPlaceholder}
                 rowHeight={rowHeight}
@@ -91,7 +91,7 @@ const CreatePostComponent = props => {
             <div className="comment-post-button">
                 <CreatePostButtons handleOkFunction={handleOkFunction} />
             </div>
-        </>
+        </form>
     );
 };
 

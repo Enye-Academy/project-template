@@ -13,7 +13,6 @@ export const reducers = (state = initialState, action) => {
         FETCH_PROFILE_REQUEST,
         FETCH_PROFILE_DATA_FAILURE,
         FETCH_PROFILE_DATA_SUCCESS,
-        TOGGLE_MODAL,
         UPDATE_STATUS,
         ADD_POST_TO_TIMELINE,
         TOGGLE_POST_LIKE,
@@ -24,8 +23,6 @@ export const reducers = (state = initialState, action) => {
         type, error, payload, timelineData,
     } = action;
 
-    const { isOpen } = state;
-
     switch (type) {
     case FETCH_PROFILE_REQUEST:
         return { ...state, isFetching: true };
@@ -35,9 +32,6 @@ export const reducers = (state = initialState, action) => {
 
     case FETCH_PROFILE_DATA_FAILURE:
         return { ...state, error, isFetching: false };
-
-    case TOGGLE_MODAL:
-        return { ...state, isOpen: !isOpen };
 
     case ADD_POST_TO_TIMELINE:
         return payload.post !== ''
@@ -52,9 +46,11 @@ export const reducers = (state = initialState, action) => {
     case TOGGLE_POST_LIKE:
         state.timelineData.map(item => {
             const { id, liked, likes } = item;
-            item.liked = id === payload ? !liked : liked;
-            item.likes = liked ? likes + 1 : likes - 1;
-            return liked;
+            if (id === payload) {
+                item.liked = !liked;
+                item.likes = liked ? likes - 1 : likes + 1;
+            }
+            return { liked, likes };
         });
         return {
             ...state,
@@ -63,10 +59,10 @@ export const reducers = (state = initialState, action) => {
 
     case TOGGLE_POST_FAV:
         state.timelineData.map(item => {
-            let { id, favourited, favouriteCount } = item;
+            const { id, favourited, favouriteCount } = item;
             if (id === payload) {
                 item.favourited = !favourited;
-                item.favouriteCount = favourited ? favouriteCount += 1 : favouriteCount -= 1;
+                item.favouriteCount = favourited ? favouriteCount - 1 : favouriteCount + 1;
             }
             return { favouriteCount, favourited };
         });
