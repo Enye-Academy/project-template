@@ -1,0 +1,283 @@
+.create-icon-container {
+  height: 50px;
+  width: 50px;
+  background-color: #1890ff;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: grid;
+  place-items: center;
+  z-index: 10
+}
+
+.create-icon {
+  color: #ffffff;
+  font-size: 1.5em;
+}
+
+.create-post-icon {
+  font-size: 32px;
+  color: #1890ff;
+  display: inline
+}
+
+.icon_text {
+  margin-right: 8px;
+}
+
+.list_style {
+  margin: 0 1em;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.compose-textarea {
+  margin: 20px 0 0 0;
+}
+
+.ant-input:hover {
+  outline: none;
+  border-color: none;
+}
+
+.post-container {
+  padding: 12px;
+  display: flex;
+  background: #ffffff;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.user-avatar {
+  height: 50px;
+  margin-right: 12px;
+  width: 50px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, .1), -1px -1px 2px 0px rgba(0, 0, 0, .1);
+}
+
+.user-post-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-name {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.user-followers-stat {
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+}
+
+.users-follow-number>h3,
+.users-follow-number>p {
+  margin-bottom: 0;
+}
+
+.create-post-modal {
+  top: 20px;
+  height: 100%;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.user-time-posted {
+  font-weight: 100;
+  margin-bottom: 0;
+}
+
+.post-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  margin: 0 auto;
+  margin-bottom: 16px;
+}
+
+.user-post {
+  margin-top: 4px;
+}
+
+.divider-height {
+  height: 50px
+}
+
+.post-reaction {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center
+}
+
+.post-reaction>.message-icon {
+  margin-right: 24px
+}
+
+.post-reaction>.like-icon {
+  margin-right: 8px
+}
+
+.liked {
+  color: #1890ff
+}
+
+.post-reaction>*:active {
+  color: #1890ff;
+  transform: scale(1.5);
+  transition: all .2s;
+}
+
+.comment-post-button {
+  margin-top: 8px;
+}
+
+.TimeLine_profile-info,
+.TimeLine-post-component,
+.TimeLine_popular-topic,
+.TimeLine_online-friends {
+  background: #ffffff;
+  display: none;
+}
+
+.TimeLine_popular-topic>li {
+  list-style-type: none;
+}
+
+.TimeLine_popular-topic li>a {
+  color: #1890ff
+}
+
+.avartar-online {
+  height: 35px;
+  width: 35px;
+}
+
+.TimeLine_online-friends li {
+  position: relative
+}
+
+.TimeLine_online-friends li::after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: greenyellow;
+  border-radius: 50%;
+  position: absolute;
+  left: 30px;
+  top: 20px;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block
+}
+
+.skeleton-section, .TimeLine_posts {
+  padding: 1em;
+  background-color: #ffffff;
+}
+
+.TimeLine_content {
+  text-align: justify;
+}
+
+@media screen and (max-width:767px) {
+  .TimeLine_content {
+    max-width: 458px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .create-icon-container {
+    display: none
+  }
+
+  .user-post-details {
+    justify-content: flex-start;
+  }
+
+  .user-name {
+    margin-right: 1em;
+  }
+
+  .TimeLine_content {
+    margin: 1em;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 350px repeat(2, minmax(auto, 310px)) auto;
+    grid-gap: 1em;
+  }
+
+  .TimeLine-post-component {
+    background-color: #ffffff;
+    padding: 12px;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    list-style-type: none;
+    margin-bottom: .5rem;
+  }
+
+  .TimeLine_profile-info {
+    grid-row: 1/2;
+    text-align: center;
+  }
+
+  .TimeLine_popular-topic {
+    grid-row: 2/3;
+  }
+
+  .TimeLine_online-friends {
+    grid-row: 3/4;
+  }
+
+  .TimeLine_profile-info,
+  .TimeLine-post-component,
+  .TimeLine_popular-topic,
+  .TimeLine_online-friends {
+    background: #ffffff;
+    display: block;
+    padding: 1em 24px;
+  }
+
+  .TimeLine_post {
+    grid-row: 1/3;
+    grid-column: 2/3;
+  }
+
+  .post-container {
+    max-width: 100%;
+    padding: 1em 24px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .TimeLine_content {
+    grid-template-columns: minmax(200px, 1fr) 3fr minmax(200px, 1fr);
+    grid-template-rows: 350px minmax(auto, 310px) auto;
+    margin: 1em 6em;
+  }
+
+  .TimeLine_online-friends {
+    grid-row: 1/2;
+    grid-column: 3/4;
+    background-color: #ffffff;
+    padding: 1em;
+  }
+}

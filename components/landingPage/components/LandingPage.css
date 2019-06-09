@@ -1,0 +1,126 @@
+.LandingPage_footer {
+	background: #001529;
+	color: #ffffff;
+	text-align: center;
+}
+
+.LandingPage_footer > img {
+	width: 50%;
+	height: 50%;
+	margin-bottom: 1em;
+}
+
+.LandingPage_footer > ul {
+	list-style-type: none;
+	padding: 0;
+	display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.LandingPage_hero {
+	padding: 24px;
+	background: #ffffff;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.LandingPage_hero > img {
+	width: 100%;
+	margin: 2em 0;
+}
+.LandingPage_content__text {
+	text-align: center;
+}
+
+.LandingPage_button {
+	margin-bottom: 2em;
+}
+
+.column-section > img {
+	width: 50%;
+	margin: 0 auto;
+}
+
+@media screen and (min-width: 425px) and (max-width: 767px) {
+	.LandingPage_hero > img {
+		width: 65%;
+		margin: 2em auto;
+	}
+
+	.column-section > img {
+		width: 30%;
+		margin-top: 0;
+	}
+}
+
+@media screen and (min-width: 768px) {
+
+
+	.LandingPage_hero {
+		flex-direction: row;
+		align-items: center;
+	}
+	.LandingPage_content__text {
+		margin: 2em;
+	}
+	.LandingPage_hero > img {
+		width: 30%;
+	}
+
+	.LandingPage_body > section {
+		margin: 0 6em;
+	}
+
+	.reverse {
+		flex-direction: row-reverse;
+	}
+
+	.column-section {
+		flex-direction: column;
+	}
+
+	.column-section > div {
+		margin-bottom: 0;
+	}
+
+	.column-section > img {
+		width: 20%;
+		margin-top: 0;
+	}
+
+
+
+	.LandingPage_footer {
+		text-align: left;
+		display: flex;
+		justify-content: space-evenly;
+		padding: 5em 50px;
+	}
+
+	.LandingPage_content {
+		height: 100%;
+		margin-top: 0;
+	}
+
+	.LandingPage_footer > img {
+		width: 120px;
+		height: 30px;
+		margin-bottom: 0;
+	}
+
+
+}
+
+@media screen and (min-width: 1024px) {
+	.LandingPage_body > section {
+		/* padding: 0 3em; */
+	}
+
+	.layout_header-desktop {
+		padding: 0 6em;
+	}
+
+
+}

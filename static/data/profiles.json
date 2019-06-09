@@ -1,0 +1,38 @@
+[
+  {
+    "name": "June Cha",
+    "email": "june.cha@gmail.com",
+    "position": "Attorney",
+    "photo": "https://randomuser.me/api/portraits/women/44.jpg"
+  },
+  {
+    "name": "Iida Niskanen",
+    "email": "iida.niskanen@gmail.com",
+    "position": "Accountant",
+    "photo": "https://randomuser.me/api/portraits/women/68.jpg"
+  },
+  {
+    "name": "Renee Sims",
+    "email": "renee.sims@gmail.com",
+    "position": "Director",
+    "photo": "https://randomuser.me/api/portraits/women/65.jpg"
+  },
+  {
+    "name": "Jonathan Nu\u00f1ez",
+    "email": "jonathan.nu\u00f1ez@gmail.com",
+    "position": "Sales Manager",
+    "photo": "https://randomuser.me/api/portraits/men/43.jpg"
+  },
+  {
+    "name": "Sasha Ho",
+    "email": "sasha.ho@gmail.com",
+    "position": "Accountant",
+    "photo": "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?h=350&auto=compress&cs=tinysrgb"
+  },
+  {
+    "name": "Abdullah Hadley",
+    "email": "abdullah.hadley@gmail.com",
+    "position": "Customer Service",
+    "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=a72ca28288878f8404a795f39642a46f"
+  }
+]
