@@ -72,7 +72,7 @@ export const reducers = (state = initialState, action) => {
         state.timelineData.map(item => {
             const { id, isCommentOpen } = item;
             if (id === payload) {
-                item.favouriteCount = !isCommentOpen;
+                item.isCommentOpen = !isCommentOpen;
             }
             return isCommentOpen;
         });
