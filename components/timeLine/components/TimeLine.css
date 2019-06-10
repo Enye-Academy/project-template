@@ -55,10 +55,14 @@
 
 .user-avatar {
   height: 50px;
-  margin-right: 12px;
   width: 50px;
   border-radius: 50%;
+  background: #ffffff;
   box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, .1), -1px -1px 2px 0px rgba(0, 0, 0, .1);
+}
+
+.avatar-pop {
+  z-index: 1;
 }
 
 .user-post-details {
@@ -219,6 +223,22 @@
   display: grid;
   grid-gap: 1em;
   grid-template-columns: 50px auto;
+}
+
+.ant-timeline {
+  margin-top: 2em;
+}
+
+.ant-timeline-item-tail {
+  left: 23px;
+}
+
+.ant-timeline-item-head {
+  z-index: -1
+}
+
+.ant-timeline-item-content {
+  margin: 0;
 }
 
 @media screen and (max-width:767px) {

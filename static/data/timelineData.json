@@ -21,6 +21,14 @@
         "email": "jgethen0@dmoz.org",
         "post": "Praesent lectus. Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer ",
         "avatar": "https://robohash.org/temporeinventorererum.bmp?size=50x50&set=set1"
+      },
+      {
+        "id": 3,
+        "firstName": "Adams",
+        "lastName": "Osho",
+        "email": "jgethen0@dmoz.org",
+        "post": "Praesent lectus. Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ",
+        "avatar": "https://robohash.org/temporeinventorererum.bmp?size=50x50&set=set1"
       }
     ],
     "likes": 203,
@@ -37,7 +45,32 @@
     "email": "tboorne1@examiner.com",
     "post": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis.",
     "comment":23,
-    "comments":[],
+    "comments":[
+      {
+        "id": 1,
+        "firstName": "Jordain",
+        "lastName": "Gethen",
+        "email": "jgethen0@dmoz.org",
+        "post": "Praesent lectus. Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer ",
+        "avatar": "https://robohash.org/temporeinventorererum.bmp?size=50x50&set=set1"
+      },
+      {
+        "id": 2,
+        "firstName": "Amaka",
+        "lastName": "Galeku",
+        "email": "jgethen0@dmoz.org",
+        "post": "Peleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer ",
+        "avatar": "https://robohash.org/temporeinventorererum.bmp?size=50x50&set=set1"
+      },
+      {
+        "id": 3,
+        "firstName": "Adams",
+        "lastName": "Osho",
+        "email": "jgethen0@dmoz.org",
+        "post": "Praesent lectus. Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ",
+        "avatar": "https://robohash.org/temporeinventorererum.bmp?size=50x50&set=set1"
+      }
+    ],
     "likes": 203,
     "liked":false,
     "favourited": false,

@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-literals */
 import {
-    Avatar, Icon, List, Skeleton
+    Avatar, Icon, List, Skeleton, Timeline
 } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -10,7 +10,7 @@ import { LOADING_SKELETON, STRINGS } from '../constants';
 import './TimeLine.css';
 
 const { COMMENT_PLACEHOLDER } = STRINGS;
-
+const { Item } = Timeline;
 const IconText = ({
     type, text, action, className,
 }) => (
@@ -100,6 +100,7 @@ const TimeLinePosts = props => {
                         {post.substr(0, 150)}
                         {/* post comment component */}
                         <div className={profileData[id - 1].isCommentOpen ? 'show' : 'hide'}>
+
                             <CreatePostComponent
                                 handleOkFunction={handleOk}
                                 InputPlaceholder={COMMENT_PLACEHOLDER}
@@ -107,27 +108,32 @@ const TimeLinePosts = props => {
                                 textValue={textValue}
                                 handleOnChange={handleOnChange}
                             />
-                            {/* comment post */}
-                            {profileData[id - 1].comments.map(commentPost => {
-                                const {
-                                    id, firstName, lastName, post, avatar,
-                                } = commentPost;
-                                return (
-                                    <section className="Timeline_comment" key={id}>
-                                        {/* avatar */}
-                                        <Avatar src={avatar} className="user-avatar" />
-                                        <div>
-                                            {/* name */}
-                                            <h3>{`${firstName} ${lastName}`}</h3>
-                                            {/* time */}
-                                            <p>3h ago</p>
-                                            {/* comment */}
-                                            <p>{post}</p>
-                                        </div>
-                                    </section>
-                                );
-                            })
-                            }
+                            <Timeline>
+                                {/* comment post */}
+                                {profileData[id - 1].comments.map(commentPost => {
+                                    const {
+                                        id, firstName, lastName, post, avatar,
+                                    } = commentPost;
+                                    return (
+
+                                        <Item>
+                                            <section className="Timeline_comment" key={id}>
+                                                {/* avatar */}
+                                                <Avatar src={avatar} className="user-avatar avatar-pop" />
+                                            <div>
+                                                    {/* name */}
+                                                    <h3>{`${firstName} ${lastName}`}</h3>
+                                                    {/* time */}
+                                                    <p>3h ago</p>
+                                                    {/* comment */}
+                                                    <p>{post}</p>
+                                                </div>
+                                            </section>
+                                        </Item>
+                                    );
+                                })
+                                }
+                            </Timeline>
                         </div>
                     </List.Item>
                 );
