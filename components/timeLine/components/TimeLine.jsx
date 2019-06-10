@@ -6,8 +6,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import {
-    commentButtonClicked, favButtonClicked, fetchProfileData, handlePostUpdate,
-    likeButtonClicked, setPostUpdateField
+    commentButtonClicked,
+    favButtonClicked,
+    fetchProfileData,
+    handlePostUpdate,
+    likeButtonClicked,
+    setPostUpdateField
 } from '../actions';
 import { components } from '../../layout';
 import { CreatePostComponent } from './CreatePostComponent';
