@@ -99,7 +99,6 @@ const TimeLinePosts = props => {
                         }
                         {post.substr(0, 150)}
                         {/* post comment component */}
-
                         <div className={profileData[id - 1].isCommentOpen ? 'show' : 'hide'}>
                             <CreatePostComponent
                                 handleOkFunction={handleOk}
@@ -108,6 +107,27 @@ const TimeLinePosts = props => {
                                 textValue={textValue}
                                 handleOnChange={handleOnChange}
                             />
+                            {/* comment post */}
+                            {profileData[id - 1].comments.map(commentPost => {
+                                const {
+                                    id, firstName, lastName, post, avatar,
+                                } = commentPost;
+                                return (
+                                    <section className="Timeline_comment" key={id}>
+                                        {/* avatar */}
+                                        <Avatar src={avatar} className="user-avatar" />
+                                        <div>
+                                            {/* name */}
+                                            <h3>{`${firstName} ${lastName}`}</h3>
+                                            {/* time */}
+                                            <p>3h ago</p>
+                                            {/* comment */}
+                                            <p>{post}</p>
+                                        </div>
+                                    </section>
+                                );
+                            })
+                            }
                         </div>
                     </List.Item>
                 );
