@@ -23,6 +23,8 @@ export const reducers = (state = initialState, action) => {
         type, error, payload, timelineData,
     } = action;
 
+    let newArray = [];
+
     switch (type) {
     case FETCH_PROFILE_REQUEST:
         return { ...state, isFetching: true };
@@ -44,39 +46,39 @@ export const reducers = (state = initialState, action) => {
         return { ...state, statusValue: '' };
 
     case TOGGLE_POST_LIKE:
-        state.timelineData.map(item => {
+        newArray = state.timelineData.map(item => {
             const { id, liked, likes } = item;
             if (id === payload) {
                 item.liked = !liked;
                 item.likes = liked ? likes - 1 : likes + 1;
             }
-            return { liked, likes };
+            return item;
         });
         return {
             ...state,
-            timelineData: [...state.timelineData],
+            timelineData: [...newArray],
         };
 
     case TOGGLE_POST_FAV:
-        state.timelineData.map(item => {
+        newArray = state.timelineData.map(item => {
             const { id, favourited, favouriteCount } = item;
             if (id === payload) {
                 item.favourited = !favourited;
                 item.favouriteCount = favourited ? favouriteCount - 1 : favouriteCount + 1;
             }
-            return { favouriteCount, favourited };
+            return item;
         });
-        return { ...state, timelineData: [...state.timelineData] };
+        return { ...state, timelineData: [...newArray] };
 
     case TOGGLE_COMMENT_BUTTON:
-        state.timelineData.map(item => {
+        newArray = state.timelineData.map(item => {
             const { id, isCommentOpen } = item;
             if (id === payload) {
                 item.isCommentOpen = !isCommentOpen;
             }
-            return isCommentOpen;
+            return item;
         });
-        return { ...state, timelineData: [...state.timelineData] };
+        return { ...state, timelineData: [...newArray] };
     default:
         return state;
     }
