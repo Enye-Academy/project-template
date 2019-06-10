@@ -41,9 +41,17 @@ export default (state = initialState, action) => {
         return payload.post !== ''
             ? { ...state, timelineData: [payload, ...state.timelineData] } : state;
 
-    case ADD_COMMENT_TO_POST: console.log('payload post', payload.post);
-        return payload.post !== ''
-            ? { ...state, timelineData: [payload, ...state.timelineData] } : state;
+    case ADD_COMMENT_TO_POST:
+        newArray = state.timelineData.map(item => {
+            if (item.id === payload.id) {
+                item.comments = [{ ...payload, id: item.comments.length + 1 }, ...item.comments];
+            }
+            return item;
+        });
+        return {
+            ...state,
+            timelineData: [...newArray],
+        };
 
     case UPDATE_STATUS:
         return { ...state, statusValue: payload };

@@ -59,10 +59,11 @@ export const STRINGS = {
     ONLINE_FRIENDS: 'Online Friends',
     POPULAR_TOPIC_TEXT: 'Popular Topic',
     POST: 'post',
+    TIME: '3hrs ago',
     TIMELINE_TITLE: 'Timeline | Find friends',
     TOGGLE_MODAL: 'TOGGLE_MODAL',
     USERS_BIO: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
-    Repellen dusharum odit inventore, iste dignissimos laudantium! Veniam.`,
+	Repellen dusharum odit inventore, iste dignissimos laudantium! Veniam.`,
 };
 
 export const USER_PROFILE = {

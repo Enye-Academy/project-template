@@ -23,7 +23,7 @@ import { STRINGS } from '../constants';
 
 const { CREATE_POST_PLACEHOLDER, TIMELINE_TITLE } = STRINGS;
 const { PageLayout } = components;
-export const data = (id, post) => ({
+const data = (id, post) => ({
     comment: 0,
     comments: [],
     email: 'jotuya2@gmail.com',
@@ -34,6 +34,13 @@ export const data = (id, post) => ({
     lastName: 'Otuya',
     liked: false,
     likes: 0,
+    post,
+});
+
+const commentData = (id, post) => ({
+    firstName: 'Justice',
+    id,
+    lastName: 'Otuya',
     post,
 });
 
@@ -138,6 +145,12 @@ componentDidMount() {
         setPostUpdateField(e.target.value = '');
     }
 
+    handleCommentOnPost = id => {
+        const { handlePostComment, statusValue } = this.props;
+        // console.log(timeLineData);
+        handlePostComment(commentData(id, statusValue));
+    }
+
     render() {
         const {
             timelineData,
@@ -188,6 +201,8 @@ componentDidMount() {
                                 handleLikeButton={this.handleLikeButton}
                                 handleFavButton={this.handleFavButton}
                                 handleCommentButton={this.handleCommentButton}
+                                handleCommentOnPost={this.handleCommentOnPost}
+                                handleOnChange={this.handleStatusValue}
                             />
                         </section>
                     </section>
@@ -206,6 +221,7 @@ const timeLineActions = {
     commentButtonClicked,
     favButtonClicked,
     fetchProfileData,
+    handlePostComment,
     handlePostUpdate,
     likeButtonClicked,
     setPostUpdateField,
@@ -214,6 +230,7 @@ const timeLineActions = {
 const mapDispatchToProps = dispatch => bindActionCreators(timeLineActions, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(TimeLine);
+
 TimeLine.propTypes = {
     commentButtonClicked: PropTypes.func.isRequired,
     favButtonClicked: PropTypes.func.isRequired,
@@ -225,10 +242,9 @@ TimeLine.propTypes = {
     statusValue: PropTypes.string.isRequired,
     timelineData: PropTypes.arrayOf(PropTypes.shape({
         avatar: PropTypes.string.isRequired,
-        comment: PropTypes.string.isRequired,
-        favs: PropTypes.number.isRequired,
+        comment: PropTypes.number.isRequired,
         firstName: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
+        image: PropTypes.string,
         lastName: PropTypes.string.isRequired,
         likes: PropTypes.number.isRequired,
         post: PropTypes.string.isRequired,
