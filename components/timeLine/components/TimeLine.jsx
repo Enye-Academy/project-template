@@ -79,7 +79,9 @@ componentDidMount() {
         handlePostUpdate(data(timelineData.length + 1, statusValue));
 
         // close modal
-        if (isModalOpen) this.modalHandler();
+        if (isModalOpen) {
+            this.modalHandler();
+        }
 
         // clear post component
         setPostUpdateField('');
