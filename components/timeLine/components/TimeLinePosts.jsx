@@ -97,7 +97,7 @@ const TimeLinePosts = props => {
                                 />
                             ) : <div />
                         }
-                        {post.substr(0, 150)}
+                        {post.substring(0, 150)}
                         {/* post comment component */}
 
                         <div className={profileData[id - 1].isCommentOpen ? 'show' : 'hide'}>
