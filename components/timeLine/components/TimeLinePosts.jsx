@@ -40,7 +40,7 @@ class TimeLinePosts extends React.Component {
             <List
                 itemLayout="vertical"
                 dataSource={profileData}
-                style={{ margin: '0 1em' }}
+                className="mx-1"
                 size="large"
                 renderItem={user => {
                     const {

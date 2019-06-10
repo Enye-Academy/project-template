@@ -147,7 +147,6 @@ componentDidMount() {
 
     handleCommentOnPost = id => {
         const { handlePostComment, statusValue } = this.props;
-        // console.log(timeLineData);
         handlePostComment(commentData(id, statusValue));
     }
 

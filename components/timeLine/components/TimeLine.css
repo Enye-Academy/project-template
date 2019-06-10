@@ -245,6 +245,10 @@
   color: #1890ff;
 }
 
+.mx-1 {
+  margin: 0 1em
+}
+
 @media screen and (max-width:767px) {
   .TimeLine_content {
     max-width: 458px;
