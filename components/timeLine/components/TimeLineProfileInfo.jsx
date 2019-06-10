@@ -1,10 +1,11 @@
 import { Divider } from 'antd';
 import React from 'react';
 
-import { STRINGS, USER_PROFILE } from '../constants';
-import './TimeLine.css';
+import {
+    USER_PROFILE, STRINGS
+} from '../constants';
 
-const { FOLLOWERS, FOLLOWING, USERS_BIO } = STRINGS;
+const { FOLLOWING, FOLLOWERS, USERS_BIO } = STRINGS;
 
 const TimeLineProfileInfo = () => {
     const {

@@ -124,8 +124,22 @@
   margin-right: 8px
 }
 
+.liked,
+.favourited {
+  margin-right: 8px;
+  transform: scale(1.05);
+}
+
 .liked {
-  color: #1890ff
+  color: #1890ff;
+}
+
+.favourited {
+  color: #FFD700
+}
+
+.mr-8 {
+  margin-right: 8px
 }
 
 .post-reaction>*:active {
@@ -183,13 +197,22 @@
   display: block
 }
 
-.skeleton-section, .TimeLine_posts {
+.skeleton-section,
+.TimeLine_posts {
   padding: 1em;
   background-color: #ffffff;
 }
 
 .TimeLine_content {
   text-align: justify;
+}
+
+.ant-list-item.ant-list-item-no-flex {
+  display: grid;
+}
+
+.ant-list-item-action {
+  grid-row: 4;
 }
 
 @media screen and (max-width:767px) {

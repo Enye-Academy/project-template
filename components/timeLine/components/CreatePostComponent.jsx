@@ -19,7 +19,7 @@ const { TextArea } = Input;
  */
 const CreatePostInput = props => {
     const {
-        InputPlaceholder, rowHeight, handleOnChange, textValue,
+        InputPlaceholder, rowHeight, handleOnChange,
     } = props;
     return (
         <TextArea
@@ -29,7 +29,6 @@ const CreatePostInput = props => {
             autosize={{ minRows: rowHeight }}
             autoFocus
             onChange={handleOnChange}
-            value={textValue}
         />
     );
 };
@@ -80,21 +79,19 @@ const CreatePostComponent = props => {
         rowHeight,
         handleOkFunction,
         handleOnChange,
-        textValue,
     } = props;
 
     return (
-        <>
+        <form onSubmit={handleOkFunction}>
             <CreatePostInput
                 InputPlaceholder={InputPlaceholder}
                 rowHeight={rowHeight}
                 handleOnChange={handleOnChange}
-                textValue={textValue}
             />
             <div className="comment-post-button">
                 <CreatePostButtons handleOkFunction={handleOkFunction} />
             </div>
-        </>
+        </form>
     );
 };
 
@@ -104,8 +101,8 @@ CreatePostInput.propTypes = {
     InputPlaceholder: PropTypes.string.isRequired,
     handleOnChange: PropTypes.func.isRequired,
     rowHeight: PropTypes.number.isRequired,
-    textValue: PropTypes.string.isRequired,
 };
+
 CreatePostButtons.propTypes = {
     handleOkFunction: PropTypes.func.isRequired,
 };
@@ -114,6 +111,4 @@ CreatePostComponent.propTypes = {
     handleOkFunction: PropTypes.func.isRequired,
     handleOnChange: PropTypes.func.isRequired,
     rowHeight: PropTypes.number.isRequired,
-    textValue: PropTypes.string.isRequired,
-
 };

@@ -7,40 +7,79 @@ const initialState = {
     statusValue: '',
     timelineData: [],
 };
-
-export const reducers = (state = initialState, action) => {
+export default (state = initialState, action) => {
     const {
         CLEAR_STATUS_FIELD,
         FETCH_PROFILE_REQUEST,
         FETCH_PROFILE_DATA_FAILURE,
         FETCH_PROFILE_DATA_SUCCESS,
-        TOGGLE_MODAL,
         UPDATE_STATUS,
         ADD_POST_TO_TIMELINE,
+        TOGGLE_POST_LIKE,
+        TOGGLE_POST_FAV,
+        TOGGLE_COMMENT_BUTTON,
     } = actionTypes;
 
     const {
-        type, timelineData, error, payload,
+        type, error, payload, timelineData,
     } = action;
 
-    const { isOpen } = state;
+    let newArray = [];
 
     switch (type) {
     case FETCH_PROFILE_REQUEST:
         return { ...state, isFetching: true };
+
     case FETCH_PROFILE_DATA_SUCCESS:
         return { ...state, isFetching: false, timelineData };
+
     case FETCH_PROFILE_DATA_FAILURE:
         return { ...state, error, isFetching: false };
-    case TOGGLE_MODAL:
-        return { ...state, isOpen: !isOpen };
+
     case ADD_POST_TO_TIMELINE:
         return payload.post !== ''
             ? { ...state, timelineData: [payload, ...state.timelineData] } : state;
+
     case UPDATE_STATUS:
         return { ...state, statusValue: payload };
+
     case CLEAR_STATUS_FIELD:
         return { ...state, statusValue: '' };
+
+    case TOGGLE_POST_LIKE:
+        newArray = state.timelineData.map(item => {
+            const { id, liked, likes } = item;
+            if (id === payload) {
+                item.liked = !liked;
+                item.likes = liked ? likes - 1 : likes + 1;
+            }
+            return item;
+        });
+        return {
+            ...state,
+            timelineData: [...newArray],
+        };
+
+    case TOGGLE_POST_FAV:
+        newArray = state.timelineData.map(item => {
+            const { id, favourited, favouriteCount } = item;
+            if (id === payload) {
+                item.favourited = !favourited;
+                item.favouriteCount = favourited ? favouriteCount - 1 : favouriteCount + 1;
+            }
+            return item;
+        });
+        return { ...state, timelineData: [...newArray] };
+
+    case TOGGLE_COMMENT_BUTTON:
+        newArray = state.timelineData.map(item => {
+            const { id, isCommentOpen } = item;
+            if (id === payload) {
+                item.isCommentOpen = !isCommentOpen;
+            }
+            return item;
+        });
+        return { ...state, timelineData: [...newArray] };
     default:
         return state;
     }
