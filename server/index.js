@@ -7,7 +7,6 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const users = require('../routes/api/users');
 const profile = require('../routes/api/profile');
-const topic = require('../routes/api/topic');
 const posts = require('../routes/api/posts');
 const userInViews = require('../lib/middleware/userInViews');
 
@@ -55,11 +54,7 @@ nextApp.prepare().then(() => {
     app.use(userInViews());
     app.use('/api/users', users);
     app.use('/api/profile', profile);
-<<<<<<< HEAD
-    app.use('/api/topic', topic);
-=======
     app.use('/api/posts', posts);
->>>>>>> bd710386bf4ead8e01c7589d4ee86671ca158b18
 
     // next should handle all other routes except the ones specified.
     app.get('*', (req, res) => handle(req, res));

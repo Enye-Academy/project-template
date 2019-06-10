@@ -74,7 +74,7 @@ router.post('/', secured(), async (req, res) => {
         // Check Validation
         if (!isValid) {
             // Return any errors with 400(Bad Request) status if not valid
-            return res.status(BAD_REQUEST).json({errors});
+            return res.status(BAD_REQUEST).json({ errors });
         }
 
         const newPost = new Post({
@@ -210,7 +210,7 @@ router.post('/comment/:id', secured(), async (req, res) => {
         // Check Validation
         if (!isValid) {
             // Return any errors with 400 status if not valid
-            return res.status(BAD_REQUEST).json({errors});
+            return res.status(BAD_REQUEST).json({ errors });
         }
 
         // Find a particular post and add comments to it

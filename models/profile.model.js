@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const profileSchema = new Schema({
+    bio: {
+        required: true,
+        type: String,
+    },
     city: {
         required: true,
         type: String,
@@ -40,6 +44,10 @@ const profileSchema = new Schema({
     lastName: {
         required: true,
         type: String,
+    },
+    user: {
+        ref: 'users',
+        type: Schema.Types.ObjectId,
     },
 });
 
