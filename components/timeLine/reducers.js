@@ -7,7 +7,7 @@ const initialState = {
     statusValue: '',
     timelineData: [],
 };
-export const reducers = (state = initialState, action) => {
+export default (state = initialState, action) => {
     const {
         CLEAR_STATUS_FIELD,
         FETCH_PROFILE_REQUEST,
@@ -17,7 +17,8 @@ export const reducers = (state = initialState, action) => {
         ADD_POST_TO_TIMELINE,
         ADD_COMMENT_TO_POST,
         TOGGLE_POST_LIKE,
-        TOGGLE_POST_FAV, TOGGLE_COMMENT_BUTTON,
+        TOGGLE_POST_FAV,
+        TOGGLE_COMMENT_BUTTON,
     } = actionTypes;
 
     const {

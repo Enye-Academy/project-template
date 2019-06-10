@@ -81,7 +81,9 @@ componentDidMount() {
         handlePostUpdate(data(timelineData.length + 1, statusValue));
 
         // close modal
-        if (isModalOpen) this.modalHandler();
+        if (isModalOpen) {
+            this.modalHandler();
+        }
 
         // clear post component
         setPostUpdateField('');
@@ -200,14 +202,16 @@ const mapStateToProps = state => ({
     timelineData: getTimelineData(state),
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({
+const timeLineActions = {
     commentButtonClicked,
     favButtonClicked,
     fetchProfileData,
     handlePostUpdate,
     likeButtonClicked,
     setPostUpdateField,
-}, dispatch);
+};
+
+const mapDispatchToProps = dispatch => bindActionCreators(timeLineActions, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(TimeLine);
 TimeLine.propTypes = {
