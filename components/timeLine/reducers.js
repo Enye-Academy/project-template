@@ -15,6 +15,7 @@ export default (state = initialState, action) => {
         FETCH_PROFILE_DATA_SUCCESS,
         UPDATE_STATUS,
         ADD_POST_TO_TIMELINE,
+        ADD_COMMENT_TO_POST,
         TOGGLE_POST_LIKE,
         TOGGLE_POST_FAV,
         TOGGLE_COMMENT_BUTTON,
@@ -39,6 +40,18 @@ export default (state = initialState, action) => {
     case ADD_POST_TO_TIMELINE:
         return payload.post !== ''
             ? { ...state, timelineData: [payload, ...state.timelineData] } : state;
+
+    case ADD_COMMENT_TO_POST:
+        newArray = state.timelineData.map(item => {
+            if (item.id === payload.id) {
+                item.comments = [{ ...payload, id: item.comments.length + 1 }, ...item.comments];
+            }
+            return item;
+        });
+        return {
+            ...state,
+            timelineData: [...newArray],
+        };
 
     case UPDATE_STATUS:
         return { ...state, statusValue: payload };

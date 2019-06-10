@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-literals */
 import {
-    Avatar, Icon, List, Skeleton
+    Avatar, Icon, List, Skeleton, Timeline
 } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -9,8 +9,8 @@ import { CreatePostComponent } from './CreatePostComponent';
 import { LOADING_SKELETON, STRINGS } from '../constants';
 import './TimeLine.css';
 
-const { COMMENT_PLACEHOLDER } = STRINGS;
-
+const { COMMENT_PLACEHOLDER, TIME } = STRINGS;
+const { Item } = Timeline;
 const IconText = ({
     type, text, action, className,
 }) => (
@@ -25,142 +25,177 @@ const IconText = ({
     </span>
 );
 
-const TimeLinePosts = props => {
-    const {
-        profileData,
-        handleComment,
-        handleOk,
-        handleLikeButton,
-        handleFavButton,
-    } = props;
-    return profileData.length !== 0 ? (
-        <List
-            itemLayout="vertical"
-            dataSource={profileData}
-            style={{ margin: '0 1em' }}
-            size="large"
-            renderItem={user => {
-                const {
-                    id,
-                    firstName,
-                    lastName,
-                    post,
-                    avatar,
-                    image,
-                    liked,
-                    favourited,
-                    textValue,
-                    handleOnChange,
-                    likes,
-                    comment,
-                    favouriteCount,
-                } = user;
-                return (
-                    <List.Item
-                        key={id}
-                        actions={[
-                            <IconText
-                                type="star"
-                                className={favourited ? 'favourited' : 'mr-8'}
-                                text={favouriteCount}
-                                action={() => handleFavButton(id)}
-                                key={1}
-                            />,
-                            <IconText
-                                type="like"
-                                className={liked ? 'liked' : 'mr-8'}
-                                text={likes}
-                                action={() => handleLikeButton(id)}
-                                key={2}
-                            />,
-                            <IconText
-                                type="message"
-                                className="mr-8"
-                                text={comment}
-                                action={() => handleComment(id)}
-                                key={3}
-                            />,
-                        ]}
-                    >
-                        <List.Item.Meta
-                            avatar={(<Avatar src={avatar} className="user-avatar" />)}
-                            title={`${firstName} ${lastName}`}
-                            description="3h ago"
-                        />
+class TimeLinePosts extends React.Component {
+    render() {
+        const {
+            profileData,
+            handleCommentButton,
+            handleCommentOnPost,
+            handleLikeButton,
+            handleFavButton,
+            handleOnChange,
+        } = this.props;
 
-                        {
-                            image ? (
-                                <img
-                                    className="post-image"
-                                    alt={image ? `${firstName} image` : null}
-                                    src={image}
-                                />
-                            ) : <div />
-                        }
-                        {post.substring(0, 150)}
-                        {/* post comment component */}
-
-                        <div className={profileData[id - 1].isCommentOpen ? 'show' : 'hide'}>
-                            <CreatePostComponent
-                                handleOkFunction={handleOk}
-                                InputPlaceholder={COMMENT_PLACEHOLDER}
-                                rowHeight={2}
-                                textValue={textValue}
-                                handleOnChange={handleOnChange}
+        return profileData.length !== 0 ? (
+            <List
+                itemLayout="vertical"
+                dataSource={profileData}
+                className="mx-1"
+                size="large"
+                renderItem={user => {
+                    const {
+                        id,
+                        firstName,
+                        lastName,
+                        post,
+                        avatar,
+                        image,
+                        liked,
+                        favourited,
+                        likes,
+                        comment,
+                        favouriteCount,
+                    } = user;
+                    return (
+                        <List.Item
+                            key={id}
+                            actions={[
+                                <IconText
+                                    type="star"
+                                    className={favourited ? 'favourited' : 'mr-8'}
+                                    text={favouriteCount}
+                                    action={() => handleFavButton(id)}
+                                    key={1}
+                                />,
+                                <IconText
+                                    type="like"
+                                    className={liked ? 'liked' : 'mr-8'}
+                                    text={likes}
+                                    action={() => handleLikeButton(id)}
+                                    key={2}
+                                />,
+                                <IconText
+                                    type="message"
+                                    className="mr-8"
+                                    text={comment}
+                                    action={() => handleCommentButton(id)}
+                                    key={3}
+                                />,
+                            ]}
+                        >
+                            <List.Item.Meta
+                                avatar={(<Avatar src={avatar} className="user-avatar" />)}
+                                title={`${firstName} ${lastName}`}
+                                description={TIME}
                             />
-                        </div>
-                    </List.Item>
+
+                            {
+                                image ? (
+                                    <img
+                                        className="post-image"
+                                        alt={image ? `${firstName} image` : null}
+                                        src={image}
+                                    />
+                                ) : <div />
+                            }
+
+                            <p>
+                                {post.substring(0, 150)}
+                            </p>
+
+                            {/* post comment component */}
+                            <div className={profileData[id - 1].isCommentOpen ? 'show' : 'hide'}>
+
+                                <CreatePostComponent
+                                    handleOkFunction={() => handleCommentOnPost(id)}
+                                    InputPlaceholder={COMMENT_PLACEHOLDER}
+                                    rowHeight={2}
+                                    handleOnChange={handleOnChange}
+                                />
+                                <Timeline>
+                                    {/* comment post */}
+                                    {profileData[id - 1].comments.map(commentPost => (
+                                        <Item key={commentPost.id}>
+                                            <section className="Timeline_comment">
+                                                {/* avatar */}
+                                                <Avatar
+                                                    src={commentPost.avatar}
+                                                    className="user-avatar avatar-pop"
+                                                />
+                                                <div>
+                                                    {/* name */}
+                                                    <h3>
+                                                        {`${commentPost.firstName}
+                                                    ${commentPost.lastName}`}
+                                                    </h3>
+                                                    {/* time */}
+                                                    <p>{TIME}</p>
+                                                    {/* comment */}
+                                                    <p>{commentPost.post}</p>
+                                                </div>
+                                            </section>
+                                        </Item>
+                                    ))
+                                    }
+                                </Timeline>
+                            </div>
+                        </List.Item>
+                    );
+                }
+                }
+            />
+        ) : (
+        // data loading simulation
+            LOADING_SKELETON.map(items => {
+                const {
+                    paragraph,
+                    title,
+                    loading,
+                    active,
+                    avatar,
+                    id,
+                } = items;
+                return (
+                    <Skeleton
+                        key={id}
+                        paragraph={paragraph}
+                        title={title}
+                        loading={loading}
+                        active={active}
+                        avatar={avatar}
+                        className="skeleton-section"
+                    />
                 );
-            }
-            }
-        />
-    ) : (
-    // data loading simulation
-        LOADING_SKELETON.map(items => {
-            const {
-                paragraph,
-                title,
-                loading,
-                active,
-                avatar,
-                id,
-            } = items;
-            return (
-                <Skeleton
-                    key={id}
-                    paragraph={paragraph}
-                    title={title}
-                    loading={loading}
-                    active={active}
-                    avatar={avatar}
-                    className="skeleton-section"
-                />
-            );
-        })
-    );
-};
+            })
+        );
+    }
+}
 
 export default TimeLinePosts;
 
 IconText.propTypes = {
     action: PropTypes.func.isRequired,
     className: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
+    text: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired,
 };
 
 TimeLinePosts.propTypes = {
-    handleComment: PropTypes.func.isRequired,
+    handleCommentButton: PropTypes.func.isRequired,
+    handleCommentOnPost: PropTypes.func.isRequired,
     handleFavButton: PropTypes.func.isRequired,
     handleLikeButton: PropTypes.func.isRequired,
-    handleOk: PropTypes.func.isRequired,
+    handleOnChange: PropTypes.func.isRequired,
     profileData: PropTypes.arrayOf(PropTypes.shape({
         avatar: PropTypes.string.isRequired,
-        comment: PropTypes.string.isRequired,
-        favs: PropTypes.number.isRequired,
+        comment: PropTypes.number.isRequired,
+        favouriteCount: PropTypes.number.isRequired,
+        favourited: PropTypes.bool.isRequired,
         firstName: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
+        image: PropTypes.string,
+        isCommentOpen: PropTypes.bool.isRequired,
         lastName: PropTypes.string.isRequired,
+        liked: PropTypes.bool.isRequired,
         likes: PropTypes.number.isRequired,
         post: PropTypes.string.isRequired,
     })).isRequired,
