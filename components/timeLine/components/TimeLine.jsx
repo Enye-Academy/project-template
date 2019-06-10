@@ -200,14 +200,16 @@ const mapStateToProps = state => ({
     timelineData: getTimelineData(state),
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({
+const timeLineActions = {
     commentButtonClicked,
     favButtonClicked,
     fetchProfileData,
     handlePostUpdate,
     likeButtonClicked,
     setPostUpdateField,
-}, dispatch);
+};
+
+const mapDispatchToProps = dispatch => bindActionCreators(timeLineActions, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(TimeLine);
 TimeLine.propTypes = {
