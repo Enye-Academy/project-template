@@ -6,8 +6,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import {
-    commentButtonClicked, favButtonClicked, fetchProfileData, handlePostUpdate,
-    likeButtonClicked, setPostUpdateField
+    commentButtonClicked,
+    favButtonClicked,
+    fetchProfileData,
+    handlePostUpdate,
+    handlePostComment,
+    likeButtonClicked,
+    setPostUpdateField
 } from '../actions';
 import { components } from '../../layout';
 import { CreatePostComponent } from './CreatePostComponent';
@@ -20,6 +25,7 @@ const { CREATE_POST_PLACEHOLDER, TIMELINE_TITLE } = STRINGS;
 const { PageLayout } = components;
 export const data = (id, post) => ({
     comment: 0,
+    comments: [],
     email: 'jotuya2@gmail.com',
     favouriteCount: 0,
     favourited: false,
@@ -110,7 +116,7 @@ componentDidMount() {
     * @param {Number} id the id of the commented post
     * @return {Object} changes the state of the like component
     */
-    handleComment = id => {
+    handleCommentButton = id => {
         const { commentButtonClicked } = this.props;
         commentButtonClicked(id);
     };
@@ -179,7 +185,7 @@ componentDidMount() {
                                 profileData={timelineData}
                                 handleLikeButton={this.handleLikeButton}
                                 handleFavButton={this.handleFavButton}
-                                handleComment={this.handleComment}
+                                handleCommentButton={this.handleCommentButton}
                             />
                         </section>
                     </section>
@@ -208,6 +214,7 @@ TimeLine.propTypes = {
     commentButtonClicked: PropTypes.func.isRequired,
     favButtonClicked: PropTypes.func.isRequired,
     fetchProfileData: PropTypes.func.isRequired,
+    handlePostComment: PropTypes.func.isRequired,
     handlePostUpdate: PropTypes.func.isRequired,
     likeButtonClicked: PropTypes.func.isRequired,
     setPostUpdateField: PropTypes.func.isRequired,

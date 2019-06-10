@@ -15,6 +15,7 @@ export const reducers = (state = initialState, action) => {
         FETCH_PROFILE_DATA_SUCCESS,
         UPDATE_STATUS,
         ADD_POST_TO_TIMELINE,
+        ADD_COMMENT_TO_POST,
         TOGGLE_POST_LIKE,
         TOGGLE_POST_FAV, TOGGLE_COMMENT_BUTTON,
     } = actionTypes;
@@ -36,6 +37,10 @@ export const reducers = (state = initialState, action) => {
         return { ...state, error, isFetching: false };
 
     case ADD_POST_TO_TIMELINE:
+        return payload.post !== ''
+            ? { ...state, timelineData: [payload, ...state.timelineData] } : state;
+
+    case ADD_COMMENT_TO_POST: console.log('payload post', payload.post);
         return payload.post !== ''
             ? { ...state, timelineData: [payload, ...state.timelineData] } : state;
 

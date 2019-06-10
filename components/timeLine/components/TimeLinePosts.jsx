@@ -25,14 +25,22 @@ const IconText = ({
     </span>
 );
 
-const TimeLinePosts = props => {
+class TimeLinePosts extends React.Component {
+state = {
+    isFullPost: false,
+}
+
+render() {
     const {
         profileData,
-        handleComment,
-        handleOk,
+        handleCommentButton,
+        handleCommentOnPost,
         handleLikeButton,
         handleFavButton,
-    } = props;
+    } = this.props;
+
+    const { isFullPost } = this.state;
+
     return profileData.length !== 0 ? (
         <List
             itemLayout="vertical"
@@ -77,7 +85,7 @@ const TimeLinePosts = props => {
                                 type="message"
                                 className="mr-8"
                                 text={comment}
-                                action={() => handleComment(id)}
+                                action={() => handleCommentButton(id)}
                                 key={3}
                             />,
                         ]}
@@ -97,12 +105,16 @@ const TimeLinePosts = props => {
                                 />
                             ) : <div />
                         }
-                        {post.substr(0, 150)}
+
+                        <p>
+                            {post.substring(0, 150)}
+                        </p>
+
                         {/* post comment component */}
                         <div className={profileData[id - 1].isCommentOpen ? 'show' : 'hide'}>
 
                             <CreatePostComponent
-                                handleOkFunction={handleOk}
+                                handleOkFunction={handleCommentOnPost}
                                 InputPlaceholder={COMMENT_PLACEHOLDER}
                                 rowHeight={2}
                                 textValue={textValue}
@@ -115,12 +127,11 @@ const TimeLinePosts = props => {
                                         id, firstName, lastName, post, avatar,
                                     } = commentPost;
                                     return (
-
-                                        <Item>
-                                            <section className="Timeline_comment" key={id}>
+                                        <Item key={id}>
+                                            <section className="Timeline_comment">
                                                 {/* avatar */}
                                                 <Avatar src={avatar} className="user-avatar avatar-pop" />
-                                            <div>
+                                                <div>
                                                     {/* name */}
                                                     <h3>{`${firstName} ${lastName}`}</h3>
                                                     {/* time */}
@@ -141,7 +152,7 @@ const TimeLinePosts = props => {
             }
         />
     ) : (
-    // data loading simulation
+        // data loading simulation
         LOADING_SKELETON.map(items => {
             const {
                 paragraph,
@@ -164,7 +175,8 @@ const TimeLinePosts = props => {
             );
         })
     );
-};
+}
+}
 
 export default TimeLinePosts;
 
@@ -176,7 +188,7 @@ IconText.propTypes = {
 };
 
 TimeLinePosts.propTypes = {
-    handleComment: PropTypes.func.isRequired,
+    handleCommentButton: PropTypes.func.isRequired,
     handleFavButton: PropTypes.func.isRequired,
     handleLikeButton: PropTypes.func.isRequired,
     handleOk: PropTypes.func.isRequired,

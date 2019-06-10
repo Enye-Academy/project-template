@@ -241,6 +241,10 @@
   margin: 0;
 }
 
+.link {
+  color: #1890ff;
+}
+
 @media screen and (max-width:767px) {
   .TimeLine_content {
     max-width: 458px;

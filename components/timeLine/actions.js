@@ -1,14 +1,15 @@
 import actionTypes from './actionTypes';
 
 const {
+    ADD_COMMENT_TO_POST,
+    ADD_POST_TO_TIMELINE,
     FETCH_PROFILE_REQUEST,
     FETCH_PROFILE_DATA_FAILURE,
     FETCH_PROFILE_DATA_SUCCESS,
-    UPDATE_STATUS,
-    ADD_POST_TO_TIMELINE,
     TOGGLE_POST_LIKE,
     TOGGLE_POST_FAV,
     TOGGLE_COMMENT_BUTTON,
+    UPDATE_STATUS,
 } = actionTypes;
 
 export const setPostUpdateField = text => ({ payload: text, type: UPDATE_STATUS });
@@ -44,6 +45,11 @@ export const fetchProfileData = () => dispatch => {
 export const handlePostUpdate = payload => ({
     payload,
     type: ADD_POST_TO_TIMELINE,
+});
+
+export const handlePostComment = payload => ({
+    payload,
+    type: ADD_COMMENT_TO_POST,
 });
 
 export const likeButtonClicked = payload => ({
