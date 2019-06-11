@@ -8,34 +8,24 @@ import React from 'react';
 import {
     commentButtonClicked,
     favButtonClicked,
-    fetchProfileData,
     handlePostUpdate,
     handlePostComment,
+    loadTimeLineData,
     likeButtonClicked,
-    setPostUpdateField
+    setPostUpdateField,
+    setTimeLineData,
+    setTimeLineError
 } from '../actions';
 import { components } from '../../layout';
 import { CreatePostComponent } from './CreatePostComponent';
 import CreatePostModal from './CreatePostModal';
+import { data } from '../utils';
 import { getStatusValue, getTimelineData } from '../selectors';
 import TimeLinePosts from './TimeLinePosts';
 import { STRINGS } from '../constants';
 
 const { CREATE_POST_PLACEHOLDER, TIMELINE_TITLE } = STRINGS;
 const { PageLayout } = components;
-const data = (id, post) => ({
-    comment: 0,
-    comments: [],
-    email: 'jotuya2@gmail.com',
-    favouriteCount: 0,
-    favourited: false,
-    firstName: 'Justice',
-    id,
-    lastName: 'Otuya',
-    liked: false,
-    likes: 0,
-    post,
-});
 
 const commentData = (id, post) => ({
     firstName: 'Justice',
@@ -55,8 +45,8 @@ state ={
 }
 
 componentDidMount() {
-    const { fetchProfileData } = this.props;
-    fetchProfileData();
+    const { loadTimeLineData } = this.props;
+    loadTimeLineData();
 }
 
     /**
@@ -219,11 +209,13 @@ const mapStateToProps = state => ({
 const timeLineActions = {
     commentButtonClicked,
     favButtonClicked,
-    fetchProfileData,
     handlePostComment,
     handlePostUpdate,
     likeButtonClicked,
+    loadTimeLineData,
     setPostUpdateField,
+    setTimeLineData,
+    setTimeLineError,
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators(timeLineActions, dispatch);
@@ -233,10 +225,10 @@ export default connect(mapStateToProps, mapDispatchToProps)(TimeLine);
 TimeLine.propTypes = {
     commentButtonClicked: PropTypes.func.isRequired,
     favButtonClicked: PropTypes.func.isRequired,
-    fetchProfileData: PropTypes.func.isRequired,
     handlePostComment: PropTypes.func.isRequired,
     handlePostUpdate: PropTypes.func.isRequired,
     likeButtonClicked: PropTypes.func.isRequired,
+    loadTimeLineData: PropTypes.func.isRequired,
     setPostUpdateField: PropTypes.func.isRequired,
     statusValue: PropTypes.string.isRequired,
     timelineData: PropTypes.arrayOf(PropTypes.shape({

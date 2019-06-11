@@ -10,9 +10,9 @@ const initialState = {
 export default (state = initialState, action) => {
     const {
         CLEAR_STATUS_FIELD,
-        FETCH_PROFILE_REQUEST,
-        FETCH_PROFILE_DATA_FAILURE,
-        FETCH_PROFILE_DATA_SUCCESS,
+        FETCH_TIMELINE_REQUEST,
+        FETCH_TIMELINE_DATA_FAILURE,
+        FETCH_TIMELINE_DATA_SUCCESS,
         UPDATE_STATUS,
         ADD_POST_TO_TIMELINE,
         ADD_COMMENT_TO_POST,
@@ -22,19 +22,19 @@ export default (state = initialState, action) => {
     } = actionTypes;
 
     const {
-        type, error, payload, timelineData,
+        type, error, payload,
     } = action;
 
     let newArray = [];
 
     switch (type) {
-    case FETCH_PROFILE_REQUEST:
+    case FETCH_TIMELINE_REQUEST:
         return { ...state, isFetching: true };
 
-    case FETCH_PROFILE_DATA_SUCCESS:
-        return { ...state, isFetching: false, timelineData };
+    case FETCH_TIMELINE_DATA_SUCCESS:
+        return { ...state, isFetching: false, timelineData: payload };
 
-    case FETCH_PROFILE_DATA_FAILURE:
+    case FETCH_TIMELINE_DATA_FAILURE:
         return { ...state, error, isFetching: false };
 
     case ADD_POST_TO_TIMELINE:
