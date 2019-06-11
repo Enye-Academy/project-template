@@ -11,6 +11,7 @@ export const fetchTimeLineData = async () => {
 };
 
 export const data = (id, post) => ({
+    avatar: 'https://randomuser.me/api/portraits/men/44.jpg',
     comment: 0,
     comments: [],
     email: 'jotuya2@gmail.com',
@@ -18,6 +19,7 @@ export const data = (id, post) => ({
     favourited: false,
     firstName: 'Justice',
     id,
+    isCommentOpen: false,
     lastName: 'Otuya',
     liked: false,
     likes: 0,
