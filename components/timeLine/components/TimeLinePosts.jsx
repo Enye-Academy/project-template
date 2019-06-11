@@ -38,7 +38,7 @@ class TimeLinePosts extends React.Component {
             handleOnChange,
             isFetching,
         } = this.props;
-        if ((isFetching && profileData === '') || (!isFetching && profileData === '')) {
+        if ((isFetching || profileData === [])) {
             return (
                 // data loading simulation
                 LOADING_SKELETON.map(items => {
@@ -65,7 +65,7 @@ class TimeLinePosts extends React.Component {
             );
         }
 
-        if (profileData !== '' && profileData.length === 0) {
+        if (profileData === [] && profileData.length === 0 && !isFetching) {
             return (
                 <Empty
                     image={IMAGE_LINK}
@@ -206,7 +206,7 @@ TimeLinePosts.propTypes = {
     handleFavButton: PropTypes.func.isRequired,
     handleLikeButton: PropTypes.func.isRequired,
     handleOnChange: PropTypes.func.isRequired,
-    isFetching: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool.isRequired,
     profileData: PropTypes.arrayOf(PropTypes.shape({
         avatar: PropTypes.string.isRequired,
         comment: PropTypes.number.isRequired,
