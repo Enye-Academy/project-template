@@ -43,10 +43,6 @@ export const MENU_ITEMS = [
         href: '/forum',
         key: 2,
         text: 'Forum',
-    }, {
-        href: '/Dairy',
-        key: 3,
-        text: 'Dairy',
     },
 ];
 
@@ -61,11 +57,6 @@ export const SIDEBAR_MENU_ITEMS = [
         key: 2,
         text: 'Forum',
         type: 'video-camera',
-    }, {
-        href: '/dairy',
-        key: 3,
-        text: 'Dairy',
-        type: 'upload',
     },
 ];
 

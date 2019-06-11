@@ -5,7 +5,7 @@ const initialState = {
     isFetching: false,
     isOpen: false,
     statusValue: '',
-    timelineData: [],
+    timelineData: '',
 };
 export default (state = initialState, action) => {
     const {

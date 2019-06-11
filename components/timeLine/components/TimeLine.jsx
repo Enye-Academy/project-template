@@ -20,7 +20,7 @@ import { components } from '../../layout';
 import { CreatePostComponent } from './CreatePostComponent';
 import CreatePostModal from './CreatePostModal';
 import { data } from '../utils';
-import { getStatusValue, getTimelineData } from '../selectors';
+import { getStatusValue, getTimelineData, getIsFetching } from '../selectors';
 import TimeLinePosts from './TimeLinePosts';
 import { STRINGS } from '../constants';
 
@@ -142,7 +142,7 @@ componentDidMount() {
 
     render() {
         const {
-            timelineData,
+            timelineData, isFetching,
         } = this.props;
         const { isModalOpen } = this.state;
 
@@ -186,6 +186,7 @@ componentDidMount() {
                         <section className="TimeLine_posts">
                             {/* timeline posts */}
                             <TimeLinePosts
+                                isFetching={isFetching}
                                 profileData={timelineData}
                                 handleLikeButton={this.handleLikeButton}
                                 handleFavButton={this.handleFavButton}
@@ -202,6 +203,7 @@ componentDidMount() {
 }
 
 const mapStateToProps = state => ({
+    isFetching: getIsFetching(state),
     statusValue: getStatusValue(state),
     timelineData: getTimelineData(state),
 });
@@ -227,6 +229,7 @@ TimeLine.propTypes = {
     favButtonClicked: PropTypes.func.isRequired,
     handlePostComment: PropTypes.func.isRequired,
     handlePostUpdate: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool.isRequired,
     likeButtonClicked: PropTypes.func.isRequired,
     loadTimeLineData: PropTypes.func.isRequired,
     setPostUpdateField: PropTypes.func.isRequired,

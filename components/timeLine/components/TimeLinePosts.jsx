@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-literals */
 import {
-    Avatar, Icon, List, Skeleton, Timeline
+    Avatar, Empty, Icon, List, Skeleton, Timeline
 } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -9,7 +9,9 @@ import { CreatePostComponent } from './CreatePostComponent';
 import { LOADING_SKELETON, STRINGS } from '../constants';
 import './TimeLine.css';
 
-const { COMMENT_PLACEHOLDER, TIME } = STRINGS;
+const {
+    COMMENT_PLACEHOLDER, TIME, EMPTY_COMMENT, IMAGE_LINK,
+} = STRINGS;
 const { Item } = Timeline;
 const IconText = ({
     type, text, action, className,
@@ -34,9 +36,50 @@ class TimeLinePosts extends React.Component {
             handleLikeButton,
             handleFavButton,
             handleOnChange,
+            isFetching,
         } = this.props;
+        if ((isFetching && profileData === '') || (!isFetching && profileData === '')) {
+            return (
+                // data loading simulation
+                LOADING_SKELETON.map(items => {
+                    const {
+                        paragraph,
+                        title,
+                        loading,
+                        active,
+                        avatar,
+                        id,
+                    } = items;
+                    return (
+                        <Skeleton
+                            key={id}
+                            paragraph={paragraph}
+                            title={title}
+                            loading={loading}
+                            active={active}
+                            avatar={avatar}
+                            className="skeleton-section"
+                        />
+                    );
+                })
+            );
+        }
 
-        return profileData.length !== 0 ? (
+        if (profileData !== '' && profileData.length === 0) {
+            return (
+                <Empty
+                    image={IMAGE_LINK}
+                    className="empty_image"
+                    description={(
+                        <span>
+                            {EMPTY_COMMENT}
+                        </span>
+                    )}
+                />
+            );
+        }
+
+        return (
             <List
                 itemLayout="vertical"
                 dataSource={profileData}
@@ -144,29 +187,6 @@ class TimeLinePosts extends React.Component {
                 }
                 }
             />
-        ) : (
-        // data loading simulation
-            LOADING_SKELETON.map(items => {
-                const {
-                    paragraph,
-                    title,
-                    loading,
-                    active,
-                    avatar,
-                    id,
-                } = items;
-                return (
-                    <Skeleton
-                        key={id}
-                        paragraph={paragraph}
-                        title={title}
-                        loading={loading}
-                        active={active}
-                        avatar={avatar}
-                        className="skeleton-section"
-                    />
-                );
-            })
         );
     }
 }
@@ -186,6 +206,7 @@ TimeLinePosts.propTypes = {
     handleFavButton: PropTypes.func.isRequired,
     handleLikeButton: PropTypes.func.isRequired,
     handleOnChange: PropTypes.func.isRequired,
+    isFetching: PropTypes.func.isRequired,
     profileData: PropTypes.arrayOf(PropTypes.shape({
         avatar: PropTypes.string.isRequired,
         comment: PropTypes.number.isRequired,
