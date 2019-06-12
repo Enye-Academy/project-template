@@ -2,11 +2,14 @@ import {
     takeEvery, call, put
 } from 'redux-saga/effects';
 import actionTypes from './actionTypes';
-import { setTimeLineError, setTimeLineData } from './actions';
-import { fetchTimeLineData } from './utils';
+import {
+    setTimeLineError, setTimeLineData, setOnlineFriendsData, setOnlineFriendsError
+} from './actions';
+import { fetchTimeLineData, fetchProfileData } from './utils';
 
 const {
     FETCH_TIMELINE_REQUEST,
+    FETCH_ONLINE_USERS_REQUEST,
 } = actionTypes;
 
 function* handleTimeLineDataLoad() {
@@ -18,7 +21,17 @@ function* handleTimeLineDataLoad() {
     }
 }
 
+function* handleProfileDataLoad() {
+    try {
+        const data = yield call(fetchProfileData);
+        yield put(setOnlineFriendsData(data));
+    } catch (error) {
+        yield put(setOnlineFriendsError(error.toString()));
+    }
+}
+
 // watcher
 export default function* watchTimelineDataLoad() {
     yield takeEvery(FETCH_TIMELINE_REQUEST, handleTimeLineDataLoad);
+    yield takeEvery(FETCH_ONLINE_USERS_REQUEST, handleProfileDataLoad);
 }

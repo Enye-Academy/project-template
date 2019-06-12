@@ -175,6 +175,7 @@
 .avartar-online {
   height: 35px;
   width: 35px;
+  margin-right: 1em
 }
 
 .TimeLine_online-friends li {
@@ -314,7 +315,7 @@
   .TimeLine-post-component,
   .TimeLine_popular-topic,
   .TimeLine_online-friends {
-    background: #ffffff;
+    /* background: #ffffff; */
     display: block;
     padding: 1em 24px;
   }

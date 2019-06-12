@@ -2,7 +2,9 @@ import actionTypes from './actionTypes';
 
 const initialState = {
     error: undefined,
-    isFetching: false,
+    isOnlineFriendsFetching: false,
+    isTimelineFetching: false,
+    onlineFriendsData: [],
     timelineData: [],
 };
 export default (state = initialState, action) => {
@@ -10,6 +12,9 @@ export default (state = initialState, action) => {
         FETCH_TIMELINE_REQUEST,
         FETCH_TIMELINE_DATA_FAILURE,
         FETCH_TIMELINE_DATA_SUCCESS,
+        FETCH_ONLINE_USERS_FAILURE,
+        FETCH_ONLINE_USERS_REQUEST,
+        FETCH_ONLINE_USERS_SUCCESS,
         ADD_POST_TO_TIMELINE,
         ADD_COMMENT_TO_POST,
         TOGGLE_POST_LIKE,
@@ -25,13 +30,22 @@ export default (state = initialState, action) => {
 
     switch (type) {
     case FETCH_TIMELINE_REQUEST:
-        return { ...state, isFetching: true };
+        return { ...state, isTimelineFetching: true };
 
     case FETCH_TIMELINE_DATA_SUCCESS:
-        return { ...state, isFetching: false, timelineData: payload };
+        return { ...state, isTimelineFetching: false, timelineData: payload };
 
     case FETCH_TIMELINE_DATA_FAILURE:
-        return { ...state, error, isFetching: false };
+        return { ...state, error, isTimelineFetching: false };
+
+    case FETCH_ONLINE_USERS_REQUEST:
+        return { ...state, isOnlineFriendsFetching: true };
+
+    case FETCH_ONLINE_USERS_SUCCESS:
+        return { ...state, isOnlineFriendsFetching: false, onlineFriendsData: payload };
+
+    case FETCH_ONLINE_USERS_FAILURE:
+        return { ...state, error, isOnlineFriendsFetching: false };
 
     case ADD_POST_TO_TIMELINE:
         return payload.post !== ''
