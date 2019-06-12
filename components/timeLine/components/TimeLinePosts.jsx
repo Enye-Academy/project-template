@@ -35,7 +35,8 @@ class TimeLinePosts extends React.Component {
             handleCommentOnPost,
             handleLikeButton,
             handleFavButton,
-            handleOnChange,
+            handleValueChange,
+            value,
             isFetching,
         } = this.props;
         if ((isFetching || profileData === [])) {
@@ -153,7 +154,8 @@ class TimeLinePosts extends React.Component {
                                     handleOkFunction={() => handleCommentOnPost(id)}
                                     InputPlaceholder={COMMENT_PLACEHOLDER}
                                     rowHeight={2}
-                                    handleOnChange={handleOnChange}
+                                    handleValueChange={handleValueChange}
+                                    value={value}
                                 />
                                 <Timeline>
                                     {/* comment post */}
@@ -205,7 +207,7 @@ TimeLinePosts.propTypes = {
     handleCommentOnPost: PropTypes.func.isRequired,
     handleFavButton: PropTypes.func.isRequired,
     handleLikeButton: PropTypes.func.isRequired,
-    handleOnChange: PropTypes.func.isRequired,
+    handleValueChange: PropTypes.func.isRequired,
     isFetching: PropTypes.bool.isRequired,
     profileData: PropTypes.arrayOf(PropTypes.shape({
         avatar: PropTypes.string.isRequired,
@@ -220,4 +222,5 @@ TimeLinePosts.propTypes = {
         likes: PropTypes.number.isRequired,
         post: PropTypes.string.isRequired,
     })).isRequired,
+    value: PropTypes.string.isRequired,
 };

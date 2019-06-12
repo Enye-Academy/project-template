@@ -10,7 +10,15 @@ export const fetchTimeLineData = async () => {
     return data;
 };
 
-export const data = (id, post) => ({
+export const generateCommentData = (id, post) => ({
+    avatar: 'https://randomuser.me/api/portraits/men/44.jpg',
+    firstName: 'Justice',
+    id,
+    lastName: 'Otuya',
+    post,
+});
+
+export const generateData = (id, post) => ({
     avatar: 'https://randomuser.me/api/portraits/men/44.jpg',
     comment: 0,
     comments: [],

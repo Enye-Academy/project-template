@@ -9,10 +9,7 @@ const {
     TOGGLE_POST_LIKE,
     TOGGLE_POST_FAV,
     TOGGLE_COMMENT_BUTTON,
-    UPDATE_STATUS,
 } = actionTypes;
-
-export const setPostUpdateField = text => ({ payload: text, type: UPDATE_STATUS });
 
 export const loadTimeLineData = () => ({
     type: FETCH_TIMELINE_REQUEST,

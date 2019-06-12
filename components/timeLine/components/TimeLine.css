@@ -255,8 +255,6 @@
   place-content: center;
 }
 
-
-
 @media screen and (max-width:767px) {
   .TimeLine_content {
     max-width: 458px;

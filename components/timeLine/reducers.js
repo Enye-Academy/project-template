@@ -3,17 +3,13 @@ import actionTypes from './actionTypes';
 const initialState = {
     error: undefined,
     isFetching: false,
-    isOpen: false,
-    statusValue: '',
     timelineData: [],
 };
 export default (state = initialState, action) => {
     const {
-        CLEAR_STATUS_FIELD,
         FETCH_TIMELINE_REQUEST,
         FETCH_TIMELINE_DATA_FAILURE,
         FETCH_TIMELINE_DATA_SUCCESS,
-        UPDATE_STATUS,
         ADD_POST_TO_TIMELINE,
         ADD_COMMENT_TO_POST,
         TOGGLE_POST_LIKE,
@@ -52,12 +48,6 @@ export default (state = initialState, action) => {
             ...state,
             timelineData: [...newArray],
         };
-
-    case UPDATE_STATUS:
-        return { ...state, statusValue: payload };
-
-    case CLEAR_STATUS_FIELD:
-        return { ...state, statusValue: '' };
 
     case TOGGLE_POST_LIKE:
         newArray = state.timelineData.map(item => {

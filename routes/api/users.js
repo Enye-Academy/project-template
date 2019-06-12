@@ -78,8 +78,6 @@ router.get(
 router.get('/callback', (req, res, next) => passport.authenticate('auth0', (err, user) => {
     // eslint-disable-next-line no-unused-vars
 
-    // console.log(info);
-
     if (err) {
         return next(err);
     }

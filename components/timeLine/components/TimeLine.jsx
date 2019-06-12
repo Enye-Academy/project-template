@@ -12,27 +12,19 @@ import {
     handlePostComment,
     loadTimeLineData,
     likeButtonClicked,
-    setPostUpdateField,
     setTimeLineData,
     setTimeLineError
 } from '../actions';
 import { components } from '../../layout';
 import { CreatePostComponent } from './CreatePostComponent';
 import CreatePostModal from './CreatePostModal';
-import { data } from '../utils';
+import { generateCommentData, generateData } from '../utils';
 import { getStatusValue, getTimelineData, getIsFetching } from '../selectors';
 import TimeLinePosts from './TimeLinePosts';
 import { STRINGS } from '../constants';
 
 const { CREATE_POST_PLACEHOLDER, TIMELINE_TITLE } = STRINGS;
 const { PageLayout } = components;
-
-const commentData = (id, post) => ({
-    firstName: 'Justice',
-    id,
-    lastName: 'Otuya',
-    post,
-});
 
 /** Helper function that is used to render the TimeLine Component
  * @class TimeLine
@@ -42,6 +34,7 @@ const commentData = (id, post) => ({
 class TimeLine extends React.Component {
 state ={
     isModalOpen: false,
+    value: '',
 }
 
 componentDidMount() {
@@ -69,13 +62,13 @@ componentDidMount() {
      */
     handleCreateStatus = () => {
         const {
-            handlePostUpdate, setPostUpdateField, statusValue, timelineData,
+            handlePostUpdate, timelineData,
         } = this.props;
 
-        const { isModalOpen } = this.state;
+        const { isModalOpen, value } = this.state;
 
-        // get post
-        handlePostUpdate(data(timelineData.length + 1, statusValue));
+        // // get post
+        handlePostUpdate(generateData(timelineData.length + 1, value));
 
         // close modal
         if (isModalOpen) {
@@ -83,7 +76,9 @@ componentDidMount() {
         }
 
         // clear post component
-        setPostUpdateField('');
+        this.setState({
+            value: '',
+        });
         // close the modal and make make an api call
     };
 
@@ -120,31 +115,25 @@ componentDidMount() {
         commentButtonClicked(id);
     };
 
-    /**
-    * Helper function that is used to handle status value
-    * @function
-    * @return {Object} changes the state of the status value
-    */
-    handleStatusValue = e => {
-        const { setPostUpdateField } = this.props;
-        setPostUpdateField(e.target.value);
-    }
-
-    clearStatusValue = e => {
-        const { setPostUpdateField } = this.props;
-        setPostUpdateField(e.target.value = '');
-    }
-
     handleCommentOnPost = id => {
-        const { handlePostComment, statusValue } = this.props;
-        handlePostComment(commentData(id, statusValue));
+        const { handlePostComment } = this.props;
+        const { value } = this.state;
+
+        handlePostComment(generateCommentData(id, value));
+        this.setState({
+            value: '',
+        });
+    }
+
+    handleValueChange = e => {
+        this.setState({
+            value: e.target.value,
+        });
     }
 
     render() {
-        const {
-            timelineData, isFetching,
-        } = this.props;
-        const { isModalOpen } = this.state;
+        const { timelineData, isFetching } = this.props;
+        const { isModalOpen, value } = this.state;
 
         return (
             <PageLayout
@@ -165,7 +154,8 @@ componentDidMount() {
                             visible={isModalOpen}
                             handleOkFunction={this.handleCreateStatus}
                             closeModal={this.modalHandler}
-                            handleOnChange={this.handleStatusValue}
+                            handleValueChange={this.handleValueChange}
+                            value={value}
                         />
                     </section>
 
@@ -177,7 +167,8 @@ componentDidMount() {
                                 InputPlaceholder={CREATE_POST_PLACEHOLDER}
                                 rowHeight={5}
                                 handleOkFunction={this.handleCreateStatus}
-                                handleOnChange={this.handleStatusValue}
+                                handleValueChange={this.handleValueChange}
+                                value={value}
                             />
                         </section>
 
@@ -192,7 +183,8 @@ componentDidMount() {
                                 handleFavButton={this.handleFavButton}
                                 handleCommentButton={this.handleCommentButton}
                                 handleCommentOnPost={this.handleCommentOnPost}
-                                handleOnChange={this.handleStatusValue}
+                                handleValueChange={this.handleValueChange}
+                                value={value}
                             />
                         </section>
                     </section>
@@ -215,7 +207,6 @@ const timeLineActions = {
     handlePostUpdate,
     likeButtonClicked,
     loadTimeLineData,
-    setPostUpdateField,
     setTimeLineData,
     setTimeLineError,
 };
@@ -232,8 +223,6 @@ TimeLine.propTypes = {
     isFetching: PropTypes.bool.isRequired,
     likeButtonClicked: PropTypes.func.isRequired,
     loadTimeLineData: PropTypes.func.isRequired,
-    setPostUpdateField: PropTypes.func.isRequired,
-    statusValue: PropTypes.string.isRequired,
     timelineData: PropTypes.arrayOf(PropTypes.shape({
         avatar: PropTypes.string.isRequired,
         comment: PropTypes.number.isRequired,
