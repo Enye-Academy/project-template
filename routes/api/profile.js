@@ -4,12 +4,14 @@ const router = express.Router();
 
 const Profile = require('../../models/profile.model');
 
+const secured = require('../../lib/middleware/secure');
+
 const validateInput = require('../../validation/profile');
 
 // Create a new Profile
-router.post('/new', async (req, res) => {
+router.post('/', secured(), async (req, res) => {
     const {
-        city, country, email, firstName, lastName,
+        bio, city, country, email, firstName, lastName,
     } = req.body;
 
     // Validate request
@@ -17,7 +19,10 @@ router.post('/new', async (req, res) => {
 
     // Check Validation
     if (!isValid) {
-        return res.status(400).json(errors);
+        return res.json({
+            message: errors,
+            status: 'error',
+        });
     }
 
     // check if user profile exists
@@ -25,10 +30,14 @@ router.post('/new', async (req, res) => {
     const user = await Profile.findOne({ email });
 
     if (user) {
-        return res.status(400).json({ message: `${email} already exist` });
+        return res.json({
+            message: `${email} already exist`,
+            status: 'error',
+        });
     }
     // create new profile
     const profile = new Profile({
+        bio,
         city,
         country,
         email,
@@ -39,8 +48,8 @@ router.post('/new', async (req, res) => {
     try {
         const newProfile = await profile.save();
         return res.json({
-            message: 'profile successfully created',
-            profile: newProfile,
+            data: newProfile,
+            status: 'success',
         });
     } catch (err) {
         return err;
@@ -48,15 +57,19 @@ router.post('/new', async (req, res) => {
 });
 
 // Retrieve all profiles
-router.get('/all', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const profiles = await Profile.find();
         if (!profiles) {
-            return res.status(404).json({
+            return res.json({
                 message: 'No Profile found',
+                status: 'error',
             });
         }
-        return res.json(profiles);
+        return res.json({
+            data: profiles,
+            status: 'success',
+        });
     } catch (err) {
         return err;
     }
@@ -68,8 +81,9 @@ router.get('/:profileId', async (req, res) => {
     try {
         const profile = await Profile.findById(profileId);
         if (!profile) {
-            return res.status(404).json({
+            return res.json({
                 message: `Profile not found with id ${profileId}`,
+                status: 'error',
             });
         }
         return res.json(profile);
@@ -77,6 +91,7 @@ router.get('/:profileId', async (req, res) => {
         if (err.kind === 'ObjectId') {
             return res.json({
                 message: `Profile not found with id ${profileId}`,
+                status: 'error',
             });
         }
     }
@@ -84,9 +99,9 @@ router.get('/:profileId', async (req, res) => {
 });
 
 // Update a Profile with profileId
-router.put('/:profileId', async (req, res) => {
+router.put('/:profileId', secured(), async (req, res) => {
     const {
-        city, country, email, firstName, lastName,
+        bio, city, country, email, firstName, lastName,
     } = req.body;
     const { profileId } = req.params;
 
@@ -95,9 +110,13 @@ router.put('/:profileId', async (req, res) => {
 
     // Check Validation
     if (!isValid) {
-        return res.status(400).json(errors);
+        return res.json({
+            message: errors,
+            status: 'error',
+        });
     }
     const profile = new Profile({
+        bio,
         city,
         country,
         email,
@@ -109,12 +128,14 @@ router.put('/:profileId', async (req, res) => {
         if (!updatedProfile) {
             return res.json({
                 message: `Profile not found with id ${profileId}`,
+                status: 'error',
             });
         }
         return res.json(updatedProfile);
     } catch (err) {
-        return res.status(500).json({
+        return res.json({
             message: `Error updating profile with id ${profileId}`,
+            status: 'error',
         });
     }
 });
@@ -127,9 +148,13 @@ router.delete('/:profileId', async (req, res) => {
         if (!profile) {
             return res.json({
                 message: `Profile not found with id ${profileId}`,
+                status: 'error',
             });
         }
-        return res.json({ message: 'Profile deleted successfully!' });
+        return res.json({
+            data: null,
+            status: 'success',
+        });
     } catch (err) {
         return err;
     }

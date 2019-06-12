@@ -6,12 +6,17 @@ module.exports = function validateInput(data) {
     const errors = {};
 
     const {
+        bio = '',
         city = '',
         country = '',
         email = '',
         firstName = '',
         lastName = '',
     } = data;
+
+    if (Validator.isEmpty(bio)) {
+        errors.country = 'Bio field is required';
+    }
 
     if (Validator.isEmpty(country)) {
         errors.country = 'Country field is required';
