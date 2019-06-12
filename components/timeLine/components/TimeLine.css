@@ -249,6 +249,12 @@
   margin: 0 1em
 }
 
+.empty_image {
+  height: 50vh;
+  display: grid;
+  place-content: center;
+}
+
 @media screen and (max-width:767px) {
   .TimeLine_content {
     max-width: 458px;

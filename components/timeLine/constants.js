@@ -49,12 +49,14 @@ export const POPULAR_TOPIC = [
         text: 'Voluptatem, nesciunt?',
     },
 ];
-
 export const STRINGS = {
     COMMENT_PLACEHOLDER: 'Write your reply',
     CREATE_POST_PLACEHOLDER: 'What is on your mind?',
+    EMPTY_COMMENT: 'It seems very Lonely here, please add posts',
     FOLLOWERS: 'followers',
     FOLLOWING: 'following',
+    IMAGE_LINK: `https://gw.alipayobjects.com/mdn/miniapp_social/afts/img/A*
+    pevERLJC9v0AAAAAAAAAAABjAQAAAQ/original`,
     NAME: 'timeLine',
     ONLINE_FRIENDS: 'Online Friends',
     POPULAR_TOPIC_TEXT: 'Popular Topic',
