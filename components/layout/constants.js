@@ -36,7 +36,7 @@ export const LINKS = {
 
 export const MENU_ITEMS = [
     {
-        href: '/home',
+        href: '/timeline',
         key: 1,
         text: 'Home',
     }, {

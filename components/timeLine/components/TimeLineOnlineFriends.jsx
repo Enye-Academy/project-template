@@ -1,4 +1,5 @@
 import React from 'react';
+import uuid from 'uuid';
 
 // dummy data to be replaced with api data, commented so that test can
 // pass, will be removed when api is ready
@@ -14,9 +15,9 @@ const TimeLineOnlineFriends = () => (
         </h3>
         <ul>
             {profile.map(user => {
-                const { email, photo, name } = user;
+                const { photo, name } = user;
                 return (
-                    <li key={email}>
+                    <li key={uuid()}>
                         <img
                             src={photo}
                             alt={name}

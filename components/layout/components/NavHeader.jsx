@@ -24,14 +24,16 @@ const { Search } = Input;
  * @return {Object} head metadata which is inserted in every page
  */
 function NavHeader(props) {
-    const { handleSearch, searchValue, title } = props;
-    let isAuthenticated;
-    // fake Authentication for development
-    if (global.location !== undefined && global.location.pathname === '/') {
-        isAuthenticated = false;
-    } else {
-        isAuthenticated = true;
-    }
+    const {
+        handleSearch, searchValue, title, selectedKey, isAuthenticated,
+    } = props;
+    // let isAuthenticated;
+    // // fake Authentication for development
+    // if (global.location !== undefined && global.location.pathname === '/') {
+    //     isAuthenticated = false;
+    // } else {
+    //     isAuthenticated = true;
+    // }
 
     return (
         <>
@@ -62,48 +64,63 @@ function NavHeader(props) {
                         <img src={HELPME_LOGO} alt={HELPME_LOGO_DESC} className="logo" />
                     </a>
                 </Link>
-                {isAuthenticated ? (
-                    <>
-                        {/* search */}
-                        <Search
-                            placeholder="input search text"
-                            onSearch={handleSearch}
-                            className="search"
-                            value={searchValue}
-                        />
-                        {/* navbar for authenticated desktop */}
-                        <Menu
-                            theme="light"
-                            mode="horizontal"
-                            defaultSelectedKeys={['1']}
-                            className="layout_header-list"
-                        >
-                            {
-                                MENU_ITEMS.map(menuItem => {
-                                    const { key, href, text } = menuItem;
-                                    return (
-                                        <Menu.Item key={key}>
-                                            <Link href={href}>
-                                                <a>{text}</a>
-                                            </Link>
-                                        </Menu.Item>
-                                    );
-                                })
+                {
+                    isAuthenticated
+                        ? (
+                            <Search
+                                placeholder="input search text"
+                                onSearch={handleSearch}
+                                className="search"
+                                value={searchValue}
+                            />
+                        )
+                        : null
+                }
+
+                {/* navbar for authenticated desktop */}
+                <Menu
+                    theme="light"
+                    mode="horizontal"
+                    defaultSelectedKeys={[selectedKey]}
+                    className="layout_header-list"
+                >
+                    {
+                        MENU_ITEMS.map(menuItem => {
+                            let { key, href, text } = menuItem;
+                            if (key === 1) {
+                                href = isAuthenticated ? '/timeline' : '/';
                             }
-                        </Menu>
-                        <Button className="LandingPage_login_button" type="danger">
-                            <Link href="/">
-                                <a>{LOGOUT}</a>
-                            </Link>
-                        </Button>
-                    </>
+                            return (
+                                <Menu.Item key={key}>
+                                    <Link href={href}>
+                                        <a>{text}</a>
+                                    </Link>
+                                </Menu.Item>
+                            );
+                        })
+                    }
+                </Menu>
+                <Button
+                    className="LandingPage_login_button"
+                    type={isAuthenticated ? 'danger' : 'primary'}
+                >
+                    <Link href={isAuthenticated ? '/' : { LOGIN_LINK }}>
+                        <a>
+                            {isAuthenticated
+                                ? LOGOUT
+                                : LOGIN}
+                        </a>
+                    </Link>
+                </Button>
+                {/* </>
                 ) : (
                     <Button className="LandingPage_login_button" type="primary">
                         <Link href={LOGIN_LINK}>
                             <a>{LOGIN}</a>
                         </Link>
                     </Button>
-                )}
+                ) */}
+                {/* } */}
             </Header>
         </>
     );
@@ -111,12 +128,13 @@ function NavHeader(props) {
 export default NavHeader;
 NavHeader.propTypes = {
     handleSearch: PropTypes.func,
+    isAuthenticated: PropTypes.bool.isRequired,
     searchValue: PropTypes.string,
-    title: PropTypes.string,
+    selectedKey: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
 };
 
 NavHeader.defaultProps = {
     handleSearch: null,
     searchValue: '',
-    title: 'Welcome to Helpme',
 };

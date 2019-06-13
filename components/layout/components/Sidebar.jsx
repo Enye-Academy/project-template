@@ -2,6 +2,7 @@ import { Icon, Layout, Menu } from 'antd';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import React from 'react';
+import uuid from 'uuid';
 
 import { SIDEBAR_MENU_ITEMS } from '../constants';
 
@@ -24,10 +25,10 @@ export default function Sidebar(props) {
                         {
                             SIDEBAR_MENU_ITEMS.map(sideBarItem => {
                                 const {
-                                    key, href, type, text,
+                                    href, type, text,
                                 } = sideBarItem;
                                 return (
-                                    <Menu.Item key={key}>
+                                    <Menu.Item key={uuid()}>
                                         <Link href={href}>
                                             <a>
                                                 <Icon type={type} />
