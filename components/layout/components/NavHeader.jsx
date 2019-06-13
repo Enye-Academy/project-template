@@ -99,7 +99,7 @@ function NavHeader(props) {
                     className="LandingPage_login_button"
                     type={isAuthenticated ? 'danger' : 'primary'}
                 >
-                    <Link href={isAuthenticated ? '/' : { LOGIN_LINK }}>
+                    <Link href={isAuthenticated ? '/' : LOGIN_LINK}>
                         <a>
                             { isAuthenticated ? LOGOUT : LOGIN }
                         </a>

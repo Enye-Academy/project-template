@@ -45,8 +45,9 @@ const { PageLayout } = components;
  */
 class TimeLine extends React.Component {
 state ={
+    commentValue: '',
     isModalOpen: false,
-    value: '',
+    statusValue: '',
 }
 
 componentDidMount() {
@@ -78,10 +79,10 @@ componentDidMount() {
             handlePostUpdate, timelineData,
         } = this.props;
 
-        const { isModalOpen, value } = this.state;
+        const { isModalOpen, statusValue } = this.state;
 
         // // get post
-        handlePostUpdate(generateData(timelineData.length + 1, value));
+        handlePostUpdate(generateData(timelineData.length + 1, statusValue));
 
         // close modal
         if (isModalOpen) {
@@ -90,7 +91,7 @@ componentDidMount() {
 
         // clear post component
         this.setState({
-            value: '',
+            statusValue: '',
         });
         // close the modal and make make an api call
     };
@@ -130,17 +131,23 @@ componentDidMount() {
 
     handleCommentOnPost = id => {
         const { handlePostComment } = this.props;
-        const { value } = this.state;
+        const { commentValue } = this.state;
 
-        handlePostComment(generateCommentData(id, value));
+        handlePostComment(generateCommentData(id, commentValue));
         this.setState({
-            value: '',
+            commentValue: '',
         });
     }
 
-    handleValueChange = e => {
+    handleStatusValueChange = e => {
         this.setState({
-            value: e.target.value,
+            statusValue: e.target.value,
+        });
+    }
+
+    handleCommentValueChange = e => {
+        this.setState({
+            commentValue: e.target.value,
         });
     }
 
@@ -148,7 +155,7 @@ componentDidMount() {
         const {
             timelineData, isTimelineFetching, onlineFriendsData, isOnlineFriendsFetching,
         } = this.props;
-        const { isModalOpen, value } = this.state;
+        const { commentValue, isModalOpen, statusValue } = this.state;
 
         return (
             <PageLayout
@@ -170,8 +177,8 @@ componentDidMount() {
                             visible={isModalOpen}
                             handleOkFunction={this.handleCreateStatus}
                             closeModal={this.modalHandler}
-                            handleValueChange={this.handleValueChange}
-                            value={value}
+                            handleValueChange={this.handleStatusValueChange}
+                            value={statusValue}
                         />
                     </section>
 
@@ -192,8 +199,8 @@ componentDidMount() {
                                 InputPlaceholder={CREATE_POST_PLACEHOLDER}
                                 rowHeight={5}
                                 handleOkFunction={this.handleCreateStatus}
-                                handleValueChange={this.handleValueChange}
-                                value={value}
+                                handleValueChange={this.handleStatusValueChange}
+                                value={statusValue}
                             />
                         </section>
 
@@ -208,8 +215,8 @@ componentDidMount() {
                                 handleFavButton={this.handleFavButton}
                                 handleCommentButton={this.handleCommentButton}
                                 handleCommentOnPost={this.handleCommentOnPost}
-                                handleValueChange={this.handleValueChange}
-                                value={value}
+                                handleValueChange={this.handleCommentValueChange}
+                                value={commentValue}
                             />
                         </section>
                     </section>
