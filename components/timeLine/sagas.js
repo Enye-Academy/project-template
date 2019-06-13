@@ -5,8 +5,9 @@ import actionTypes from './actionTypes';
 import {
     setTimeLineError, setTimeLineData, setOnlineFriendsData, setOnlineFriendsError
 } from './actions';
-import { fetchTimeLineData, fetchProfileData } from './utils';
 
+const TIMELINE_DATA_URL = '../../static/data/timelineData.json';
+const PROFILE_URL = '../../../static/data/profiles.json';
 const {
     REQUEST_LOAD_TIMELINE_DATA,
     REQUEST_LOAD_ONLINE_FRIENDS_DATA,
@@ -14,16 +15,18 @@ const {
 
 function* handleTimeLineDataLoad() {
     try {
-        const data = yield call(fetchTimeLineData);
+        const response = yield call(fetch, TIMELINE_DATA_URL);
+        const data = yield response.json();
         yield put(setTimeLineData(data));
     } catch (error) {
-        yield put(setTimeLineError(error.toString()));
+        yield put(setTimeLineError(error));
     }
 }
 
 function* handleProfileDataLoad() {
     try {
-        const data = yield call(fetchProfileData);
+        const response = yield call(fetch, PROFILE_URL);
+        const data = yield response.json();
         yield put(setOnlineFriendsData(data));
     } catch (error) {
         yield put(setOnlineFriendsError(error.toString()));
