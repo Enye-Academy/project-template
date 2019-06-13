@@ -14,22 +14,22 @@ const {
 } = actionTypes;
 
 function* handleTimeLineDataLoad() {
-    try {
-        const response = yield call(fetch, TIMELINE_DATA_URL);
-        const data = yield response.json();
+    const response = yield call(fetch, TIMELINE_DATA_URL);
+    const data = yield response.json();
+    if (response.ok) {
         yield put(setTimeLineData(data));
-    } catch (error) {
-        yield put(setTimeLineError(error));
+    } else {
+        yield put(setTimeLineError(response));
     }
 }
 
 function* handleProfileDataLoad() {
-    try {
-        const response = yield call(fetch, PROFILE_URL);
-        const data = yield response.json();
+    const response = yield call(fetch, PROFILE_URL);
+    const data = yield response.json();
+    if (response.ok) {
         yield put(setOnlineFriendsData(data));
-    } catch (error) {
-        yield put(setOnlineFriendsError(error.toString()));
+    } else {
+        yield put(setTimeLineError(response));
     }
 }
 
