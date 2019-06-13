@@ -15,8 +15,8 @@ const {
 
 function* handleTimeLineDataLoad() {
     const response = yield call(fetch, TIMELINE_DATA_URL);
-    const data = yield response.json();
     if (response.ok) {
+        const data = yield response.json();
         yield put(setTimeLineData(data));
     } else {
         yield put(setTimeLineError(response));
@@ -25,8 +25,8 @@ function* handleTimeLineDataLoad() {
 
 function* handleProfileDataLoad() {
     const response = yield call(fetch, PROFILE_URL);
-    const data = yield response.json();
     if (response.ok) {
+        const data = yield response.json();
         yield put(setOnlineFriendsData(data));
     } else {
         yield put(setOnlineFriendsError(response));
