@@ -9,17 +9,17 @@ const initialState = {
 };
 export default (state = initialState, action) => {
     const {
-        FETCH_TIMELINE_REQUEST,
-        FETCH_TIMELINE_DATA_FAILURE,
-        FETCH_TIMELINE_DATA_SUCCESS,
-        FETCH_ONLINE_USERS_FAILURE,
-        FETCH_ONLINE_USERS_REQUEST,
-        FETCH_ONLINE_USERS_SUCCESS,
+        REQUEST_LOAD_TIMELINE_DATA,
+        REQUEST_SET_TIMELINE_ERROR,
+        REQUEST_SET_TIMELINE_DATA_SUCCESS,
+        REQUEST_SET_ONLINE_FRIENDS_ERROR,
+        REQUEST_LOAD_ONLINE_FRIENDS_DATA,
+        REQUEST_SET_ONLINE_FRIENDS_DATA,
         ADD_POST_TO_TIMELINE,
         ADD_COMMENT_TO_POST,
-        TOGGLE_POST_LIKE,
-        TOGGLE_POST_FAV,
-        TOGGLE_COMMENT_BUTTON,
+        TOGGLE_LIKE_BUTTON_CLICKED,
+        TOGGLE_FAV_BUTTON_CLICKED,
+        TOGGLE_COMMENT_BUTTON_CLICKED,
     } = actionTypes;
 
     const {
@@ -29,22 +29,22 @@ export default (state = initialState, action) => {
     let newArray = [];
 
     switch (type) {
-    case FETCH_TIMELINE_REQUEST:
+    case REQUEST_LOAD_TIMELINE_DATA:
         return { ...state, isTimelineFetching: true };
 
-    case FETCH_TIMELINE_DATA_SUCCESS:
+    case REQUEST_SET_TIMELINE_DATA_SUCCESS:
         return { ...state, isTimelineFetching: false, timelineData: payload };
 
-    case FETCH_TIMELINE_DATA_FAILURE:
+    case REQUEST_SET_TIMELINE_ERROR:
         return { ...state, error, isTimelineFetching: false };
 
-    case FETCH_ONLINE_USERS_REQUEST:
+    case REQUEST_LOAD_ONLINE_FRIENDS_DATA:
         return { ...state, isOnlineFriendsFetching: true };
 
-    case FETCH_ONLINE_USERS_SUCCESS:
+    case REQUEST_SET_ONLINE_FRIENDS_DATA:
         return { ...state, isOnlineFriendsFetching: false, onlineFriendsData: payload };
 
-    case FETCH_ONLINE_USERS_FAILURE:
+    case REQUEST_SET_ONLINE_FRIENDS_ERROR:
         return { ...state, error, isOnlineFriendsFetching: false };
 
     case ADD_POST_TO_TIMELINE:
@@ -63,7 +63,7 @@ export default (state = initialState, action) => {
             timelineData: [...newArray],
         };
 
-    case TOGGLE_POST_LIKE:
+    case TOGGLE_LIKE_BUTTON_CLICKED:
         newArray = state.timelineData.map(item => {
             const { id, liked, likes } = item;
             if (id === payload) {
@@ -77,7 +77,7 @@ export default (state = initialState, action) => {
             timelineData: [...newArray],
         };
 
-    case TOGGLE_POST_FAV:
+    case TOGGLE_FAV_BUTTON_CLICKED:
         newArray = state.timelineData.map(item => {
             const { id, favourited, favouriteCount } = item;
             if (id === payload) {
@@ -88,7 +88,7 @@ export default (state = initialState, action) => {
         });
         return { ...state, timelineData: [...newArray] };
 
-    case TOGGLE_COMMENT_BUTTON:
+    case TOGGLE_COMMENT_BUTTON_CLICKED:
         newArray = state.timelineData.map(item => {
             const { id, isCommentOpen } = item;
             if (id === payload) {

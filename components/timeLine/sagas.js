@@ -8,8 +8,8 @@ import {
 import { fetchTimeLineData, fetchProfileData } from './utils';
 
 const {
-    FETCH_TIMELINE_REQUEST,
-    FETCH_ONLINE_USERS_REQUEST,
+    REQUEST_LOAD_TIMELINE_DATA,
+    REQUEST_LOAD_ONLINE_FRIENDS_DATA,
 } = actionTypes;
 
 function* handleTimeLineDataLoad() {
@@ -32,6 +32,6 @@ function* handleProfileDataLoad() {
 
 // watcher
 export default function* watchTimelineDataLoad() {
-    yield takeEvery(FETCH_TIMELINE_REQUEST, handleTimeLineDataLoad);
-    yield takeEvery(FETCH_ONLINE_USERS_REQUEST, handleProfileDataLoad);
+    yield takeEvery(REQUEST_LOAD_TIMELINE_DATA, handleTimeLineDataLoad);
+    yield takeEvery(REQUEST_LOAD_ONLINE_FRIENDS_DATA, handleProfileDataLoad);
 }

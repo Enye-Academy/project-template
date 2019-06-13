@@ -3,43 +3,43 @@ import actionTypes from './actionTypes';
 const {
     ADD_COMMENT_TO_POST,
     ADD_POST_TO_TIMELINE,
-    FETCH_ONLINE_USERS_FAILURE,
-    FETCH_ONLINE_USERS_REQUEST,
-    FETCH_ONLINE_USERS_SUCCESS,
-    FETCH_TIMELINE_REQUEST,
-    FETCH_TIMELINE_DATA_FAILURE,
-    FETCH_TIMELINE_DATA_SUCCESS,
-    TOGGLE_POST_LIKE,
-    TOGGLE_POST_FAV,
-    TOGGLE_COMMENT_BUTTON,
+    REQUEST_SET_ONLINE_FRIENDS_ERROR,
+    REQUEST_LOAD_ONLINE_FRIENDS_DATA,
+    REQUEST_SET_ONLINE_FRIENDS_DATA,
+    REQUEST_LOAD_TIMELINE_DATA,
+    REQUEST_SET_TIMELINE_ERROR,
+    REQUEST_SET_TIMELINE_DATA_SUCCESS,
+    TOGGLE_FAV_BUTTON_CLICKED,
+    TOGGLE_COMMENT_BUTTON_CLICKED,
+    TOGGLE_LIKE_BUTTON_CLICKED,
 } = actionTypes;
 
 export const loadTimeLineData = () => ({
-    type: FETCH_TIMELINE_REQUEST,
+    type: REQUEST_LOAD_TIMELINE_DATA,
 });
 
 export const setTimeLineError = payload => ({
     payload,
-    type: FETCH_TIMELINE_DATA_FAILURE,
+    type: REQUEST_SET_TIMELINE_ERROR,
 });
 
 export const setTimeLineData = payload => ({
     payload,
-    type: FETCH_TIMELINE_DATA_SUCCESS,
+    type: REQUEST_SET_TIMELINE_DATA_SUCCESS,
 });
 
 export const loadOnlineFriendsData = () => ({
-    type: FETCH_ONLINE_USERS_REQUEST,
+    type: REQUEST_LOAD_ONLINE_FRIENDS_DATA,
 });
 
 export const setOnlineFriendsError = payload => ({
     payload,
-    type: FETCH_ONLINE_USERS_FAILURE,
+    type: REQUEST_SET_ONLINE_FRIENDS_ERROR,
 });
 
 export const setOnlineFriendsData = payload => ({
     payload,
-    type: FETCH_ONLINE_USERS_SUCCESS,
+    type: REQUEST_SET_ONLINE_FRIENDS_DATA,
 });
 
 export const handlePostUpdate = payload => ({
@@ -54,15 +54,15 @@ export const handlePostComment = payload => ({
 
 export const likeButtonClicked = payload => ({
     payload,
-    type: TOGGLE_POST_LIKE,
+    type: TOGGLE_LIKE_BUTTON_CLICKED,
 });
 
 export const favButtonClicked = payload => ({
     payload,
-    type: TOGGLE_POST_FAV,
+    type: TOGGLE_FAV_BUTTON_CLICKED,
 });
 
 export const commentButtonClicked = payload => ({
     payload,
-    type: TOGGLE_COMMENT_BUTTON,
+    type: TOGGLE_COMMENT_BUTTON_CLICKED,
 });

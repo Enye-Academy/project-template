@@ -5,7 +5,7 @@ const PROFILE_URL = '../../../static/data/profiles.json';
 export const fetchTimeLineData = async () => {
     const response = await fetch(TIMELINE_DATA_URL);
     const data = await response.json();
-    if (response.stats >= 400) {
+    if (response.status >= 400) {
         throw new Error(data.errors);
     }
     return data;
@@ -14,7 +14,7 @@ export const fetchTimeLineData = async () => {
 export const fetchProfileData = async () => {
     const response = await fetch(PROFILE_URL);
     const data = await response.json();
-    if (response.stats >= 400) {
+    if (response.status >= 400) {
         throw new Error(data.errors);
     }
     return data;

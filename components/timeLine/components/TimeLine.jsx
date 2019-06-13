@@ -50,7 +50,7 @@ state ={
 }
 
 componentDidMount() {
-    const { loadTimeLineData } = this.props;
+    const { loadTimeLineData, loadOnlineFriendsData } = this.props;
     loadTimeLineData();
     loadOnlineFriendsData();
 }
@@ -252,6 +252,7 @@ TimeLine.propTypes = {
     isOnlineFriendsFetching: PropTypes.bool.isRequired,
     isTimelineFetching: PropTypes.bool.isRequired,
     likeButtonClicked: PropTypes.func.isRequired,
+    loadOnlineFriendsData: PropTypes.func.isRequired,
     loadTimeLineData: PropTypes.func.isRequired,
     onlineFriendsData: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string.isRequired,
