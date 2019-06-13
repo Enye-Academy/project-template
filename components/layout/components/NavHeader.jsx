@@ -11,7 +11,9 @@ import {
 } from '../constants';
 
 const { Header } = Layout;
-const { HEADER_TITLE, LOGIN, LOGOUT } = STRINGS;
+const {
+    HEADER_TITLE, LOGIN, LOGOUT, PLACEHOLDER,
+} = STRINGS;
 const { HELPME_LOGO } = IMAGE_URLS;
 const { HELPME_LOGO_DESC } = IMAGE_ALT;
 const { LOGIN_LINK } = LINKS;
@@ -61,7 +63,7 @@ function NavHeader(props) {
                     isAuthenticated
                         ? (
                             <Search
-                                placeholder="input search text"
+                                placeholder={PLACEHOLDER}
                                 onSearch={handleSearch}
                                 className="search"
                                 value={searchValue}
@@ -99,9 +101,7 @@ function NavHeader(props) {
                 >
                     <Link href={isAuthenticated ? '/' : { LOGIN_LINK }}>
                         <a>
-                            {isAuthenticated
-                                ? LOGOUT
-                                : LOGIN}
+                            { isAuthenticated ? LOGOUT : LOGIN }
                         </a>
                     </Link>
                 </Button>

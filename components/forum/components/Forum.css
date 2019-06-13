@@ -59,6 +59,10 @@
     font-size: 10px
 }
 
+.anticon {
+    margin-right: 2px
+}
+
 @media screen and (min-width: 451px) and (max-width: 767px) {
     .forum {
         max-width: 450px;

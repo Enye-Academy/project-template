@@ -23,6 +23,45 @@ export const LOADING_SKELETON = [{
     title: true,
 }];
 
+export const TabPanes = children => [
+    {
+        children,
+        key: '1',
+        tab: 'Latest',
+    }, {
+        children,
+        key: '2',
+        tab: 'Trending',
+    }, {
+        children,
+        key: '3',
+        tab: 'Favourite',
+    }, {
+        children,
+        key: '4',
+        tab: 'Answered',
+    },
+];
+
+export const FORUM_REACTION = () => [
+    {
+        action: ' answers',
+        iconType: 'message',
+        id: '1',
+        textType: 'secondary',
+    }, {
+        action: ' votes',
+        iconType: 'arrow-up',
+        id: '2',
+        textType: 'secondary',
+    }, {
+        action: ' views',
+        iconType: 'eye',
+        id: '3',
+        textType: 'secondary',
+    },
+];
+
 export const TOP_USERS = [{
     avatar: 'https://randomuser.me/api/portraits/men/68.jpg',
     commentCount: 30,

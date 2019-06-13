@@ -6,11 +6,11 @@ import {
 import Link from 'next/link';
 import uuid from 'uuid';
 
-import { LOADING_SKELETON, STRINGS } from '../constants';
+import { FORUM_REACTION, LOADING_SKELETON, STRINGS } from '../constants';
 
 const { Text } = Typography;
 const {
-    ANSWERS, ASKED, BLOG_TOPIC_LINK, VIEWS, VOTES,
+    ASKED, BLOG_TOPIC_LINK,
 } = STRINGS;
 
 const ForumLatestPost = props => {
@@ -33,24 +33,31 @@ const ForumLatestPost = props => {
                                     </Link>
 
                                     <div className="forum-reaction">
-                                        <span>
-                                            <Text type="secondary">
-                                                <Icon type="message" />
-                                                {answers + ANSWERS}
-                                            </Text>
-                                        </span>
-                                        <span>
-                                            <Text type="secondary">
-                                                <Icon type="arrow-up" />
-                                                {votes + VOTES}
-                                            </Text>
-                                        </span>
-                                        <span>
-                                            <Text type="secondary">
-                                                <Icon type="eye" />
-                                                {views + VIEWS}
-                                            </Text>
-                                        </span>
+                                        {
+                                            FORUM_REACTION().map(reaction => {
+                                                const {
+                                                    id, action, iconType, textType,
+                                                } = reaction;
+                                                let actionType;
+
+                                                if (id === '1') {
+                                                    actionType = answers;
+                                                } else if (id === '2') {
+                                                    actionType = votes;
+                                                } else if (id === '3') {
+                                                    actionType = views;
+                                                }
+                                                return (
+                                                    <span key={uuid()}>
+                                                        <Text type={textType}>
+                                                            <Icon type={iconType} />
+                                                            {actionType}
+                                                            {action}
+                                                        </Text>
+                                                    </span>
+                                                );
+                                            })
+                                        }
                                     </div>
 
                                     <div className="forum-time-tag">
@@ -63,7 +70,6 @@ const ForumLatestPost = props => {
                                                         key={uuid()}
                                                     >
                                                         {singleTag}
-
                                                     </Tag>
                                                 ))
                                             )}

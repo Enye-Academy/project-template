@@ -38,7 +38,7 @@ export default function PageLayout(props) {
                 />
                 <Content className="PageLayout_body">
                     <Layout hasSider className="PageLayout_content_sidebar">
-                        <Sidebar isSiderPresent={isSiderPresent} />
+                        <Sidebar isSiderPresent={isSiderPresent} selectedKey={selectedKey} />
                         <Content className="PageLayout_content">{children}</Content>
                     </Layout>
                 </Content>
