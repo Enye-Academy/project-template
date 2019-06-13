@@ -27,13 +27,6 @@ function NavHeader(props) {
     const {
         handleSearch, searchValue, title, selectedKey, isAuthenticated,
     } = props;
-    // let isAuthenticated;
-    // // fake Authentication for development
-    // if (global.location !== undefined && global.location.pathname === '/') {
-    //     isAuthenticated = false;
-    // } else {
-    //     isAuthenticated = true;
-    // }
 
     return (
         <>
@@ -112,15 +105,6 @@ function NavHeader(props) {
                         </a>
                     </Link>
                 </Button>
-                {/* </>
-                ) : (
-                    <Button className="LandingPage_login_button" type="primary">
-                        <Link href={LOGIN_LINK}>
-                            <a>{LOGIN}</a>
-                        </Link>
-                    </Button>
-                ) */}
-                {/* } */}
             </Header>
         </>
     );
