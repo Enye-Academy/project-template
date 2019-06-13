@@ -156,6 +156,7 @@ componentDidMount() {
                 isFooterPresent={false}
                 isAuthenticated
                 title={TIMELINE_TITLE}
+                selectedKey="1"
             >
                 <main className="TimeLine_content">
 

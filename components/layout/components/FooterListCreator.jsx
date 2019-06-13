@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import React from 'react';
+import uuid from 'uuid';
 
 const FooterListCreator = props => {
     const { list } = props;
@@ -10,7 +11,7 @@ const FooterListCreator = props => {
                 list.map(link => {
                     const { href, text } = link;
                     return (
-                        <Link href={href} key={text}>
+                        <Link href={href} key={uuid()}>
                             <a>{text}</a>
                         </Link>
                     );

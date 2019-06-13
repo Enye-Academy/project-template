@@ -36,7 +36,7 @@ export const LINKS = {
 
 export const MENU_ITEMS = [
     {
-        href: '/home',
+        href: '/timeline',
         key: 1,
         text: 'Home',
     }, {
@@ -49,12 +49,12 @@ export const MENU_ITEMS = [
 export const SIDEBAR_MENU_ITEMS = [
     {
         href: '/#',
-        key: 1,
+        key: '1',
         text: 'Home',
         type: 'user',
     }, {
         href: '/forum',
-        key: 2,
+        key: '2',
         text: 'Forum',
         type: 'video-camera',
     },
@@ -64,4 +64,5 @@ export const STRINGS = {
     HEADER_TITLE: 'Helpme | Connect with Friends', // title of the header
     LOGIN: 'Login',
     LOGOUT: 'Logout',
+    PLACEHOLDER: 'input search text',
 };

@@ -10,7 +10,7 @@
     border-bottom: 0.4px solid #e8e8e8;
     position: fixed;
     width: 100%;
-    z-index: 1;
+    z-index: 3;
     align-items: center;
 }
 
@@ -21,7 +21,7 @@
 .layout_sider {
     position: fixed;
     height: calc(100vh - 64px);
-    z-index: 1;
+    z-index: 4;
     margin-top: 64px;
 }
 

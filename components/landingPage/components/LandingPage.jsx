@@ -1,4 +1,5 @@
 import React from 'react';
+import uuid from 'uuid';
 
 import { components } from '../../layout';
 import LandingPageContent from './LandingPageContent';
@@ -20,6 +21,7 @@ const LandingPage = () => (
         isFooterPresent
         isAuthenticated={false}
         title={PAGE_TITLE}
+        selectedKey="1"
     >
         {
             LANDING_PAGE_CONTENTS.map(landingPageContent => {
@@ -38,7 +40,7 @@ const LandingPage = () => (
 
                 return (
                     <LandingPageContent
-                        key={paragraphText}
+                        key={uuid()}
                         isButtonPresent={isButtonPresent}
                         columnSection={columnSection}
                         isImagePresent={isImagePresent}

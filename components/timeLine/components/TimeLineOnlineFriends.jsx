@@ -1,4 +1,5 @@
 import React from 'react';
+import uuid from 'uuid';
 import PropTypes from 'prop-types';
 
 import { STRINGS } from '../constants';
@@ -15,9 +16,9 @@ const TimeLineOnlineFriends = props => {
             </h3>
             <ul>
                 {onlineFriendsData.map(user => {
-                    const { email, photo, name } = user;
+                    const { photo, name } = user;
                     return (
-                        <li key={email}>
+                        <li key={uuid()}>
                             <img
                                 src={photo}
                                 alt={name}

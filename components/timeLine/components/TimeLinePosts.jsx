@@ -4,6 +4,7 @@ import {
 } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
+import uuid from 'uuid';
 
 import { CreatePostComponent } from './CreatePostComponent';
 import { LOADING_SKELETON, STRINGS } from '../constants';
@@ -49,11 +50,10 @@ class TimeLinePosts extends React.Component {
                         loading,
                         active,
                         avatar,
-                        id,
                     } = items;
                     return (
                         <Skeleton
-                            key={id}
+                            key={uuid()}
                             paragraph={paragraph}
                             title={title}
                             loading={loading}
@@ -102,7 +102,7 @@ class TimeLinePosts extends React.Component {
                     } = user;
                     return (
                         <List.Item
-                            key={id}
+                            key={uuid()}
                             actions={[
                                 <IconText
                                     type="star"
@@ -160,7 +160,7 @@ class TimeLinePosts extends React.Component {
                                 <Timeline>
                                     {/* comment post */}
                                     {profileData[id - 1].comments.map(commentPost => (
-                                        <Item key={commentPost.id}>
+                                        <Item key={uuid()}>
                                             <section className="Timeline_comment">
                                                 {/* avatar */}
                                                 <Avatar

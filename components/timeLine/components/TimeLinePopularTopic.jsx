@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import uuid from 'uuid';
 
 import { POPULAR_TOPIC, STRINGS } from '../constants';
 
@@ -13,7 +14,7 @@ const TimeLinePopularTopic = () => (
                 POPULAR_TOPIC.map(topic => {
                     const { link, text } = topic;
                     return (
-                        <li key={text}>
+                        <li key={uuid()}>
                             <Link href={link}>
                                 <a>{text}</a>
                             </Link>

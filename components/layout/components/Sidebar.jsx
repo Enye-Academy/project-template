@@ -14,17 +14,17 @@ const { Sider } = Layout;
  * @return {Object} Side Bar
  */
 export default function Sidebar(props) {
-    const { isSiderPresent } = props;
+    const { isSiderPresent, selectedKey } = props;
     return (
         isSiderPresent
             ? (
                 <Sider breakpoint="lg" collapsedWidth="0" className="layout_sider">
                     <div className="logo" />
-                    <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
+                    <Menu theme="dark" mode="inline" defaultSelectedKeys={[selectedKey]}>
                         {
                             SIDEBAR_MENU_ITEMS.map(sideBarItem => {
                                 const {
-                                    key, href, type, text,
+                                    href, key, type, text,
                                 } = sideBarItem;
                                 return (
                                     <Menu.Item key={key}>
@@ -46,6 +46,7 @@ export default function Sidebar(props) {
 
 Sidebar.propTypes = {
     isSiderPresent: PropTypes.bool,
+    selectedKey: PropTypes.string.isRequired,
 };
 
 Sidebar.defaultProps = {

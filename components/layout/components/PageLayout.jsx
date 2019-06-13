@@ -24,7 +24,7 @@ const { HEADER_TITLE } = STRINGS;
 export default function PageLayout(props) {
     const {
         title, isAuthenticated, children, isFooterPresent,
-        isSiderPresent, handleSearch, searchValue,
+        isSiderPresent, handleSearch, searchValue, selectedKey,
     } = props;
     return (
         <>
@@ -34,10 +34,11 @@ export default function PageLayout(props) {
                     isAuthenticated={isAuthenticated}
                     handleSearch={null || handleSearch}
                     searchValue={searchValue}
+                    selectedKey={selectedKey}
                 />
                 <Content className="PageLayout_body">
                     <Layout hasSider className="PageLayout_content_sidebar">
-                        <Sidebar isSiderPresent={isSiderPresent} />
+                        <Sidebar isSiderPresent={isSiderPresent} selectedKey={selectedKey} />
                         <Content className="PageLayout_content">{children}</Content>
                     </Layout>
                 </Content>
@@ -53,5 +54,6 @@ PageLayout.propTypes = {
     isFooterPresent: PropTypes.bool,
     isSiderPresent: PropTypes.bool,
     searchValue: PropTypes.string,
+    selectedKey: PropTypes.string.isRequired,
     title: PropTypes.string,
 };

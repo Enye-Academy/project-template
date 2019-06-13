@@ -1,0 +1,122 @@
+.forum_topusers {
+    display: none;
+}
+
+.forum_user {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px dotted #e8e8e8;
+    padding: 1em
+}
+
+.forum-item {
+    display: flex;
+    padding: 1em
+}
+
+.forum-text>* {
+    margin: .5em 0;
+}
+
+.forum-topic {
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.forum-reaction>* {
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.forum-time {
+    font-size: 10px;
+    margin-top: 1em;
+}
+
+.forum-time-tag {
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.user-avatar {
+    margin-right: 12px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, .1), -1px -1px 2px 0px rgba(0, 0, 0, .1);
+}
+
+.ant-tabs-nav-scroll {
+    background: #ffffff;
+    margin-bottom: 2px;
+}
+
+.user_interaction {
+    color: #FFD700
+}
+
+.tag-style {
+    font-size: 10px
+}
+
+.anticon {
+    margin-right: 2px
+}
+
+@media screen and (min-width: 451px) and (max-width: 767px) {
+    .forum {
+        max-width: 450px;
+        margin: 0 auto;
+        border: 1px solid #e8e8e8;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .ant-tabs-nav-scroll {
+        padding: 0 1em;
+    }
+
+    .forum_latest_tab {
+        display: grid;
+        grid-template-rows: minmax(300px, auto) auto;
+        grid-template-columns: auto minmax(300px, 286px);
+        grid-gap: 1em;
+    }
+
+    .forum_latest_tab {
+        max-width: 768px;
+        margin: 0 auto;
+        margin-left: auto;
+    }
+
+    .forum {
+        grid-row: 1/3;
+        margin-left: 1em;
+    }
+
+    .forum_topusers {
+        display: block;
+        background-color: #ffffff;
+        grid-row: 1;
+        grid-column: 2;
+        margin-right: 1em;
+        padding: 1em;
+    }
+
+    .forum-time {
+        align-self: center;
+        margin-top: 0px
+    }
+
+    .forum-item {
+        background: white
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .forum_latest_tab {
+        max-width: 1024px;
+    }
+
+    .ant-tabs-nav-scroll {
+        padding: 0 6em;
+    }
+}
