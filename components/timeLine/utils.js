@@ -1,15 +1,3 @@
-
-const PROFILE_URL = '../../static/data/timelineData.json';
-
-export const fetchTimeLineData = async () => {
-    const response = await fetch(PROFILE_URL);
-    const data = await response.json();
-    if (response.stats >= 400) {
-        throw new Error(data.errors);
-    }
-    return data;
-};
-
 export const generateCommentData = (id, post) => ({
     avatar: 'https://randomuser.me/api/portraits/men/44.jpg',
     firstName: 'Justice',

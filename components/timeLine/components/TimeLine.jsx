@@ -13,14 +13,26 @@ import {
     loadTimeLineData,
     likeButtonClicked,
     setTimeLineData,
+    setOnlineFriendsData,
+    setOnlineFriendsError,
+    loadOnlineFriendsData,
     setTimeLineError
 } from '../actions';
 import { components } from '../../layout';
 import { CreatePostComponent } from './CreatePostComponent';
 import CreatePostModal from './CreatePostModal';
 import { generateCommentData, generateData } from '../utils';
-import { getStatusValue, getTimelineData, getIsFetching } from '../selectors';
+import {
+    getError,
+    getIsOnlineFriendsFetching,
+    getIsTimelineFetching,
+    getOnlineFriendsData,
+    getTimelineData
+} from '../selectors';
 import TimeLinePosts from './TimeLinePosts';
+import TimeLinePopularTopic from './TimeLinePopularTopic';
+import TimeLineProfileInfo from './TimeLineProfileInfo';
+import TimeLineOnlineFriends from './TimeLineOnlineFriends';
 import { STRINGS } from '../constants';
 
 const { CREATE_POST_PLACEHOLDER, TIMELINE_TITLE } = STRINGS;
@@ -38,8 +50,9 @@ state ={
 }
 
 componentDidMount() {
-    const { loadTimeLineData } = this.props;
+    const { loadTimeLineData, loadOnlineFriendsData } = this.props;
     loadTimeLineData();
+    loadOnlineFriendsData();
 }
 
     /**
@@ -132,7 +145,9 @@ componentDidMount() {
     }
 
     render() {
-        const { timelineData, isFetching } = this.props;
+        const {
+            timelineData, isTimelineFetching, onlineFriendsData, isOnlineFriendsFetching,
+        } = this.props;
         const { isModalOpen, value } = this.state;
 
         return (
@@ -160,6 +175,15 @@ componentDidMount() {
                         />
                     </section>
 
+                    {/* profile info desktop */}
+                    <TimeLineProfileInfo />
+                    {/* popular topics aside */}
+                    <TimeLinePopularTopic />
+                    {/* online friends aside tab */}
+                    <TimeLineOnlineFriends
+                        onlineFriendsData={onlineFriendsData}
+                        isOnlineFriendsFetching={isOnlineFriendsFetching}
+                    />
                     {/* main timeline */}
                     <section className="TimeLine_post">
                         {/* create post component */}
@@ -178,7 +202,7 @@ componentDidMount() {
                         <section className="TimeLine_posts">
                             {/* timeline posts */}
                             <TimeLinePosts
-                                isFetching={isFetching}
+                                isTimelineFetching={isTimelineFetching}
                                 profileData={timelineData}
                                 handleLikeButton={this.handleLikeButton}
                                 handleFavButton={this.handleFavButton}
@@ -196,8 +220,10 @@ componentDidMount() {
 }
 
 const mapStateToProps = state => ({
-    isFetching: getIsFetching(state),
-    statusValue: getStatusValue(state),
+    error: getError(state),
+    isTimelineFetching: getIsTimelineFetching(state),
+    onlineFriendsData: getOnlineFriendsData(state),
+    onlineFriendsFetching: getIsOnlineFriendsFetching(state),
     timelineData: getTimelineData(state),
 });
 
@@ -207,7 +233,10 @@ const timeLineActions = {
     handlePostComment,
     handlePostUpdate,
     likeButtonClicked,
+    loadOnlineFriendsData,
     loadTimeLineData,
+    setOnlineFriendsData,
+    setOnlineFriendsError,
     setTimeLineData,
     setTimeLineError,
 };
@@ -221,9 +250,15 @@ TimeLine.propTypes = {
     favButtonClicked: PropTypes.func.isRequired,
     handlePostComment: PropTypes.func.isRequired,
     handlePostUpdate: PropTypes.func.isRequired,
-    isFetching: PropTypes.bool.isRequired,
+    isOnlineFriendsFetching: PropTypes.bool.isRequired,
+    isTimelineFetching: PropTypes.bool.isRequired,
     likeButtonClicked: PropTypes.func.isRequired,
+    loadOnlineFriendsData: PropTypes.func.isRequired,
     loadTimeLineData: PropTypes.func.isRequired,
+    onlineFriendsData: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        photo: PropTypes.string.isRequired,
+    })).isRequired,
     timelineData: PropTypes.arrayOf(PropTypes.shape({
         avatar: PropTypes.string.isRequired,
         comment: PropTypes.number.isRequired,
