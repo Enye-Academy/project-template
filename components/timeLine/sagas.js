@@ -29,7 +29,7 @@ function* handleProfileDataLoad() {
     if (response.ok) {
         yield put(setOnlineFriendsData(data));
     } else {
-        yield put(setTimeLineError(response));
+        yield put(setOnlineFriendsError(response));
     }
 }
 
