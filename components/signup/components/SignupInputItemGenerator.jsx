@@ -21,7 +21,7 @@ const {
 * @param {function} actions actions attached to the input field for validation
 * @param {Object} items the values passed on to the input field
 * @param {function} decorator a Two-way binding for form
-* @param {string} label label for the input field
+* @param {string} label for the input field
 * @param {string} id id of the input field
 * @param {Object[]} rules rules for input validation
 * @param {Boolean} hasOnBlur check if the input has an onChange function attached ot it

@@ -6,9 +6,9 @@ import {
     registrationRequestSuccess,
     registrationRequestError
 } from './actions';
+import { STRINGS } from './constants';
 
-const REGISTRATION_URL = '/api/users/register';
-
+const { REGISTRATION_URL } = STRINGS;
 const {
     SEND_REGISTRATION_REQUEST,
 } = actionTypes;
@@ -21,10 +21,11 @@ function* handleUserRegistration({ payload }) {
         },
         method: 'POST',
     });
-    const data = yield response.json();
     if (response.ok) {
+        const data = yield response.json();
         yield put(registrationRequestSuccess(data));
     } else {
+        const data = yield response.json();
         yield put(registrationRequestError(data));
     }
 }

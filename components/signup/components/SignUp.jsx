@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-shadow */
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -193,27 +194,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Signup);
 
 RegistrationForm.propTypes = {
     error: PropTypes.node,
-    form: PropTypes.shape({
-        getFieldDecorator: PropTypes.func,
-        getFieldError: PropTypes.func,
-        getFieldInstance: PropTypes.func,
-        getFieldProps: PropTypes.func,
-        getFieldValue: PropTypes.func,
-        getFieldsError: PropTypes.func,
-        getFieldsValue: PropTypes.func,
-        isFieldTouched: PropTypes.func,
-        isFieldValidating: PropTypes.func,
-        isFieldsTouched: PropTypes.func,
-        isFieldsValidating: PropTypes.func,
-        isSubmitting: PropTypes.func,
-        resetFields: PropTypes.func,
-        setFields: PropTypes.func,
-        setFieldsInitialValue: PropTypes.func,
-        setFieldsValue: PropTypes.func,
-        submit: PropTypes.func,
-        validateFields: PropTypes.func,
-        validateFieldsAndScroll: PropTypes.func,
-    }).isRequired,
+    form: PropTypes.object.isRequired,
     sendRegistrationRequest: PropTypes.func,
     success: PropTypes.node,
 };

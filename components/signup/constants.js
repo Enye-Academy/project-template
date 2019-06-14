@@ -16,6 +16,7 @@ your reset link!`,
     READ_ACCEPTED_AGREEMENT: 'I have read and accepted the ',
     REGISTER: 'Register',
     REGISTER_NOW: ' register now!',
+    REGISTRATION_URL: '/api/users/register',
     REMEMBER_PASSWORD_TEXT: 'remember your password? ',
     WELCOME: 'Welcome',
 };
