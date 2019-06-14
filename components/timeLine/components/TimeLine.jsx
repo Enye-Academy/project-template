@@ -277,6 +277,6 @@ TimeLine.propTypes = {
     })).isRequired,
 };
 
-TimeLine.defaultTypes = {
+TimeLine.defaultProps = {
     isOnlineFriendsFetching: null,
 };
