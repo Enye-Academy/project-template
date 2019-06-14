@@ -91,6 +91,7 @@ export const STRINGS = {
     ASKED: 'asked ',
     BLOG_TOPIC_LINK: '/forum/post?title=',
     FAVORITE_CONTENT: 'Content of Tab Pane 3',
+    NAME: 'forum',
     PAGE_TITLE: 'Forum | talk about topics you like',
     SINCE: 'since ',
     TOP_USERS_HEADING: 'Top Users of The Week',

@@ -5,17 +5,17 @@ import uuid from 'uuid';
 
 import { STRINGS, TOP_USERS, LOADING_SKELETON } from '../constants';
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 const { SINCE, TOP_USERS_HEADING } = STRINGS;
 
 const ForumTopUsers = props => {
-    const { blogData } = props;
+    const { isForumDataLoading } = props;
 
     return (
         <section className="forum_topusers">
             <Title level={4}>{TOP_USERS_HEADING}</Title>
             {
-                blogData.length > 0 ? TOP_USERS.map(user => {
+                !isForumDataLoading ? TOP_USERS.map(user => {
                     const {
                         name, avatar, dateJoined, postCount, commentCount,
                     } = user;
@@ -26,10 +26,10 @@ const ForumTopUsers = props => {
 
                             <div className="forum_topusers-userdetails">
                                 <p>{name}</p>
-                                <p>
+                                <Text type="secondary">
                                     {SINCE}
                                     {dateJoined}
-                                </p>
+                                </Text>
                             </div>
 
                             <p className="forum_topusers-interaction">
@@ -67,13 +67,5 @@ const ForumTopUsers = props => {
 export { ForumTopUsers };
 
 ForumTopUsers.propTypes = {
-    blogData: PropTypes.arrayOf(PropTypes.shape({
-        answers: PropTypes.number.isRequired,
-        image: PropTypes.string.isRequired,
-        tag: PropTypes.string.isRequired,
-        time: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        views: PropTypes.number.isRequired,
-        votes: PropTypes.number.isRequired,
-    })).isRequired,
+    isForumDataLoading: PropTypes.bool.isRequired,
 };

@@ -1,10 +1,15 @@
+/* eslint-disable no-shadow */
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Tabs } from 'antd';
 
+import { loadForumData, setForumDataError, setForumDataSuccess } from '../actions';
 import { components } from '../../layout';
-import forumData from '../../../static/data/forumData.json';
 import ForumLatestPost from './ForumLatestPost';
-import { ForumTopUsers } from './ForumAsides';
+import { ForumTopUsers } from './ForumTopUsers';
+import { getError, getIsForumDataLoading, getForumData } from '../selectors';
 import { STRINGS, TabPanes } from '../constants';
 
 const { PageLayout } = components;
@@ -13,26 +18,17 @@ const {
 } = STRINGS;
 const { TabPane } = Tabs;
 
-export default class Forum extends Component {
-    state = {
-        data: [],
-    }
-
+class Forum extends Component {
     componentDidMount() {
-        this.handleDataFetch();
-    }
-
-    handleDataFetch = () => {
-        this.setState({
-            data: forumData,
-        });
+        const { loadForumData } = this.props;
+        loadForumData();
     }
 
     render() {
-        const { data } = this.state;
+        const { forumData, isForumDataLoading } = this.props;
         return (
             <PageLayout
-                isSiderPresent={data.length > 0}
+                isSiderPresent={!isForumDataLoading}
                 isFooterPresent={false}
                 isAuthenticated
                 title={PAGE_TITLE}
@@ -47,8 +43,10 @@ export default class Forum extends Component {
                                 if (key === '1') {
                                     children = (
                                         <section className="forum_latest_tab">
-                                            <ForumTopUsers blogData={data} />
-                                            <ForumLatestPost blogData={data} />
+                                            <ForumTopUsers
+                                                isForumDataLoading={isForumDataLoading}
+                                            />
+                                            <ForumLatestPost blogData={forumData} />
                                         </section>
                                     );
                                 }
@@ -64,3 +62,33 @@ export default class Forum extends Component {
         );
     }
 }
+
+const mapStateToProps = state => ({
+    error: getError(state),
+    forumData: getForumData(state),
+    isForumDataLoading: getIsForumDataLoading(state),
+});
+
+const forumActions = {
+    loadForumData,
+    setForumDataError,
+    setForumDataSuccess,
+};
+
+const mapDispatchToProps = dispatch => bindActionCreators(forumActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Forum);
+
+Forum.propTypes = {
+    forumData: PropTypes.arrayOf(PropTypes.shape({
+        answers: PropTypes.number.isRequired,
+        image: PropTypes.string.isRequired,
+        tag: PropTypes.string.isRequired,
+        time: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        views: PropTypes.number.isRequired,
+        votes: PropTypes.number.isRequired,
+    })).isRequired,
+    isForumDataLoading: PropTypes.bool.isRequired,
+    loadForumData: PropTypes.func.isRequired,
+};
