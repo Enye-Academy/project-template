@@ -257,7 +257,7 @@ TimeLine.propTypes = {
     favButtonClicked: PropTypes.func.isRequired,
     handlePostComment: PropTypes.func.isRequired,
     handlePostUpdate: PropTypes.func.isRequired,
-    isOnlineFriendsFetching: PropTypes.bool.isRequired,
+    isOnlineFriendsFetching: PropTypes.bool,
     isTimelineFetching: PropTypes.bool.isRequired,
     likeButtonClicked: PropTypes.func.isRequired,
     loadOnlineFriendsData: PropTypes.func.isRequired,
@@ -275,4 +275,8 @@ TimeLine.propTypes = {
         likes: PropTypes.number.isRequired,
         post: PropTypes.string.isRequired,
     })).isRequired,
+};
+
+TimeLine.defaultTypes = {
+    isOnlineFriendsFetching: null,
 };

@@ -32,6 +32,7 @@ export const IMAGE_URLS = {
 
 export const LINKS = {
     LOGIN_LINK: '/api/users/login',
+    LOGOUT_LINK: '/api/users/logout',
 };
 
 export const MENU_ITEMS = [

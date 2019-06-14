@@ -1,7 +1,7 @@
 import actionTypes from './actionTypes';
 
 const initialState = {
-    error: undefined,
+    error: null,
     isOnlineFriendsFetching: false,
     isTimelineFetching: false,
     onlineFriendsData: [],

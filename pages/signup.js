@@ -1,4 +1,4 @@
-import { components } from '../components/authentication';
+import { components } from '../components/signup';
 
 const { SignUp } = components;
 

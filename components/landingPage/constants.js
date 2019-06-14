@@ -17,6 +17,7 @@ const STRING = {
        elit.Deleniti porro vero`,
     LANDING_PAGE_MAIN_CONTENT_TITLE: 'Help me Title',
     PAGE_TITLE: 'Home | Welcome to Help me', // the title of the landing page
+    SIGNUP: '/signup',
 };
 
 const {

@@ -16,7 +16,7 @@ const {
 } = STRINGS;
 const { HELPME_LOGO } = IMAGE_URLS;
 const { HELPME_LOGO_DESC } = IMAGE_ALT;
-const { LOGIN_LINK } = LINKS;
+const { LOGIN_LINK, LOGOUT_LINK } = LINKS;
 const { Search } = Input;
 
 /**
@@ -99,7 +99,7 @@ function NavHeader(props) {
                     className="LandingPage_login_button"
                     type={isAuthenticated ? 'danger' : 'primary'}
                 >
-                    <Link href={isAuthenticated ? '/' : LOGIN_LINK}>
+                    <Link href={isAuthenticated ? LOGOUT_LINK : LOGIN_LINK}>
                         <a>
                             { isAuthenticated ? LOGOUT : LOGIN }
                         </a>
