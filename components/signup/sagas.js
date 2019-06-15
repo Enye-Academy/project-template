@@ -25,8 +25,7 @@ function* handleUserRegistration({ payload }) {
         const data = yield response.json();
         yield put(registrationRequestSuccess(data));
     } else {
-        const data = yield response.json();
-        yield put(registrationRequestError(data));
+        yield put(registrationRequestError(response));
     }
 }
 
