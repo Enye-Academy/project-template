@@ -2,16 +2,18 @@
 import { Layout } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Auth from '../../auth/components/auth';
 
 import NavHeader from './NavHeader';
 import PageFooter from './PageFooter';
 import Sidebar from './Sidebar';
 import { STRINGS } from '../constants';
+import { utils } from '../../auth';
 
 const { Content } = Layout;
 const { HEADER_TITLE } = STRINGS;
-
+const {
+    authConfig, isAuthenticated, login, logout,
+} = utils;
 /**
  * Function for displaying the landing page
  * @function
@@ -22,7 +24,6 @@ const { HEADER_TITLE } = STRINGS;
  * @param {Function} isSiderPresent  displays side for mobile pages
  * @return {Object} control the over all layout of the webpage
  */
-const auth = new Auth();
 
 class PageLayout extends React.Component {
     state= {
@@ -31,17 +32,17 @@ class PageLayout extends React.Component {
 
     componentDidMount() {
         this.setState({
-            isAuthenticated: auth.isAuthenticated(),
+            isAuthenticated: isAuthenticated(),
         });
     }
 
     login = () => {
-        auth.login();
+        authConfig.authorize();
     }
 
-    logout = () => {
-        auth.logout();
-    }
+    // logout = () => {
+    //     auth.logout();
+    // }
 
     render() {
         const {
@@ -61,7 +62,7 @@ class PageLayout extends React.Component {
                         searchValue={searchValue}
                         selectedKey={selectedKey}
                         handleLogin={this.login}
-                        handleLogOut={this.logout}
+                        handleLogOut={logout}
                     />
                     <Content className="PageLayout_body">
                         <Layout hasSider className="PageLayout_content_sidebar">

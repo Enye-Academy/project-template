@@ -4,9 +4,9 @@ import Router from 'next/router';
 import { components } from '../../layout';
 import LandingPageContent from './LandingPageContent';
 import { LANDING_PAGE_CONTENTS, STRING } from '../constants';
-import Auth from '../../auth/components/auth';
+import { utils } from '../../auth';
 
-const auth = new Auth();
+const { isAuthenticated } = utils;
 const { PageLayout } = components;
 const { PAGE_TITLE } = STRING;
 
@@ -19,7 +19,7 @@ const { PAGE_TITLE } = STRING;
 
 class LandingPage extends React.Component {
     componentDidMount() {
-        if (auth.isAuthenticated()) {
+        if (isAuthenticated()) {
             Router.push('/timeline');
         }
     }

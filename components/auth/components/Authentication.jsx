@@ -5,33 +5,37 @@ import PropTypes from 'prop-types';
 import { Spin } from 'antd';
 import React, { PureComponent } from 'react';
 import Router from 'next/router';
-import Auth from './auth';
+import {
+    handleAuthentication,
+    isAuthenticated,
+    login
+} from '../utils';
+
 import {
     getUserProfile,
     loginFailure,
     loginSuccess
 } from '../actions';
+import { SIGNING_IN_TEXT } from '../constants';
 import {
     getIsAuthenticated,
     getUsersProfile
 } from '../selectors';
 
-const auth = new Auth();
 class Authentication extends PureComponent {
     componentDidMount() {
-        const { isAuthenticated } = auth;
         const { loginSuccess, loginFailure } = this.props;
         try {
-            auth.handleAuthentication().then(() => {
+            handleAuthentication().then(() => {
                 if (isAuthenticated()) {
                     loginSuccess();
                     Router.push('/timeline');
                 }
             });
         } catch (err) {
-            if (!auth.isAuthenticated()) {
+            if (!isAuthenticated()) {
                 loginFailure();
-                auth.login();
+                login();
             }
         }
     }
@@ -40,7 +44,7 @@ class Authentication extends PureComponent {
         return (
 
             <div className="loading_Div">
-                <Spin tip="signing you in ..." size="large" />
+                <Spin tip={SIGNING_IN_TEXT} size="large" />
             </div>
         );
     }

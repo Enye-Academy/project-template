@@ -41,7 +41,6 @@ node_modules/
 jspm_packages/
 package-lock.json
 .DS_Store
-next.config.js
 # TypeScript v1 declaration files
 typings/
 
@@ -70,7 +69,7 @@ typings/
 
 # next.js build output
 .next
-*next.config.js
+next.config.js
 
 # nuxt.js build output
 .nuxt
