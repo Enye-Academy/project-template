@@ -2,7 +2,7 @@ const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 const dotenv = require('dotenv');
 
-dotenv.config();
+dotenv.config({ silent: true });
 
 // Configure Passport to use Auth0
 const {
@@ -11,7 +11,7 @@ const {
 const strategy = new Auth0Strategy(
 
     {
-        callbackURL: AUTH0_CALLBACK_URL || '/timeline',
+        callbackURL: AUTH0_CALLBACK_URL || '/auth/signed-in',
         clientID: AUTH0_CLIENT_ID,
         clientSecret: AUTH0_CLIENT_SECRET,
         domain: AUTH0_DOMAIN,

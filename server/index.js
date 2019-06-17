@@ -16,7 +16,7 @@ const nextApp = next({ dev });
 const handle = nextApp.getRequestHandler();
 
 // Load Environment variables
-dotenv.config();
+dotenv.config({ silent: true });
 require('../config/passport');
 
 // i need to comment the db declaration below else lint will not pass my code,

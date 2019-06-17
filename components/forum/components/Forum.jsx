@@ -30,7 +30,6 @@ class Forum extends Component {
             <PageLayout
                 isSiderPresent={!isForumDataLoading}
                 isFooterPresent={false}
-                isAuthenticated
                 title={PAGE_TITLE}
                 selectedKey="2"
             >
