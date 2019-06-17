@@ -2,25 +2,14 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Spin } from 'antd';
 import React, { PureComponent } from 'react';
 import Router from 'next/router';
-import {
-    handleAuthentication,
-    isAuthenticated,
-    login
-} from '../utils';
+import { Spin } from 'antd';
 
-import {
-    getUserProfile,
-    loginFailure,
-    loginSuccess
-} from '../actions';
+import { getUserProfile, loginFailure, loginSuccess } from '../actions';
+import { getIsAuthenticated, getUsersProfile } from '../selectors';
+import { handleAuthentication, isAuthenticated, login } from '../utils';
 import { SIGNING_IN_TEXT } from '../constants';
-import {
-    getIsAuthenticated,
-    getUsersProfile
-} from '../selectors';
 
 class Authentication extends PureComponent {
     componentDidMount() {
@@ -42,7 +31,6 @@ class Authentication extends PureComponent {
 
     render() {
         return (
-
             <div className="loading_Div">
                 <Spin tip={SIGNING_IN_TEXT} size="large" />
             </div>

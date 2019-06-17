@@ -121,7 +121,7 @@ NavHeader.propTypes = {
     handleLogOut: PropTypes.func.isRequired,
     handleLogin: PropTypes.func.isRequired,
     handleSearch: PropTypes.func,
-    isAuthenticated: PropTypes.bool.isRequired,
+    isAuthenticated: PropTypes.bool,
     searchValue: PropTypes.string,
     selectedKey: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -129,5 +129,6 @@ NavHeader.propTypes = {
 
 NavHeader.defaultProps = {
     handleSearch: null,
+    isAuthenticated: false,
     searchValue: '',
 };

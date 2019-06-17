@@ -5,17 +5,15 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Tabs } from 'antd';
 
-import { loadForumData, setForumDataError, setForumDataSuccess } from '../actions';
 import { components } from '../../layout';
 import ForumLatestPost from './ForumLatestPost';
 import { ForumTopUsers } from './ForumTopUsers';
 import { getError, getIsForumDataLoading, getForumData } from '../selectors';
+import { loadForumData, setForumDataError, setForumDataSuccess } from '../actions';
 import { STRINGS, TabPanes } from '../constants';
 
 const { PageLayout } = components;
-const {
-    PAGE_TITLE,
-} = STRINGS;
+const { PAGE_TITLE } = STRINGS;
 const { TabPane } = Tabs;
 
 export class ForumComponent extends Component {

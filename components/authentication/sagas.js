@@ -1,10 +1,7 @@
-import {
-    takeEvery, put
-} from 'redux-saga/effects';
+import { takeEvery, put } from 'redux-saga/effects';
+
 import actionTypes from './actionTypes';
-import {
-    getUserProfile
-} from './actions';
+import { getUserProfile } from './actions';
 
 const { LOGIN_SUCCESS } = actionTypes;
 

@@ -1,10 +1,6 @@
 import actionTypes from './actionTypes';
 
-const {
-    GET_USER_PROFILE,
-    LOGIN_FAILURE,
-    LOGIN_SUCCESS,
-} = actionTypes;
+const { GET_USER_PROFILE, LOGIN_FAILURE, LOGIN_SUCCESS } = actionTypes;
 
 const initialState = {
     isAuthenticated: false,

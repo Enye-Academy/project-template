@@ -7,13 +7,14 @@ import NavHeader from './NavHeader';
 import PageFooter from './PageFooter';
 import Sidebar from './Sidebar';
 import { STRINGS } from '../constants';
-import { utils } from '../../auth';
+import { utils } from '../../authentication';
 
 const { Content } = Layout;
 const { HEADER_TITLE } = STRINGS;
 const {
-    authConfig, isAuthenticated, login, logout,
+    authConfig, isAuthenticated, logout,
 } = utils;
+
 /**
  * Function for displaying the landing page
  * @function
@@ -27,37 +28,40 @@ const {
 
 class PageLayout extends React.Component {
     state= {
-        isAuthenticated: false,
+        isUserAuthenticated: false,
     }
 
     componentDidMount() {
         this.setState({
-            isAuthenticated: isAuthenticated(),
+            isUserAuthenticated: isAuthenticated(),
         });
     }
 
+    // cannot pass login but need to declare it so that it can be
+    // called when components mounts. localstorage is not available in the server
     login = () => {
         authConfig.authorize();
     }
 
-    // logout = () => {
-    //     auth.logout();
-    // }
-
     render() {
         const {
-            title, children, isFooterPresent,
-            isSiderPresent, handleSearch, searchValue, selectedKey,
+            children,
+            handleSearch,
+            isFooterPresent,
+            isSiderPresent,
+            searchValue,
+            selectedKey,
+            title,
         } = this.props;
 
-        const { isAuthenticated } = this.state;
+        const { isUserAuthenticated } = this.state;
 
         return (
             <>
                 <Layout className="LandingPage_layout">
                     <NavHeader
                         title={title || HEADER_TITLE}
-                        isAuthenticated={isAuthenticated}
+                        isAuthenticated={isUserAuthenticated}
                         handleSearch={null || handleSearch}
                         searchValue={searchValue}
                         selectedKey={selectedKey}

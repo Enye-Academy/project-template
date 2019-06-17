@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import * as timeLine from '../components/timeLine';
 import * as forum from '../components/forum';
 import * as signup from '../components/signup';
-import * as auth from '../components/auth';
+import * as auth from '../components/authentication';
 
 const rootReducer = combineReducers({
     auth: auth.reducers,

@@ -1,4 +1,4 @@
-import { components } from '../../components/auth';
+import { components } from '../../components/authentication';
 
 const { Authentication } = components;
 

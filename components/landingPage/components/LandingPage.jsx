@@ -1,10 +1,11 @@
 import React from 'react';
-import uuid from 'uuid';
 import Router from 'next/router';
+import uuid from 'uuid';
+
 import { components } from '../../layout';
 import LandingPageContent from './LandingPageContent';
 import { LANDING_PAGE_CONTENTS, STRING } from '../constants';
-import { utils } from '../../auth';
+import { utils } from '../../authentication';
 
 const { isAuthenticated } = utils;
 const { PageLayout } = components;
@@ -18,16 +19,25 @@ const { PAGE_TITLE } = STRING;
  */
 
 class LandingPage extends React.Component {
+    state ={
+        isUserAuthenticated: false,
+    }
+
     componentDidMount() {
         if (isAuthenticated()) {
+            this.setState({
+                isUserAuthenticated: true,
+            });
             Router.push('/timeline');
         }
     }
 
     render() {
+        const { isUserAuthenticated } = this.state;
         return (
             <PageLayout
                 isSiderPresent={false}
+                isAuthenticated={isUserAuthenticated}
                 isFooterPresent
                 title={PAGE_TITLE}
                 selectedKey="1"
