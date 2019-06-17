@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-shadow */
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -16,7 +17,10 @@ import {
     setOnlineFriendsData,
     setOnlineFriendsError,
     loadOnlineFriendsData,
-    setTimeLineError
+    setTimeLineError,
+    postProfileDataToDatabase,
+    postProfileDataToDatabaseSuccess,
+    postProfileDataToDatabaseError
 } from '../actions';
 import { components } from '../../layout';
 import { CreatePostComponent } from './CreatePostComponent';
@@ -27,17 +31,20 @@ import {
     getIsOnlineFriendsFetching,
     getIsTimelineFetching,
     getOnlineFriendsData,
-    getTimelineData
+    getTimelineData,
+    getUserProfile
 } from '../selectors';
+import { STRINGS } from '../constants';
 import TimeLinePosts from './TimeLinePosts';
 import TimeLinePopularTopic from './TimeLinePopularTopic';
 import TimeLineProfileInfo from './TimeLineProfileInfo';
 import TimeLineOnlineFriends from './TimeLineOnlineFriends';
-import { STRINGS } from '../constants';
+import { utils } from '../../authentication';
 
 const { CREATE_POST_PLACEHOLDER, TIMELINE_TITLE } = STRINGS;
 const { PageLayout } = components;
 
+const { isAuthenticated, login } = utils;
 /** Helper function that is used to render the TimeLine Component
  * @class TimeLine
  * @extends {React.Component}
@@ -46,14 +53,44 @@ const { PageLayout } = components;
 class TimeLine extends React.Component {
 state ={
     commentValue: '',
+    isFormModalOpen: false,
     isModalOpen: false,
     statusValue: '',
+    userData: {},
 }
 
 componentDidMount() {
+    if (!isAuthenticated) {
+        login();
+    }
+
     const { loadTimeLineData, loadOnlineFriendsData } = this.props;
     loadTimeLineData();
     loadOnlineFriendsData();
+}
+
+componentDidUpdate(prevState, prevProps) {
+    let ProfileData;
+    let userData;
+    // we need to get profileData from local storage
+    if (localStorage.profile) {
+        ProfileData = JSON.parse(localStorage.getItem('profile'));
+        // we have to parse it because auth0 adds some strings to the profile data
+        userData = { ...ProfileData, id: ProfileData.sub.substring(6) };
+    }
+    // because of async, the profile data will not be available in the local storage until
+    // some time. so always check the local storage and compare with current user data state.
+    // but when the userdata changes in local storage, pull it and update state
+    if (JSON.stringify(userData) !== JSON.stringify(prevProps.userData)) {
+        this.handleGetProfileUpdate(userData);
+    }
+}
+
+// handle seting userdata to store
+handleGetProfileUpdate = userData => {
+    this.setState({
+        userData,
+    });
 }
 
     /**
@@ -151,15 +188,55 @@ componentDidMount() {
         });
     }
 
+      handleTextChange = e => {
+          this.setState(
+              {
+                  [e.target.name]: e.target.value,
+              }
+          );
+      }
+
+    handlePostSubmit = () => {
+        const {
+            userData,
+            firstName,
+            lastName,
+            city,
+            country,
+            bio,
+        } = this.state;
+        const { email } = userData;
+        const { postProfileDataToDatabase } = this.props;
+        const body = {
+            bio,
+            city,
+            country,
+            email,
+            firstName,
+            lastName,
+        };
+        postProfileDataToDatabase(body);
+        this.FormModalHandler();
+    };
+
+    FormModalHandler = () => {
+        const { isFormModalOpen } = this.state;
+        this.setState({
+            isFormModalOpen: !isFormModalOpen,
+        });
+    };
+
     render() {
         const {
             timelineData, isTimelineFetching, onlineFriendsData, isOnlineFriendsFetching,
         } = this.props;
-        const { commentValue, isModalOpen, statusValue } = this.state;
+        const {
+            commentValue, isModalOpen, statusValue, userData, isFormModalOpen,
+        } = this.state;
 
         return (
             <PageLayout
-                isSiderPresent={timelineData.length > 0}
+                isSiderPresent={!isTimelineFetching}
                 isFooterPresent={false}
                 isAuthenticated
                 title={TIMELINE_TITLE}
@@ -170,7 +247,11 @@ componentDidMount() {
                     <section>
                         {/* edit component for mobile */}
                         <div className="create-icon-container">
-                            <Icon type="form" className="create-icon" onClick={this.modalHandler} />
+                            <Icon
+                                type="form"
+                                className="create-icon"
+                                onClick={this.modalHandler}
+                            />
                         </div>
 
                         <CreatePostModal
@@ -183,7 +264,13 @@ componentDidMount() {
                     </section>
 
                     {/* profile info desktop */}
-                    <TimeLineProfileInfo />
+                    <TimeLineProfileInfo
+                        profile={userData}
+                        handleOk={this.handlePostSubmit}
+                        isFormModalOpen={isFormModalOpen}
+                        handleModal={this.FormModalHandler}
+                        handleTextChange={this.handleTextChange}
+                    />
                     {/* popular topics aside */}
                     <TimeLinePopularTopic />
                     {/* online friends aside tab */}
@@ -232,6 +319,7 @@ const mapStateToProps = state => ({
     onlineFriendsData: getOnlineFriendsData(state),
     onlineFriendsFetching: getIsOnlineFriendsFetching(state),
     timelineData: getTimelineData(state),
+    userProfile: getUserProfile(state),
 });
 
 const timeLineActions = {
@@ -242,10 +330,14 @@ const timeLineActions = {
     likeButtonClicked,
     loadOnlineFriendsData,
     loadTimeLineData,
+    postProfileDataToDatabase,
+    postProfileDataToDatabaseError,
+    postProfileDataToDatabaseSuccess,
     setOnlineFriendsData,
     setOnlineFriendsError,
     setTimeLineData,
     setTimeLineError,
+
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators(timeLineActions, dispatch);
@@ -266,6 +358,7 @@ TimeLine.propTypes = {
         name: PropTypes.string.isRequired,
         photo: PropTypes.string.isRequired,
     })).isRequired,
+    postProfileDataToDatabase: PropTypes.func.isRequired,
     timelineData: PropTypes.arrayOf(PropTypes.shape({
         avatar: PropTypes.string.isRequired,
         comment: PropTypes.number.isRequired,
@@ -275,8 +368,10 @@ TimeLine.propTypes = {
         likes: PropTypes.number.isRequired,
         post: PropTypes.string.isRequired,
     })).isRequired,
+    userData: PropTypes.object,
 };
 
 TimeLine.defaultProps = {
     isOnlineFriendsFetching: null,
+    userData: {},
 };

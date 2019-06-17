@@ -50,7 +50,7 @@ export const SIGNUP_INPUTS = validator => [
             FieldType: 'input',
             hasFieldChildren: false,
             id: 'name',
-            label: 'Name',
+            label: 'UserName',
             rules: [{ message: 'Please input your name!', required: true, whitespace: true }],
         },
     },

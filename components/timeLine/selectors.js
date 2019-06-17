@@ -6,3 +6,4 @@ export const getIsOnlineFriendsFetching = state => state[NAME].isOnlineFriendsFe
 export const getIsTimelineFetching = state => state[NAME].isTimelineFetching;
 export const getOnlineFriendsData = state => state[NAME].onlineFriendsData;
 export const getTimelineData = state => state[NAME].timelineData;
+export const getUserProfile = state => state[NAME].userProfile;

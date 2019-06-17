@@ -6,9 +6,13 @@ const initialState = {
     isTimelineFetching: false,
     onlineFriendsData: [],
     timelineData: [],
+    userProfile: {},
 };
 export default (state = initialState, action) => {
     const {
+        POST_PROFILE_DATA_TO_DATABASE,
+        POST_PROFILE_DATA_TO_DATABASE_SUCCESS,
+        POST_PROFILE_DATA_TO_DATABASE_ERROR,
         REQUEST_LOAD_TIMELINE_DATA,
         REQUEST_SET_TIMELINE_ERROR,
         REQUEST_SET_TIMELINE_DATA_SUCCESS,
@@ -33,10 +37,10 @@ export default (state = initialState, action) => {
         return { ...state, isTimelineFetching: true };
 
     case REQUEST_SET_TIMELINE_DATA_SUCCESS:
-        return { ...state, isTimelineFetching: false, timelineData: payload };
+        return { ...state, isTimelineFetching: false, timelineData: payload.data.postFound };
 
     case REQUEST_SET_TIMELINE_ERROR:
-        return { ...state, error, isTimelineFetching: false };
+        return { ...state, error: payload, isTimelineFetching: false };
 
     case REQUEST_LOAD_ONLINE_FRIENDS_DATA:
         return { ...state, isOnlineFriendsFetching: true };
@@ -97,6 +101,14 @@ export default (state = initialState, action) => {
             return item;
         });
         return { ...state, timelineData: [...newArray] };
+    case POST_PROFILE_DATA_TO_DATABASE: return { ...state, isProfileUpdating: true };
+
+    case POST_PROFILE_DATA_TO_DATABASE_SUCCESS:
+        return { ...state, isProfileUpdating: false, userProfile: payload };
+
+    case POST_PROFILE_DATA_TO_DATABASE_ERROR:
+        return { ...state, error: payload, isProfileUpdating: false };
+
     default:
         return state;
     }

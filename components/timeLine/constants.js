@@ -50,7 +50,9 @@ export const POPULAR_TOPIC = [
     },
 ];
 export const STRINGS = {
+    AT: '@',
     COMMENT_PLACEHOLDER: 'Write your reply',
+    COMPLETE_YOUR_PROFILE: 'Complete Your Profile',
     CREATE_POST_PLACEHOLDER: 'What is on your mind?',
     EMPTY_COMMENT: 'It seems very Lonely here, please add posts',
     FOLLOWERS: 'followers',
@@ -66,11 +68,35 @@ export const STRINGS = {
     TOGGLE_MODAL: 'TOGGLE_MODAL',
     USERS_BIO: `Lorem ipsum dolor sit amet consectetur adipisicing elit.Repellen dusharum odit
     inventore, iste dignissimos laudantium! Veniam.`,
+
 };
 
-export const USER_PROFILE = {
-    followers: 445,
-    following: 234,
-    image: 'https://robohash.org/temporeinventorererum.bmp?size=50x50&set=set1',
-    name: 'Baba Rahman',
-};
+export const PROFILE_INPUTS = [
+    {
+        id: 'firstName',
+        label: 'First Name',
+        placeholder: 'Whats your first Name',
+    },
+    {
+        id: 'lastName',
+        label: 'LastName',
+        placeholder: 'input your Last name',
+    },
+    {
+        id: 'city',
+        label: 'City',
+        placeholder: 'input your City',
+    },
+    {
+        id: 'country',
+        label: 'Country',
+        placeholder: 'input your Country',
+
+    },
+    {
+        id: 'bio',
+        label: 'Bio',
+        placeholder: 'input your bio',
+        type: 'textArea',
+    },
+];

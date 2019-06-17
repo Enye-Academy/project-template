@@ -256,6 +256,13 @@
   place-content: center;
 }
 
+.loading_Div{
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-content: center;
+}
+
 @media screen and (max-width:767px) {
   .TimeLine_content {
     max-width: 458px;
