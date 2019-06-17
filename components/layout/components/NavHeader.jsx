@@ -16,7 +16,7 @@ const {
 } = STRINGS;
 const { HELPME_LOGO } = IMAGE_URLS;
 const { HELPME_LOGO_DESC } = IMAGE_ALT;
-const { LOGIN_LINK, LOGOUT_LINK } = LINKS;
+const { LOGIN_LINK } = LINKS;
 const { Search } = Input;
 
 /**
@@ -27,9 +27,8 @@ const { Search } = Input;
  */
 function NavHeader(props) {
     const {
-        handleSearch, searchValue, title, selectedKey, isAuthenticated,
+        handleSearch, searchValue, title, selectedKey, isAuthenticated, handleLogin, handleLogOut,
     } = props;
-
     return (
         <>
             {/* head parametes */}
@@ -38,23 +37,25 @@ function NavHeader(props) {
             </Head>
             {/* navheader for mobile */}
             <Header theme="light" className="layout_header-mobile">
-                <Link href={LOGIN_LINK}>
+                <Link href={isAuthenticated ? '/timeline' : LOGIN_LINK}>
                     <a>
                         <img src={HELPME_LOGO} alt={HELPME_LOGO_DESC} className="logo" />
                     </a>
                 </Link>
                 {/* hide when authenticated */}
                 {isAuthenticated ? null : (
-                    <Button className="LandingPage_login_button" type="primary">
-                        <Link href={LOGIN_LINK}>
-                            <a>{LOGIN}</a>
-                        </Link>
+                    <Button
+                        className="LandingPage_login_button"
+                        onClick={isAuthenticated ? handleLogOut : handleLogin}
+                        type="primary"
+                    >
+                        {LOGIN}
                     </Button>
                 )}
             </Header>
             {/* header for desktop */}
             <Header theme="light" className="layout_header-desktop">
-                <Link href="/">
+                <Link href={isAuthenticated ? '/timeline' : LOGIN_LINK}>
                     <a>
                         <img src={HELPME_LOGO} alt={HELPME_LOGO_DESC} className="logo" />
                     </a>
@@ -84,6 +85,7 @@ function NavHeader(props) {
                             let { key, href, text } = menuItem;
                             if (key === 1) {
                                 href = isAuthenticated ? '/timeline' : '/';
+                                text = isAuthenticated ? 'TimeLine' : text;
                             }
                             return (
                                 <Menu.Item key={key}>
@@ -98,12 +100,17 @@ function NavHeader(props) {
                 <Button
                     className="LandingPage_login_button"
                     type={isAuthenticated ? 'danger' : 'primary'}
+                    onClick={isAuthenticated ? handleLogOut : handleLogin}
                 >
-                    <Link href={isAuthenticated ? LOGOUT_LINK : LOGIN_LINK}>
-                        <a>
-                            { isAuthenticated ? LOGOUT : LOGIN }
-                        </a>
-                    </Link>
+                    {isAuthenticated
+                        ? (
+                            <Link href="/api/users/logout">
+                                <a>
+                                    {LOGOUT}
+                                </a>
+                            </Link>
+                        )
+                        : LOGIN}
                 </Button>
             </Header>
         </>
@@ -111,8 +118,10 @@ function NavHeader(props) {
 }
 export default NavHeader;
 NavHeader.propTypes = {
+    handleLogOut: PropTypes.func.isRequired,
+    handleLogin: PropTypes.func.isRequired,
     handleSearch: PropTypes.func,
-    isAuthenticated: PropTypes.bool.isRequired,
+    isAuthenticated: PropTypes.bool,
     searchValue: PropTypes.string,
     selectedKey: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -120,5 +129,6 @@ NavHeader.propTypes = {
 
 NavHeader.defaultProps = {
     handleSearch: null,
+    isAuthenticated: false,
     searchValue: '',
 };

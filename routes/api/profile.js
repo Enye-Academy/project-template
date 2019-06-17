@@ -4,12 +4,10 @@ const router = express.Router();
 
 const Profile = require('../../models/profile.model');
 
-const secured = require('../../lib/middleware/secure');
-
 const validateInput = require('../../validation/profile');
 
 // Create a new Profile
-router.post('/', secured(), async (req, res) => {
+router.post('/', async (req, res) => {
     const {
         bio, city, country, email, firstName, lastName,
     } = req.body;
@@ -99,7 +97,7 @@ router.get('/:profileId', async (req, res) => {
 });
 
 // Update a Profile with profileId
-router.put('/:profileId', secured(), async (req, res) => {
+router.put('/:profileId', async (req, res) => {
     const {
         bio, city, country, email, firstName, lastName,
     } = req.body;

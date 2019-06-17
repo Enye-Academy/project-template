@@ -5,8 +5,8 @@ import uuid from 'uuid';
 
 import { STRINGS, TOP_USERS, LOADING_SKELETON } from '../constants';
 
-const { Title, Text } = Typography;
 const { SINCE, TOP_USERS_HEADING } = STRINGS;
+const { Title, Text } = Typography;
 
 const ForumTopUsers = props => {
     const { isForumDataLoading } = props;

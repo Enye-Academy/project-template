@@ -7,7 +7,7 @@ const util = require('util');
 const { URL } = require('url');
 const querystring = require('querystring');
 
-dotenv.config();
+dotenv.config({ silent: true });
 const router = express.Router();
 
 // Bring in the User Model

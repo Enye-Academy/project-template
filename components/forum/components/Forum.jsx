@@ -5,20 +5,18 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Tabs } from 'antd';
 
-import { loadForumData, setForumDataError, setForumDataSuccess } from '../actions';
 import { components } from '../../layout';
 import ForumLatestPost from './ForumLatestPost';
 import { ForumTopUsers } from './ForumTopUsers';
 import { getError, getIsForumDataLoading, getForumData } from '../selectors';
+import { loadForumData, setForumDataError, setForumDataSuccess } from '../actions';
 import { STRINGS, TabPanes } from '../constants';
 
 const { PageLayout } = components;
-const {
-    PAGE_TITLE,
-} = STRINGS;
+const { PAGE_TITLE } = STRINGS;
 const { TabPane } = Tabs;
 
-class Forum extends Component {
+export class ForumComponent extends Component {
     componentDidMount() {
         const { loadForumData } = this.props;
         loadForumData();
@@ -30,7 +28,6 @@ class Forum extends Component {
             <PageLayout
                 isSiderPresent={!isForumDataLoading}
                 isFooterPresent={false}
-                isAuthenticated
                 title={PAGE_TITLE}
                 selectedKey="2"
             >
@@ -76,10 +73,10 @@ const forumActions = {
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators(forumActions, dispatch);
+const Forum = connect(mapStateToProps, mapDispatchToProps)(ForumComponent);
+export default Forum;
 
-export default connect(mapStateToProps, mapDispatchToProps)(Forum);
-
-Forum.propTypes = {
+ForumComponent.propTypes = {
     forumData: PropTypes.arrayOf(PropTypes.shape({
         answers: PropTypes.number.isRequired,
         image: PropTypes.string.isRequired,
@@ -88,7 +85,13 @@ Forum.propTypes = {
         title: PropTypes.string.isRequired,
         views: PropTypes.number.isRequired,
         votes: PropTypes.number.isRequired,
-    })).isRequired,
-    isForumDataLoading: PropTypes.bool.isRequired,
-    loadForumData: PropTypes.func.isRequired,
+    })),
+    isForumDataLoading: PropTypes.bool,
+    loadForumData: PropTypes.func,
+};
+
+ForumComponent.defaultProps = {
+    forumData: [],
+    isForumDataLoading: true,
+    loadForumData: () => null,
 };

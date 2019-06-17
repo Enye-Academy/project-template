@@ -8,7 +8,9 @@ const initialState = {
 
 export default (state = initialState, action) => {
     const {
-        REQUEST_LOAD_FORUM_DATA, REQUEST_SET_FORUM_DATA_ERROR, REQUEST_SET_FORUM_DATA_SUCCESS,
+        REQUEST_LOAD_FORUM_DATA,
+        REQUEST_SET_FORUM_DATA_ERROR,
+        REQUEST_SET_FORUM_DATA_SUCCESS,
     } = actionTypes;
     const { type, error, payload } = action;
 

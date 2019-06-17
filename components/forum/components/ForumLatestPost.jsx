@@ -8,10 +8,8 @@ import uuid from 'uuid';
 
 import { FORUM_REACTION, LOADING_SKELETON, STRINGS } from '../constants';
 
+const { ASKED, BLOG_TOPIC_LINK } = STRINGS;
 const { Text } = Typography;
-const {
-    ASKED, BLOG_TOPIC_LINK,
-} = STRINGS;
 
 const ForumLatestPost = props => {
     const { blogData } = props;
