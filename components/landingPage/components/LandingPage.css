@@ -64,6 +64,7 @@
 	}
 	.LandingPage_content__text {
 		margin: 2em;
+		max-width: 30vw;
 	}
 	.LandingPage_hero > img {
 		width: 30%;

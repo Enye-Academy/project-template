@@ -15,8 +15,6 @@ export default class Auth {
           this.auth0.authorize();
       }
 
-      // ...
-
       handleAuthentication = () => new Promise((resolve, reject) => {
           this.auth0.parseHash((err, authResult) => {
               if (authResult && authResult.accessToken && authResult.idToken) {
@@ -48,8 +46,6 @@ export default class Auth {
           localStorage.removeItem('expires_at');
           localStorage.removeItem('profile');
           this.userProfile = null;
-          // navigate to the home route
-          //   Router.push('/');
       }
 
       getAccessToken = () => {
