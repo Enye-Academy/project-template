@@ -17,6 +17,7 @@ const STRING = {
        elit.Deleniti porro vero`,
     LANDING_PAGE_MAIN_CONTENT_TITLE: 'Help me Title',
     PAGE_TITLE: 'Home | Welcome to Help me', // the title of the landing page
+    SIGNUP: '/signup',
 };
 
 const {
@@ -36,7 +37,7 @@ const {
 
 const LANDING_PAGE_CONTENTS = [
     {
-        buttonLink: '/api/users/login',
+        buttonLink: '/signup',
         buttonText: LANDING_PAGE_MAIN_CONTENT_BUTTON_TEXT,
         columnSection: false,
         imageLink: '../../../static/connected.svg',
@@ -84,7 +85,7 @@ const LANDING_PAGE_CONTENTS = [
         title: LANDING_PAGE_LEVEL_4_CONTENT_TITLE,
     },
     {
-        buttonLink: '/api/users/login',
+        buttonLink: '/signup',
         buttonText: LANDING_PAGE_LEVEL_5_BUTTON_TEXT,
         columnSection: false,
         imageLink: '../../../static/hangout.svg',
