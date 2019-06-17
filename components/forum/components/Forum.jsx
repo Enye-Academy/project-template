@@ -18,7 +18,7 @@ const {
 } = STRINGS;
 const { TabPane } = Tabs;
 
-class Forum extends Component {
+export class ForumComponent extends Component {
     componentDidMount() {
         const { loadForumData } = this.props;
         loadForumData();
@@ -75,10 +75,10 @@ const forumActions = {
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators(forumActions, dispatch);
+const Forum = connect(mapStateToProps, mapDispatchToProps)(ForumComponent);
+export default Forum;
 
-export default connect(mapStateToProps, mapDispatchToProps)(Forum);
-
-Forum.propTypes = {
+ForumComponent.propTypes = {
     forumData: PropTypes.arrayOf(PropTypes.shape({
         answers: PropTypes.number.isRequired,
         image: PropTypes.string.isRequired,
@@ -87,7 +87,13 @@ Forum.propTypes = {
         title: PropTypes.string.isRequired,
         views: PropTypes.number.isRequired,
         votes: PropTypes.number.isRequired,
-    })).isRequired,
-    isForumDataLoading: PropTypes.bool.isRequired,
-    loadForumData: PropTypes.func.isRequired,
+    })),
+    isForumDataLoading: PropTypes.bool,
+    loadForumData: PropTypes.func,
+};
+
+ForumComponent.defaultProps = {
+    forumData: [],
+    isForumDataLoading: true,
+    loadForumData: () => null,
 };

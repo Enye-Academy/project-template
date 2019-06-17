@@ -2,7 +2,7 @@ import auth0 from 'auth0-js';
 
 export default class Auth {
     auth0 = new auth0.WebAuth({
-        clientID: process.env.clientID,
+        clientID: `${process.env.clientID}`,
         domain: 'teamhelpme.auth0.com',
         redirectUri: 'http://localhost:3000/auth/signed-in',
         responseType: 'token id_token',
