@@ -15,12 +15,6 @@ const profileSchema = new Schema({
         required: true,
         type: String,
     },
-    email: {
-        lowercase: true,
-        required: true,
-        type: String,
-        unique: true,
-    },
     firstName: {
         required: true,
         type: String,

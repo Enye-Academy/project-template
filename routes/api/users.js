@@ -15,6 +15,14 @@ const User = require('../../models/User');
 // Import Input Validation
 const validateRegInput = require('../../validation/register');
 
+router.get('/', async (req, res) => {
+    const users = await User.find();
+    return res.json({
+        data: users,
+        status: 'success',
+    });
+});
+
 // User Registration Route
 router.post('/register', async (req, res, next) => {
     try {

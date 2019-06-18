@@ -9,7 +9,6 @@ module.exports = function validateInput(data) {
         bio = '',
         city = '',
         country = '',
-        email = '',
         firstName = '',
         lastName = '',
     } = data;
@@ -24,14 +23,6 @@ module.exports = function validateInput(data) {
 
     if (Validator.isEmpty(city)) {
         errors.city = 'City field is required';
-    }
-
-    if (!Validator.isEmail(email)) {
-        errors.email = 'Email is invalid';
-    }
-
-    if (Validator.isEmpty(email)) {
-        errors.email = 'Email field is required';
     }
 
     if (Validator.isEmpty(lastName)) {

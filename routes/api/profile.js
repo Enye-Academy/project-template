@@ -4,6 +4,8 @@ const router = express.Router();
 
 const Profile = require('../../models/profile.model');
 
+const User = require('../../models/User');
+
 const validateInput = require('../../validation/profile');
 
 // Create a new Profile
@@ -11,6 +13,8 @@ router.post('/', async (req, res) => {
     const {
         bio, city, country, email, firstName, lastName,
     } = req.body;
+
+    const { id } = req.user;
 
     // Validate request
     const { errors, isValid } = validateInput(req.body);
@@ -23,16 +27,6 @@ router.post('/', async (req, res) => {
         });
     }
 
-    // check if user profile exists
-
-    const user = await Profile.findOne({ email });
-
-    if (user) {
-        return res.json({
-            message: `${email} already exist`,
-            status: 'error',
-        });
-    }
     // create new profile
     const profile = new Profile({
         bio,
@@ -44,9 +38,11 @@ router.post('/', async (req, res) => {
     });
     // Save Profile in the database
     try {
-        const newProfile = await profile.save();
+        const user = await User.findById(id);
+        user.profile = profile;
+        user.save();
         return res.json({
-            data: newProfile,
+            data: user,
             status: 'success',
         });
     } catch (err) {
