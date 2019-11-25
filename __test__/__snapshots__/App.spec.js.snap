@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SAMPLE TEST should render the App component correctly 1`] = `
+<App>
+  <h1>
+    WELCOME TO VOTE RIGHT APPLICATION
+  </h1>
+</App>
+`;

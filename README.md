@@ -1,7 +1,7 @@
-# project-template
-Document your applications API and general usage
+[![Build Status](https://travis-ci.com/Enye-Team-Giraffe/vote_right_frontend.svg?branch=master)](https://travis-ci.com/Enye-Team-Giraffe/vote_right_frontend)
 
-TODO: Put a quick description of the application here.
+# vote-right-frontend
+Vote Right is a voting application based on blockchain technology. A secured, decentralized, auditable and open platform for e-voting and vote counting that everybody can trust.
 
 ## Usage
 TODO: Provide how to interact with your repo at a high level. This could include what REST endpoints exist and/or how to configure the application.
